@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="finisher-header"></div>
+
+  <mat-toolbar class="backdrop-blur !bg-white/25">
+    <button mat-icon-button aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>Cédric Cazin</span>
+
+    <span class="flex-1"></span>
+
+    <button mat-icon-button aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      aria-label="Example icon-button with share icon"
+      (click)="onClick()"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
+
+<article class="wrapper">
+  <portfolio-card-3d></portfolio-card-3d>
+  <portfolio-card-3d></portfolio-card-3d>
+  <portfolio-card-3d></portfolio-card-3d>
+  <portfolio-card-3d></portfolio-card-3d>
+  <portfolio-card-3d></portfolio-card-3d>
+</article>
+
+<footer class="footer">Footer</footer>
