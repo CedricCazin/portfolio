@@ -1,0 +1,61 @@
+{
+  "name": "kazaam",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/kazaam/src",
+  "prefix": "kazaam",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": [
+        "{workspaceRoot}/dist/{projectRoot}"
+      ],
+      "options": {
+        "project": "libs/kazaam/ng-package.json",
+        "tailwindConfig": "libs/kazaam/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/kazaam/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/kazaam/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "libs/kazaam/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/kazaam/**/*.ts",
+          "libs/kazaam/**/*.html",
+          "libs/kazaam/floating-wrapper/**/*.ts",
+          "libs/kazaam/floating-wrapper/**/*.html",
+          "libs/kazaam/floating-content/**/*.ts",
+          "libs/kazaam/floating-content/**/*.html"
+        ]
+      }
+    }
+  }
+}

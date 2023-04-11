@@ -1,0 +1,9 @@
+.kazaam-floating-content {
+  -webkit-perspective: 500px;
+  perspective: 500px;
+
+  .kazaam-floating-content-wrapper {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+}
