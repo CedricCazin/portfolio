@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  flex: 1 100%;
+
+  .finisher-header {
+    overflow: hidden;
+    position: absolute;
+    height: 350px;
+    width: 100%;
+    z-index: -1;
+  }
+
+  mat-toolbar {
+    height: 48px;
+  }
+}
