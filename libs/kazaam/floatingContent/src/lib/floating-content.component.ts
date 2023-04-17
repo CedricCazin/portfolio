@@ -2,8 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
   HostListener,
+  Input,
+  Output,
   Renderer2,
   ViewChild,
   ViewChildren,
@@ -20,36 +23,111 @@ export class FloatingContentComponent {
   @HostBinding('class.kazaam-floating-content') kazaamCard = true;
   @HostBinding('style') styles = '';
 
-  @ViewChild('wrapper') wrapper!: ElementRef;
+  @ViewChild('translator') translator!: ElementRef;
+  @ViewChild('rotator') rotator!: ElementRef;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  @Input() translate = false;
 
-  @HostListener('mousemove', ['$event'])
-  handleMousemove(event: any) {
-    const wrap = this.wrapper.nativeElement.getBoundingClientRect();
+  @Input()
+  get translateX(): number {
+    return this._translateX;
+  }
+  set translateX(translateX: number) {
+    if (this.translator) {
+      const clientRect = this.translator.nativeElement.getBoundingClientRect();
+      this._translateX = translateX - (clientRect.left + clientRect.width / 2);
+    }
+  }
+  private _translateX = 0;
 
-    const rotX = -(wrap.height / 2 - (event.clientY - wrap.y)) / 7;
-    const rotY = (wrap.width / 2 - (event.clientX - wrap.x)) / 7;
+  @Input()
+  get translateY(): number {
+    return this._translateY;
+  }
+  set translateY(translateY: number) {
+    if (this.translator) {
+      const clientRect = this.translator.nativeElement.getBoundingClientRect();
+      this._translateY = translateY - (clientRect.top + clientRect.height / 2);
+    }
+  }
+  private _translateY = 0;
 
-    this.renderer.setStyle(
-      this.wrapper.nativeElement,
-      'transform',
-      `rotateY(${rotY}deg) rotateX(${rotX}deg)`
-    );
+  @Input()
+  get translateZ(): number {
+    return this._translateZ;
+  }
+  set translateZ(translateZ: number) {
+    this._translateZ = translateZ || 0;
+  }
+  private _translateZ = 0;
+
+  @Input() translateScale = 1;
+
+  @Output() clickWithin = new EventEmitter<boolean>();
+
+  private firstTransformation = true;
+
+  public rotateX = '0deg';
+  public rotateY = '0deg';
+
+  constructor(
+    private host: ElementRef<HTMLElement>,
+    private renderer: Renderer2
+  ) {
+    // this.host.nativeElement.style.setProperty(`--${this.variable}`, value);
   }
 
-  @HostListener('mouseenter', ['$event'])
-  handleMouseenter(event: any) {
-    this.renderer.setStyle(this.wrapper.nativeElement, 'transition', `none`);
+  //------
+
+  // @HostListener('mousemove', ['$event'])
+  handleMouseMove(event: any) {
+    const clientRect = this.rotator.nativeElement.getBoundingClientRect();
+
+    const rotX =
+      -((clientRect.height / 2 - (event.clientY - clientRect.y)) / 7) / 2;
+    const rotY =
+      (clientRect.width / 2 - (event.clientX - clientRect.x)) / 4 / 2;
+
+    this.rotateX = `${rotX}deg`;
+    // equivalent of this.wrapper.nativeElement.setProperty('--rotate-x', `${rotX}deg`);
+
+    this.rotateY = `${rotY}deg`;
+    // equivalent of this.wrapper.nativeElement.setProperty('--rotate-y', `${rotY}deg`);
+
+    if (this.firstTransformation) {
+      this.renderer.setStyle(
+        this.rotator.nativeElement,
+        'transition',
+        `transform 0.33s linear`
+      );
+    } else {
+      this.renderer.removeStyle(this.rotator.nativeElement, 'transition');
+    }
+
+    this.firstTransformation = false;
   }
 
-  @HostListener('mouseleave', ['$event'])
-  handleMouseleave(event: any) {
+  // @HostListener('mouseenter', ['$event'])
+  handleMouseEnter() {
+    this.firstTransformation = true;
+  }
+
+  // @HostListener('mouseleave', ['$event'])
+  handleMouseLeave() {
     this.renderer.setStyle(
-      this.wrapper.nativeElement,
+      this.rotator.nativeElement,
       'transition',
-      `transform 500ms ease-in-out`
+      `transform 0.33s ease-in-out`
     );
-    this.renderer.setStyle(this.wrapper.nativeElement, 'transform', `none`);
+
+    this.rotateX = `0deg`;
+    this.rotateY = `0deg`;
+  }
+
+  //------
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: any) {
+    this.clickWithin.emit(this.translator.nativeElement.contains(event.target));
   }
 }

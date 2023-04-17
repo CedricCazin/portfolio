@@ -1,9 +1,48 @@
 .kazaam-floating-content {
-  -webkit-perspective: 500px;
-  perspective: 500px;
+  -webkit-perspective: 600px;
+  perspective: 600px;
 
-  .kazaam-floating-content-wrapper {
+  -webkit-transform: translate3d(0px, 0px, 0.01px);
+  transform: translate3d(0px, 0px, 0.01px);
+
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  > * {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+  }
+
+  .kazaam-floating-content-translator,
+  .kazaam-floating-content-rotator {
+    perspective: 600px;
+
+    transform-origin: center;
+    -webkit-transform-origin: center;
+  }
+
+  .kazaam-floating-content-translator {
+    -webkit-transform: translate3d(
+        calc(var(--translate-x) * 1px),
+        calc(var(--translate-y) * 1px),
+        calc(var(--translate-z) * 1px)
+      )
+      scale(var(--translate-scale));
+    transform: translate3d(
+        calc(var(--translate-x) * 1px),
+        calc(var(--translate-y) * 1px),
+        calc(var(--translate-z) * 1px)
+      )
+      scale(var(--translate-scale));
+
+    position: relative;
+    z-index: var(--translate-z);
+
+    transition: transform 0.33s ease-in-out;
+
+    .kazaam-floating-content-rotator {
+      -webkit-transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+      transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+    }
   }
 }

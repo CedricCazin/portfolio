@@ -1,3 +1,20 @@
-<div class="kazaam-floating-content-wrapper" #wrapper>
-  <ng-content></ng-content>
+<div
+  class="kazaam-floating-content-translator"
+  #translator
+  [style.--translate-x]="translate ? this.translateX : 0"
+  [style.--translate-y]="translate ? this.translateY : 0"
+  [style.--translate-z]="translate ? this.translateZ : 0"
+  [style.--translate-scale]="translate ? this.translateScale : 1"
+>
+  <div
+    class="kazaam-floating-content-rotator"
+    (mouseenter)="handleMouseEnter()"
+    (mouseleave)="handleMouseLeave()"
+    (mousemove)="handleMouseMove($event)"
+    [style.--rotate-x]="rotateX"
+    [style.--rotate-y]="rotateY"
+    #rotator
+  >
+    <ng-content></ng-content>
+  </div>
 </div>
