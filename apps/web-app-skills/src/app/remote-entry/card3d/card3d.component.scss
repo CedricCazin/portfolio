@@ -1,9 +1,11 @@
 kazaam-floating-content {
+  border-radius: 20px;
+
   .mat-mdc-card {
     max-width: 300px;
-    max-height: 415px;
-    border: 15px solid rgb(214, 213, 213);
+
     border-radius: 20px;
+    border: 15px solid rgb(214, 213, 213);
 
     transition: box-shadow 0.4s ease, opacity 0.33s ease-out;
     box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent,

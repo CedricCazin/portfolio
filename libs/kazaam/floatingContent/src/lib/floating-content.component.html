@@ -15,6 +15,21 @@
     [style.--rotate-y]="rotateY"
     #rotator
   >
-    <ng-content></ng-content>
+    <div class="kazaam-floating-content-content">
+      <ng-content></ng-content>
+    </div>
+    <div
+      *ngIf="foil"
+      class="kazaam-floating-content-foil"
+      [style.--foil-space]="this.foilSpace"
+      [style.--foil-angle]="this.foilAngle"
+      [style.--foil-size]="this.foilSize"
+      [style.--foil-opacity]="this.foilOpacity"
+      [style.--foil-brightness]="this.foilBrightness"
+      [style.--foil-pos-x]="this.foilPosX"
+      [style.--foil-pos-y]="this.foilPosX"
+      [style.--foil-radius-x]="this.foilRadiusX"
+      [style.--foil-radius-y]="this.foilRadiusX"
+    ></div>
   </div>
 </div>

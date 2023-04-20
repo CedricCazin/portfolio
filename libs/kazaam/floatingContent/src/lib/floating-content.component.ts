@@ -67,8 +67,20 @@ export class FloatingContentComponent {
 
   private firstTransformation = true;
 
+  @Input() rotate = true;
   public rotateX = '0deg';
   public rotateY = '0deg';
+
+  @Input() foil = true;
+  @Input() foilSpace = '5%';
+  @Input() foilAngle = '133deg';
+  @Input() foilSize = '25%';
+  @Input() foilBrightness = 0.33;
+  @Input() foilOpacity = 0.5;
+  public foilPosX = '50%';
+  public foilPosY = '50%';
+  public foilRadiusX = '50%';
+  public foilRadiusY = '50%';
 
   constructor(
     private host: ElementRef<HTMLElement>,
@@ -84,15 +96,23 @@ export class FloatingContentComponent {
     const clientRect = this.rotator.nativeElement.getBoundingClientRect();
 
     const rotX =
-      -((clientRect.height / 2 - (event.clientY - clientRect.y)) / 7) / 2;
+      -((clientRect.height / 2 - (event.clientY - clientRect.y)) / 10) / 2;
     const rotY =
-      (clientRect.width / 2 - (event.clientX - clientRect.x)) / 4 / 2;
+      (clientRect.width / 2 - (event.clientX - clientRect.x)) / 10 / 2;
 
     this.rotateX = `${rotX}deg`;
     // equivalent of this.wrapper.nativeElement.setProperty('--rotate-x', `${rotX}deg`);
 
     this.rotateY = `${rotY}deg`;
     // equivalent of this.wrapper.nativeElement.setProperty('--rotate-y', `${rotY}deg`);
+
+    const foilX = ((event.clientX - clientRect.x) * 100) / clientRect.width;
+    const foilY = ((event.clientY - clientRect.y) * 100) / clientRect.height;
+
+    this.foilPosX = `${foilX}%`;
+    this.foilPosY = `${foilY}%`;
+    this.foilRadiusX = `${foilX}%`;
+    this.foilRadiusY = `${foilY}%`;
 
     if (this.firstTransformation) {
       this.renderer.setStyle(
