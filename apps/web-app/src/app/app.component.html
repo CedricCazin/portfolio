@@ -1,33 +1,68 @@
-<header class="header">
+<!-- https://codepen.io/gayane-gasparyan/pen/jOmaBQK -->
+<!-- https://codepen.io/Huhtamaki/pen/GPzwPY -->
+
+<!-- https://blog.avada.io/css/hexagons -->
+<!-- https://devsnap.me/css-hexagons -->
+
+<!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
+<!-- https://codepen.io/techyt/pen/qBOBEJL -->
+
+<div #background class="background">
+
   <div class="finisher-header"></div>
 
-  <mat-toolbar class="backdrop-blur !bg-white/25">
-    <button mat-icon-button aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
+  <svg>
+    <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
+    <defs>
+      <pattern #hexagons id="hexagons" width="25" height="43.4" patternUnits="userSpaceOnUse"
+        patternTransform="scale(2) translate(2) rotate(45)">
+        <polygon points="19.8,7 32.3,14.2 32.3,28.7 19.8,35.9 7.3,28.7 7.3,14.2" id="hex" />
+        <use xlink:href="#hex" x="25" />
+        <use xlink:href="#hex" x="-25" />
+        <use xlink:href="#hex" x="12.5" y="-21.7" />
+        <use xlink:href="#hex" x="-12.5" y="-21.7" />
+        <use xlink:href="#hex" x="12.5" y="21.7" />
+        <use xlink:href="#hex" x="-12.5" y="21.7" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hexagons)" />
+  </svg>
 
-    <span>Cédric Cazin</span>
+  <div #cursor class="cursor" [style.--cursor-left]="this.cursorLeft" [style.--cursor-top]="this.cursorTop"
+    [style.--cursor-opacity]="this.cursorOpacity">
+    <!-- Based on https://codepen.io/nocni_sovac/pen/BaKLwxZ -->
+  </div>
 
-    <span class="flex-1"></span>
+</div>
 
-    <button mat-icon-button aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
+<div class="content">
 
-    <button
-      mat-icon-button
-      aria-label="Example icon-button with share icon"
-      (click)="onClick()"
-    >
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</header>
+  <header class="header">
 
-<ul class="remote-menu">
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="web-app-skills">WebAppSkills</a></li>
-  <li><a routerLink="web-app-portfolio">WebAppPortfolio</a></li>
-</ul>
+    <mat-toolbar class="backdrop-blur !bg-white/25">
+      <button mat-icon-button aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
 
-<router-outlet></router-outlet>
+      <span>Cédric Cazin</span>
+
+      <span class="flex-1"></span>
+
+      <button mat-icon-button aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+
+      <button mat-icon-button aria-label="Example icon-button with share icon" (click)="onClick()">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </header>
+
+  <ul class="remote-menu">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="web-app-skills">WebAppSkills</a></li>
+    <li><a routerLink="web-app-portfolio">WebAppPortfolio</a></li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>

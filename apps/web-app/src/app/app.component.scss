@@ -1,16 +1,97 @@
-.header {
+:host {
   display: flex;
-  flex: 1 100%;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.background {
+  z-index: -3;
+
+  position: absolute;
+  background-color: #d1d1d1;
+  overflow: hidden;
+
+  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
 
   .finisher-header {
-    overflow: hidden;
+    z-index: -1;
     position: absolute;
+
+    overflow: hidden;
     height: 350px;
     width: 100%;
-    z-index: -1;
   }
 
-  mat-toolbar {
-    height: 48px;
+  .cursor {
+    z-index: -3;
+
+    top: var(--cursor-top);
+    left: var(--cursor-left);
+    opacity: var(--cursor-opacity);
+
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+    position: absolute;
+    box-shadow: 2px -3px 41px -1px rgba(241, 196, 15, 0.64);
+    background: linear-gradient(
+      45deg,
+      #e8f74d,
+      #ff6600d9,
+      #00ff66,
+      #13ff13,
+      #ad27ad,
+      #bd2681,
+      #6512b9,
+      #ff3300de,
+      #5aabde
+    );
+    background-size: 400%;
+    animation: glower 20s linear infinite;
+    filter: blur(40px);
+
+    @keyframes glower {
+      0% {
+        background-position: 0 0;
+      }
+
+      50% {
+        background-position: 400% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+  }
+
+  svg {
+    z-index: -2;
+    position: relative;
+
+    min-width: 100%;
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+
+    polygon {
+      fill: white;
+      stroke-width: 4;
+      stroke: transparent;
+    }
+  }
+}
+
+.content {
+  .header {
+    display: flex;
+    flex: 1 100%;
+
+    mat-toolbar {
+      height: 48px;
+    }
   }
 }
