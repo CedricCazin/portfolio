@@ -1,9 +1,10 @@
-<article class="wrapper">
-  <portfolio-card-3d></portfolio-card-3d>
-  <portfolio-card-3d></portfolio-card-3d>
-  <portfolio-card-3d></portfolio-card-3d>
-  <portfolio-card-3d></portfolio-card-3d>
-  <portfolio-card-3d></portfolio-card-3d>
-</article>
+<section>
 
-<footer class="footer">Footer</footer>
+  <floating-content-path *ngFor="let skill of skills" clip-path="hexagon" [borderColor]="skill.borderColor || 'grey'">
+    <div class="hexagon-content">
+      <img [src]="skill.image" width="125px" />
+      <h2>{{ skill.name }}</h2>
+    </div>
+  </floating-content-path>
+
+</section>

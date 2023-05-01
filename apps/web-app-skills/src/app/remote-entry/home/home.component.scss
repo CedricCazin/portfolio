@@ -1,37 +1,18 @@
-.header {
-  display: flex;
-  flex: 1 100%;
-
-  .finisher-header {
-    overflow: hidden;
-    position: absolute;
-    height: 350px;
-    width: 100%;
-  }
-
-  mat-toolbar {
-    height: 48px;
-  }
+:host {
+  min-height: 100%;
 }
 
-.wrapper {
-  flex: 1 100%;
-  display: flex;
-  flex-direction: row;
+section {
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 16px;
-
-  margin: 25px auto;
-  max-width: 1600px;
-
-  portfolio-card-3d {
-    .example-header-image {
-      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-      background-size: cover;
-    }
-  }
+  gap: 2vw;
 }
 
-.footer {
-  flex: 1 100%;
+.hexagon-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: whitesmoke;
 }

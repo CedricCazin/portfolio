@@ -1,0 +1,12 @@
+<kazaam-floating-content #floatingContent [translate]="translate" [translateScale]="translateScale"
+  [translateX]="translateX" [translateY]="translateY" [translateZ]="translateZ" [style.--size]="size"
+  [style.--clip-path]="path" [style.--border-size]="borderSize" [style.--border-color]="borderColor"
+  (clickWithin)="clickWithin($event)">
+
+  <article>
+    <div class="article-border">
+      <ng-content></ng-content>
+    </div>
+  </article>
+
+</kazaam-floating-content>

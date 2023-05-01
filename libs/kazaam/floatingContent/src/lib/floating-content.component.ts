@@ -13,6 +13,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+///* Based on
+///* * https://deck-24abcd.netlify.app/
+///* * https://www.joshdance.com/100/day50/
+
 @Component({
   selector: 'kazaam-floating-content',
   templateUrl: './floating-content.component.html',
