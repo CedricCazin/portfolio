@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@mixin app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $is-dark-theme: map-get($theme, is-dark);
+
+  .background {
+    background-color: if($is-dark-theme, #efefef80, #30303080);
+
+    svg {
+      polygon {
+        fill: if($is-dark-theme, #303030, #efefef);
+      }
+    }
+  }
+}

@@ -1,70 +1,140 @@
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, HostListener, Inject, Renderer2, ViewChild } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 declare class FinisherHeader {
-    constructor(i: any);
+  constructor(i: any);
+}
+
+interface Theme {
+  name: string;
+  id: string;
 }
 
 @Component({
-    selector: 'portfolio-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+  selector: 'portfolio-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
-    title = 'web-app';
+  title = 'web-app';
 
-    cursorLeft = '';
-    cursorTop = '';
-    cursorOpacity = '';
+  cursorLeft = '';
+  cursorTop = '';
+  cursorOpacity = '';
 
-    ngAfterViewInit(): void {
-        this.initHeader();
-    }
+  themes: Theme[] = [
+    {
+      name: 'Deep Purple & Amber',
+      id: 'deep-purple-amber',
+    },
+    {
+      name: 'Indigo & Pink',
+      id: 'indigo-pink',
+    },
+    {
+      name: 'Pink & Blue Grey',
+      id: 'pink-blue-grey',
+    },
+    {
+      name: 'Purple a Green',
+      id: 'purple-green',
+    },
+  ];
 
-    private initHeader() {
-        new FinisherHeader({
-            count: 6,
-            size: {
-                min: 1100,
-                max: 1300,
-                pulse: 0,
-            },
-            speed: {
-                x: {
-                    min: 0.1,
-                    max: 0.3,
-                },
-                y: {
-                    min: 0.1,
-                    max: 0.3,
-                },
-            },
-            colors: {
-                background: '#9138e5',
-                particles: ['#6bd6ff', '#ffcb57', '#ff333d'],
-            },
-            blending: 'overlay',
-            opacity: {
-                center: 1,
-                edge: 0.1,
-            },
-            skew: -2,
-            shapes: ['c'],
-        });
-    }
+  private _darkTheme = true;
+  public get darkTheme(): boolean {
+    return this._darkTheme;
+  }
+  public set darkTheme(isDark: boolean) {
+    this.renderer.removeClass(this.document.body, this.currentTheme);
+    this._darkTheme = isDark;
+    this.renderer.addClass(this.document.body, this.currentTheme);
+  }
 
-    onClick() {
-        console.log('click');
-    }
+  private _theme: Theme = this.themes[0];
+  public get theme(): Theme {
+    return this._theme;
+  }
+  public set theme(theme: Theme) {
+    this.renderer.removeClass(this.document.body, this.currentTheme);
+    this._theme = theme;
+    this.renderer.addClass(this.document.body, this.currentTheme);
+  }
 
-    // --
+  public get currentTheme() {
+    return `${this._theme.id}-${this.darkTheme ? 'dark' : 'light'}-theme`;
+  }
 
-    @HostListener('mousemove', ['$event'])
-    onMousemove(event: any) {
-        const x = event.pageX;
-        const y = event.pageY;
+  public getThemePreview(theme: Theme) {
+    return `/assets/themes/${theme.id}-${this.darkTheme ? 'dark' : 'light'}-theme.svg`;
+  }
 
-        this.cursorLeft = (x - 175) + "px";
-        this.cursorTop = (y - 175) + "px";
-        this.cursorOpacity = '1';
-    }
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+    private host: ElementRef<HTMLElement>,
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
+  ) {
+    this.matIconRegistry.addSvgIcon(
+      'github',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg')
+    );
+
+    this.renderer.addClass(this.document.body, this.currentTheme);
+  }
+
+  ngAfterViewInit(): void {
+    this.initHeader();
+  }
+
+  private initHeader() {
+    new FinisherHeader({
+      count: 6,
+      size: {
+        min: 1100,
+        max: 1300,
+        pulse: 0,
+      },
+      speed: {
+        x: {
+          min: 0.1,
+          max: 0.3,
+        },
+        y: {
+          min: 0.1,
+          max: 0.3,
+        },
+      },
+      colors: {
+        background: '#9138e5',
+        particles: ['#6bd6ff', '#ffcb57', '#ff333d'],
+      },
+      blending: 'overlay',
+      opacity: {
+        center: 1,
+        edge: 0.1,
+      },
+      skew: -2,
+      shapes: ['c'],
+    });
+  }
+
+  onClick() {
+    console.log('click');
+  }
+
+  // --
+
+  @HostListener('mousemove', ['$event'])
+  onMousemove(event: any) {
+    const x = event.pageX;
+    const y = event.pageY;
+
+    this.cursorLeft = (x - 175) + "px";
+    this.cursorTop = (y - 175) + "px";
+    this.cursorOpacity = '1';
+  }
 }

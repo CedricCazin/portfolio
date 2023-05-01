@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$deep-purple-primary: mat.define-palette(mat.$deep-purple-palette, 500);
+$amber-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+
+$deep-purple-amber-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $deep-purple-primary,
+      accent: $amber-accent,
+    ),
+    typography: mat.define-typography-config(),
+  )
+);
+
+$deep-purple-amber-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $deep-purple-primary,
+      accent: $amber-accent,
+    ),
+    typography: mat.define-typography-config(),
+  )
+);

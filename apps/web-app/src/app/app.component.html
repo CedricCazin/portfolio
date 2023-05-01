@@ -39,30 +39,56 @@
 
   <header class="header">
 
-    <mat-toolbar class="backdrop-blur !bg-white/25">
+    <mat-toolbar color="primary">
       <button mat-icon-button aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
 
+      <span class="spacer"></span>
+
       <span>Cédric Cazin</span>
 
-      <span class="flex-1"></span>
+      <a mat-button routerLink="web-app-skills">Skills</a>
+      <a mat-button routerLink="web-app-portfolio">Portfolio</a>
 
-      <button mat-icon-button aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
+      <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menuThemes">
+        <mat-icon>format_color_fill</mat-icon>
       </button>
 
-      <button mat-icon-button aria-label="Example icon-button with share icon" (click)="onClick()">
-        <mat-icon>share</mat-icon>
+      <mat-menu #menuThemes="matMenu" class="theme-configuration">
+
+        <div mat-menu-item (click)="$event.stopPropagation();">
+          <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
+          <span>Dark Mode</span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item *ngFor="let _theme of themes" class="theme-button"
+          (click)="theme = _theme; $event.stopPropagation();">
+          <mat-icon class="theme-selected">{{ _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
+            }}</mat-icon>
+          <span>{{_theme.name}}</span>
+          <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
+        </button>
+
+      </mat-menu>
+
+      <button mat-button class="linked">
+        <img src="/assets/linkedIn/linkedIn-logo.png" />
       </button>
+
+      <button mat-button class="github">
+        <mat-icon svgIcon="github" inline="true"></mat-icon>
+        <img src="/assets/github/github_logo.png" />
+      </button>
+
     </mat-toolbar>
   </header>
-
-  <ul class="remote-menu">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="web-app-skills">WebAppSkills</a></li>
-    <li><a routerLink="web-app-portfolio">WebAppPortfolio</a></li>
-  </ul>
 
   <router-outlet></router-outlet>
 </div>

@@ -2,13 +2,48 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  min-height: 100%;
+}
+
+.github {
+  mat-icon {
+    height: 24px;
+    width: 24px;
+  }
+  img {
+    height: 24px;
+  }
+}
+
+.linked {
+  img {
+    height: 24px;
+  }
+}
+
+::ng-deep .theme-configuration {
+  width: 300px !important;
+}
+
+.mat-icon.theme-preview {
+  margin-right: 0;
+  margin-left: auto;
+  padding-left: 8px;
+  order: 1;
+
+  min-height: 32px;
+  min-width: 32px;
+
+  img {
+    min-height: 24px;
+    min-width: 24px;
+  }
 }
 
 .background {
   z-index: -3;
 
   position: absolute;
-  background-color: #d1d1d1;
   overflow: hidden;
 
   min-width: 100%;
@@ -78,8 +113,7 @@
     height: 100%;
 
     polygon {
-      fill: white;
-      stroke-width: 4;
+      stroke-width: 6;
       stroke: transparent;
     }
   }
@@ -87,11 +121,10 @@
 
 .content {
   .header {
-    display: flex;
-    flex: 1 100%;
-
     mat-toolbar {
-      height: 48px;
+      .spacer {
+        flex: 1 1 auto;
+      }
     }
   }
 }
