@@ -15,6 +15,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ColorSchemeService } from './colorScheme.service';
+import { StyleManagerService } from './styleManager.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [],
+  providers: [ColorSchemeService, StyleManagerService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

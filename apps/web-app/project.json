@@ -30,7 +30,26 @@
         ],
         "styles": [
           "apps/web-app/src/styles.scss",
-          "apps/web-app/src/themes.scss"
+          {
+            "input": "apps/web-app/src/themes/deep-purple-amber-themes.scss",
+            "bundleName": "deep-purple-amber-themes",
+            "inject": false
+          },
+          {
+            "input": "apps/web-app/src/themes/indigo-pink-themes.scss",
+            "bundleName": "indigo-pink-themes",
+            "inject": false
+          },
+          {
+            "input": "apps/web-app/src/themes/pink-blue-grey-themes.scss",
+            "bundleName": "pink-blue-grey-themes",
+            "inject": false
+          },
+          {
+            "input": "apps/web-app/src/themes/purple-green-themes.scss",
+            "bundleName": "purple-green-themes",
+            "inject": false
+          }
         ],
         "scripts": [
           {

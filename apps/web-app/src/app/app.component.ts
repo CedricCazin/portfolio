@@ -2,6 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, Inject, Renderer2, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ColorSchemeService } from './colorScheme.service';
+import { StyleManagerService } from './styleManager.service';
 
 declare class FinisherHeader {
   constructor(i: any);
@@ -10,6 +12,7 @@ declare class FinisherHeader {
 interface Theme {
   name: string;
   id: string;
+  isDefault?: boolean;
 }
 
 @Component({
@@ -28,6 +31,7 @@ export class AppComponent implements AfterViewInit {
     {
       name: 'Deep Purple & Amber',
       id: 'deep-purple-amber',
+      isDefault: true,
     },
     {
       name: 'Indigo & Pink',
@@ -50,6 +54,7 @@ export class AppComponent implements AfterViewInit {
   public set darkTheme(isDark: boolean) {
     this.renderer.removeClass(this.document.body, this.currentTheme);
     this._darkTheme = isDark;
+    this.colorSchemeService.update(this._darkTheme ? 'dark' : 'light');
     this.renderer.addClass(this.document.body, this.currentTheme);
   }
 
@@ -60,6 +65,7 @@ export class AppComponent implements AfterViewInit {
   public set theme(theme: Theme) {
     this.renderer.removeClass(this.document.body, this.currentTheme);
     this._theme = theme;
+    this.styleManagerService.setStyle('theme', `${theme.id}-themes.css`);
     this.renderer.addClass(this.document.body, this.currentTheme);
   }
 
@@ -77,7 +83,17 @@ export class AppComponent implements AfterViewInit {
     private host: ElementRef<HTMLElement>,
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
+    private colorSchemeService: ColorSchemeService,
+    private styleManagerService: StyleManagerService,
+
   ) {
+    // Load Color Scheme
+    this.colorSchemeService.load();
+    this._darkTheme = this.colorSchemeService.currentActive() === 'dark' ? true : false;
+
+    // Load theme
+    this.theme = this.themes[0];
+
     this.matIconRegistry.addSvgIcon(
       'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg')
