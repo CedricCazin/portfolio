@@ -3,10 +3,10 @@
   [style.--clip-path]="path" [style.--border-size]="borderSize" [style.--border-color]="borderColor"
   (clickWithin)="clickWithin($event)">
 
-  <article>
-    <div class="article-border">
+  <div class="clip-path">
+    <div class="clip-path-border">
       <ng-content></ng-content>
     </div>
-  </article>
+  </div>
 
 </kazaam-floating-content>

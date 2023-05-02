@@ -13,7 +13,7 @@ kazaam-floating-content {
     }
   }
 
-  article {
+  .clip-path {
     width: var(--size);
     height: var(--size);
 
@@ -24,7 +24,7 @@ kazaam-floating-content {
     clip-path: var(--clip-path);
   }
 
-  .article-border {
+  .clip-path-border {
     position: absolute;
     top: var(--border); /* equal to border thickness */
     left: var(--border); /* equal to border thickness */

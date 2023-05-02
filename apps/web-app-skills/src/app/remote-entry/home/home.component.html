@@ -1,10 +1,21 @@
-<section>
+<section class="skills-page">
 
-  <floating-content-path *ngFor="let skill of skills" clip-path="hexagon" [borderColor]="skill.borderColor || 'grey'">
-    <div class="hexagon-content">
-      <img [src]="skill.image" width="125px" />
-      <h2>{{ skill.name }}</h2>
-    </div>
-  </floating-content-path>
+  <header>
+    <h1>
+      Skills
+    </h1>
+  </header>
 
+  <section class="skills">
+
+    <article *ngFor="let skill of skills" @animation>
+      <floating-content-path clip-path="hexagon" [borderColor]="skill.borderColor || 'grey'">
+        <div class="hexagon-content">
+          <img [src]="skill.image" width="125px" />
+          <h2>{{ skill.name }}</h2>
+        </div>
+      </floating-content-path>
+    </article>
+
+  </section>
 </section>
