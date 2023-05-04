@@ -4,6 +4,11 @@ export const appRoutes: Route[] = [
   {
     path: '',
     loadChildren: () =>
-      import('./remote-entry/entry.module').then((m) => m.RemoteEntryModule),
+      import('./skills/skills.module').then((m) => m.SkillsModule),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
   },
 ];

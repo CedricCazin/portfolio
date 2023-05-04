@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 interface Skill {
@@ -11,8 +11,8 @@ interface Skill {
 
 @Component({
   selector: 'portfolio-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './skills.component.html',
+  styleUrls: ['./skills.component.scss'],
   animations: [
     trigger('animation', [
       transition(':enter', [
@@ -23,7 +23,7 @@ interface Skill {
     ]),
   ],
 })
-export class HomeComponent {
+export class SkillsComponent {
 
   public skills: Skill[] = [
     {

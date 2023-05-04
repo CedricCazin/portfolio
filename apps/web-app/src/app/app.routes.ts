@@ -6,7 +6,7 @@ export const appRoutes: Route[] = [
     path: 'web-app-skills',
     loadChildren: () =>
       loadRemoteModule('web-app-skills', './Module').then(
-        (m) => m.RemoteEntryModule
+        (m) => m.SkillsModule
       ),
   },
   {

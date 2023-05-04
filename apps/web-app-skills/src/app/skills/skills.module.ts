@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home.component';
+import { SkillsComponent } from './skills.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Card3dModule } from '../card3d/card3d.module';
 import { KazaamFloatingContentModule } from '@ceca/kazaam/floatingContent';
-import { FloatingContentPathModule } from '../floating-content-path/floating-content-path.module';
 import { CommonModule } from '@angular/common';
 
-const routes: Routes = [{ path: '', component: HomeComponent }];
+import { Card3dModule } from '../card3d/card3d.module';
+import { FloatingContentPathModule } from '../floating-content-path/floating-content-path.module';
+
+const routes: Routes = [{ path: '', component: SkillsComponent }];
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [SkillsComponent],
   imports: [
     RouterModule.forChild(routes),
 
@@ -30,4 +31,4 @@ const routes: Routes = [{ path: '', component: HomeComponent }];
   ],
   providers: [],
 })
-export class HomeModule { }
+export class SkillsModule { }

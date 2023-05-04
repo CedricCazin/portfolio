@@ -12,8 +12,8 @@ import { AppComponent } from './app.component';
         {
           path: '',
           loadChildren: () =>
-            import('./remote-entry/entry.module').then(
-              (m) => m.RemoteEntryModule
+            import('./skills/skills.module').then(
+              (m) => m.SkillsModule
             ),
         },
       ],
@@ -23,4 +23,4 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
