@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -9,7 +8,6 @@ import {
   Output,
   Renderer2,
   ViewChild,
-  ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -24,8 +22,7 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class FloatingContentComponent {
-  @HostBinding('class.kazaam-floating-content') kazaamCard = true;
-  @HostBinding('style') styles = '';
+  @HostBinding('class.kazaam-floating-content') class = true;
 
   @ViewChild('translator') translator!: ElementRef;
   @ViewChild('rotator') rotator!: ElementRef;
@@ -69,16 +66,16 @@ export class FloatingContentComponent {
 
   @Output() clickWithin = new EventEmitter<boolean>();
 
-  private firstTransformation = true;
-
   @Input() rotate = true;
+  @Input() rotateXShift = 2;
+  @Input() rotateYShift = 2;
   public rotateX = '0deg';
   public rotateY = '0deg';
 
   @Input() foil = true;
   @Input() foilSpace = '5%';
   @Input() foilAngle = '133deg';
-  @Input() foilSize = '25%';
+  @Input() foilSize = '33%';
   @Input() foilBrightness = 0.33;
   @Input() foilOpacity = 0.5;
   public foilPosX = '50%';
@@ -87,10 +84,8 @@ export class FloatingContentComponent {
   public foilRadiusY = '50%';
 
   constructor(
-    private host: ElementRef<HTMLElement>,
     private renderer: Renderer2
   ) {
-    // this.host.nativeElement.style.setProperty(`--${this.variable}`, value);
   }
 
   //------
@@ -99,44 +94,39 @@ export class FloatingContentComponent {
   handleMouseMove(event: any) {
     const clientRect = this.rotator.nativeElement.getBoundingClientRect();
 
-    const rotX =
-      -((clientRect.height / 2 - (event.clientY - clientRect.y)) / 10) / 2;
-    const rotY =
-      (clientRect.width / 2 - (event.clientX - clientRect.x)) / 10 / 2;
+    if (this.rotate) {
 
-    this.rotateX = `${rotX}deg`;
-    // equivalent of this.wrapper.nativeElement.setProperty('--rotate-x', `${rotX}deg`);
+      const rotX =
+        -((clientRect.height / 2 - (event.clientY - clientRect.y)) / 10) / this.rotateXShift;
+      const rotY =
+        (clientRect.width / 2 - (event.clientX - clientRect.x)) / 10 / this.rotateYShift;
 
-    this.rotateY = `${rotY}deg`;
-    // equivalent of this.wrapper.nativeElement.setProperty('--rotate-y', `${rotY}deg`);
+      this.rotateX = `${rotX}deg`;
+      // equivalent of this.wrapper.nativeElement.setProperty('--rotate-x', `${rotX}deg`);
 
-    const foilX = ((event.clientX - clientRect.x) * 100) / clientRect.width;
-    const foilY = ((event.clientY - clientRect.y) * 100) / clientRect.height;
+      this.rotateY = `${rotY}deg`;
+      // equivalent of this.wrapper.nativeElement.setProperty('--rotate-y', `${rotY}deg`);
 
-    this.foilPosX = `${foilX}%`;
-    this.foilPosY = `${foilY}%`;
-    this.foilRadiusX = `${foilX}%`;
-    this.foilRadiusY = `${foilY}%`;
-
-    if (this.firstTransformation) {
-      this.renderer.setStyle(
-        this.rotator.nativeElement,
-        'transition',
-        `transform 0.33s linear`
-      );
-    } else {
-      this.renderer.removeStyle(this.rotator.nativeElement, 'transition');
     }
 
-    this.firstTransformation = false;
+    if (this.foil) {
+
+      const foilX = ((event.clientX - clientRect.x) * 100) / clientRect.width;
+      const foilY = ((event.clientY - clientRect.y) * 100) / clientRect.height;
+
+      this.foilPosX = `${foilX}%`;
+      this.foilPosY = `${foilY}%`;
+      this.foilRadiusX = `${foilX}%`;
+      this.foilRadiusY = `${foilY}%`;
+
+    }
+
   }
 
-  // @HostListener('mouseenter', ['$event'])
   handleMouseEnter() {
-    this.firstTransformation = true;
+    this.renderer.removeStyle(this.rotator.nativeElement, 'transition');
   }
 
-  // @HostListener('mouseleave', ['$event'])
   handleMouseLeave() {
     this.renderer.setStyle(
       this.rotator.nativeElement,

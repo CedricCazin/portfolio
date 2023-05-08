@@ -16,8 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@ceca/kazaam": ["libs/kazaam/src/index.ts"],
-      "@ceca/kazaam/floatingContent": [
-        "libs/kazaam/floatingContent/src/index.ts"
+      "@ceca/kazaam/floating-content": [
+        "libs/kazaam/floating-content/src/index.ts"
+      ],
+      "@ceca/kazaam/floating-content-path": [
+        "libs/kazaam/floating-content-path/src/index.ts"
       ]
     }
   },

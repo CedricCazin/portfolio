@@ -1,0 +1,16 @@
+<div class="floating-content-path-content" [style.--size]="size" [style.--clip-path]="path"
+  [style.--border-size]="borderSize" [style.--border-color]="borderColor">
+
+  <ng-content select="[preClipPath]"></ng-content>
+
+  <div class="clip-path">
+    <div class="clip-path-border">
+
+      <ng-content></ng-content>
+
+    </div>
+  </div>
+
+  <ng-content select="[postClipPath]"></ng-content>
+
+</div>

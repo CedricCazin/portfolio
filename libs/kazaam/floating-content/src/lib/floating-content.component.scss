@@ -63,6 +63,8 @@
       -webkit-transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
       transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
 
+      transition: transform none;
+
       .kazaam-floating-content-content {
         display: grid;
         grid-area: 1/1;
