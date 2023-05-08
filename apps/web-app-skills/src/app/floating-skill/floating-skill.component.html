@@ -1,0 +1,29 @@
+<kazaam-floating-content #floatingContent [translate]="translate" [translateScale]="translateScale"
+  [translateX]="translateX" [translateY]="translateY" [translateZ]="translateZ" [rotateXShift]="0.5"
+  [rotateYShift]="0.5" [style.--animation-hover-out]="animationHoverOut" [style.--clip-path]="path"
+  (mouseleave)="handleMouseLeave()" (clickWithin)="clickWithin($event)">
+
+  <kazaam-floating-content-path [path]="path" [borderColor]="skill.borderColor || 'grey'">
+
+    <div preClipPath class="ribbon-wrapper">
+      <div class="ribbon-front">
+        <div class="ribbon-text">&nbsp;</div>
+      </div>
+      <div class="ribbon-edge-topleft"></div>
+      <div class="ribbon-edge-topright"></div>
+    </div>
+
+    <div class="hexagon-content">
+      <img class="skill-icon" [src]="skill.image" />
+    </div>
+
+    <div postClipPath class="ribbon-wrapper">
+      <div class="ribbon-front">
+        <div class="ribbon-glow">&nbsp;</div>
+        <div class="ribbon-text">{{ skill.name }}</div>
+      </div>
+    </div>
+
+  </kazaam-floating-content-path>
+
+</kazaam-floating-content>

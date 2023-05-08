@@ -1,98 +1,58 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
-
-
-interface Skill {
-  name: string;
-  description: string;
-  image: string;
-  borderColor?: string;
-}
+import { SkillType } from '../shared/skill.interface';
 
 @Component({
-  selector: 'portfolio-home',
+  selector: 'skills-home',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss'],
-  animations: [
-    trigger('animation', [
-      transition(':enter', [
-        style({ transform: 'rotateX(90Deg) rotateY(90Deg)', opacity: 0 }),  // initial
-        animate('1s ease',
-          style({ transform: 'none', opacity: 1 }))  // final
-      ]),
-    ]),
-  ],
+  // animations: [
+  //   trigger('animation', [
+  //     transition(':enter', [
+  //       style({ transform: 'scale(0)' }),  // initial
+  //       animate('1s ease',
+  //         style({ transform: 'scale(1)' }))  // final
+  //     ]),
+  //   ]),
+  // ],
 })
 export class SkillsComponent {
 
-  public skills: Skill[] = [
+  public skills: SkillType[] = [
     {
-      name: 'Angular',
-      description: '',
-      borderColor: 'gold',
-      image: 'assets/angular.png',
+      name: 'Frameworks',
+      description: 'lorem',
+      skills: [
+        {
+          name: 'Angular',
+          description: '',
+          borderColor: 'gold',
+          image: 'assets/angular.png',
+        },
+        {
+          name: 'NestJs',
+          description: '',
+          borderColor: 'gold',
+          image: 'assets/nestjs.png',
+        },
+      ]
     },
     {
-      name: 'NestJs',
-      description: '',
-      borderColor: 'gold',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'Angular',
-      description: '',
-      borderColor: 'silver',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'NestJs',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'Angular',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'NestJs',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'Angular',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'NestJs',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'Angular',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'NestJs',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'Angular',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'NestJs',
-      description: '',
-      image: 'assets/angular.png',
-    },
-    {
-      name: 'NestJs',
-      description: '',
-      image: 'assets/angular.png',
-    },
-  ];
+      name: 'Frameworks',
+      description: 'lorem',
+      skills: [
+        {
+          name: 'Angular',
+          description: '',
+          borderColor: 'gold',
+          image: 'assets/angular.png',
+        },
+        {
+          name: 'NestJs',
+          description: '',
+          borderColor: 'gold',
+          image: 'assets/nestjs.png',
+        },
+      ]
+    }
+  ]
 }

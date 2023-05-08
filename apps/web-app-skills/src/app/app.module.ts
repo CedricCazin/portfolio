@@ -12,9 +12,7 @@ import { AppComponent } from './app.component';
         {
           path: '',
           loadChildren: () =>
-            import('./skills/skills.module').then(
-              (m) => m.SkillsModule
-            ),
+            import('./skills/skills.module').then((m) => m.SkillsModule),
         },
       ],
       { initialNavigation: 'enabledBlocking' }

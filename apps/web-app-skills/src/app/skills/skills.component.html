@@ -6,16 +6,30 @@
     </h1>
   </header>
 
-  <section class="skills">
+  <mat-card class="skill-type" *ngFor="let skillType of skills">
 
-    <article *ngFor="let skill of skills" @animation>
-      <floating-content-path clip-path="hexagon" [borderColor]="skill.borderColor || 'grey'">
-        <div class="hexagon-content">
-          <img [src]="skill.image" width="125px" />
-          <h2>{{ skill.name }}</h2>
-        </div>
-      </floating-content-path>
-    </article>
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="mat-headline-1">{{ skillType.name }}</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+      </mat-card-subtitle>
+    </mat-card-header>
 
-  </section>
+    <mat-card-content>
+
+      <hr class="gradient" />
+
+      <section class="skills">
+        <article class="skill" *ngFor="let skill of skillType.skills">
+
+          <skills-floating-skill [skill]="skill"></skills-floating-skill>
+
+        </article>
+      </section>
+
+    </mat-card-content>
+
+  </mat-card>
+
 </section>

@@ -5,11 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { KazaamFloatingContentModule } from '@ceca/kazaam/floatingContent';
 import { CommonModule } from '@angular/common';
-
-import { Card3dModule } from '../card3d/card3d.module';
-import { FloatingContentPathModule } from '../floating-content-path/floating-content-path.module';
+import { FloatingSkillModule } from '../floating-skill/floating-skill.module';
 
 const routes: Routes = [{ path: '', component: SkillsComponent }];
 
@@ -24,10 +21,7 @@ const routes: Routes = [{ path: '', component: SkillsComponent }];
     MatButtonModule,
     MatCardModule,
 
-    Card3dModule,
-    FloatingContentPathModule,
-
-    KazaamFloatingContentModule,
+    FloatingSkillModule,
   ],
   providers: [],
 })
