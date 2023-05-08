@@ -26,6 +26,11 @@
             "glob": "**/*",
             "input": "apps/web-app-skills/src/assets",
             "output": "assets"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/web-app-games/src/assets",
+            "output": "assets"
           }
         ],
         "styles": [

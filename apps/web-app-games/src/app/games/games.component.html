@@ -1,0 +1,16 @@
+<section class="games-page">
+
+  <header>
+    <img class="tv-snow" src="assets/tv_snow.gif">
+    <iframe class="tv-video" [src]="gameHovered.video | safeUrl" *ngIf="gameHovered && gameHovered.video"></iframe>
+    <img class="tv" src="assets/tv.png">
+  </header>
+
+  <section class="games">
+
+    <article *ngFor="let game of games">
+      <floating-game [game]="game" (hover)="gameHover($event, game)"></floating-game>
+    </article>
+
+  </section>
+</section>

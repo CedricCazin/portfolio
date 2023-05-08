@@ -1,0 +1,56 @@
+.floating-game {
+  width: 200px;
+  height: 300px;
+
+  box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent,
+    0 0 5px 0px transparent, 0px 10px 20px -5px black, 0 2px 15px -5px black,
+    0 0 20px 0px transparent;
+
+  perspective: 600px;
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  transition: transform 0.25s;
+
+  --animation-hover-out: unset;
+
+  animation-name: var(--animation-hover-out);
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+  z-index: 10;
+
+  &:hover {
+    animation-name: floating-game-hover-in;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    z-index: 256;
+  }
+
+  @keyframes floating-game-hover-in {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1.3);
+    }
+  }
+
+  @keyframes floating-game-hover-out {
+    0% {
+      transform: scale(1.3);
+    }
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  img {
+    width: 200px;
+    height: 300px;
+  }
+}
