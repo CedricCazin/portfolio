@@ -15,6 +15,7 @@ export class GamesComponent {
   public games: Game[] = [
     {
       name: 'Binding of Isaac',
+      favorite: true,
       steamId: '250900',
       background: 'https://cdn.akamai.steamstatic.com/steam/apps/2231380/page.bg.jpg',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/250900/library_600x900.jpg',
@@ -22,21 +23,25 @@ export class GamesComponent {
     },
     {
       name: 'Cult of the Lamb',
+      favorite: true,
       steamId: '1313140',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1313140/library_600x900.jpg',
     },
     {
       name: 'Have a nice death',
+      favorite: true,
       steamId: '1740720',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1740720/library_600x900.jpg',
     },
     {
       name: 'Tunic',
+      favorite: true,
       steamId: '553420',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/553420/library_600x900.jpg',
     },
     {
       name: 'Core Keeper',
+      favorite: true,
       steamId: '1621690',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1621690/library_600x900.jpg',
     },
@@ -52,21 +57,25 @@ export class GamesComponent {
     },
     {
       name: 'Hades',
+      favorite: true,
       steamId: '1145360',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1145360/library_600x900.jpg',
     },
     {
       name: 'Hollow Knight',
+      favorite: true,
       steamId: '367520',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/367520/library_600x900.jpg',
     },
     {
       name: 'Valheim',
+      favorite: true,
       steamId: '892970',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/892970/library_600x900.jpg',
     },
     {
       name: 'Satisfactory',
+      favorite: true,
       steamId: '526870',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/526870/library_600x900.jpg',
     },
@@ -77,21 +86,25 @@ export class GamesComponent {
     },
     {
       name: 'Horizon Zero Dawn',
+      favorite: true,
       steamId: '1151640',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1151640/library_600x900.jpg',
     },
     {
       name: 'God of War',
+      favorite: true,
       steamId: '1593500',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1593500/library_600x900.jpg',
     },
     {
       name: 'Control',
+      favorite: true,
       steamId: '870780',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/870780/library_600x900.jpg',
     },
     {
       name: 'Icarus',
+      favorite: true,
       steamId: '1149460',
       image: 'https://cdn.akamai.steamstatic.com/steam/apps/1149460/library_600x900.jpg',
     },
@@ -229,7 +242,41 @@ export class GamesComponent {
     {
       name: 'Diablo',
       image: 'https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/d81f3fc41fc0037e8a9044dc05ede41e.jpg',
-    }
+    },
+    {
+      name: 'Remnant From the Ashes',
+      steamId: '617290',
+      image: 'https://cdn.akamai.steamstatic.com/steam/apps/617290/library_600x900.jpg',
+    },
+    {
+      name: 'Dicey Dungeons',
+      steamId: '861540',
+      image: 'https://cdn.akamai.steamstatic.com/steam/apps/861540/library_600x900.jpg',
+    },
+    {
+      name: 'The Medium',
+      steamId: '1293160',
+      image: 'https://cdn.akamai.steamstatic.com/steam/apps/1293160/library_600x900.jpg',
+    },
+    {
+      name: 'Minacraft',
+      image: 'https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/9f03e11eac3de5e5e80ea71b985e3ca7.jpg',
+    },
+    // {
+    //   name: 'Indiana Jones',
+    //   steamId: '6010',
+    //   image: 'https://cdn.akamai.steamstatic.com/steam/apps/6010/library_600x900.jpg',
+    // },
+    {
+      name: 'Day of the Tentacle',
+      steamId: '388210',
+      image: 'https://cdn.akamai.steamstatic.com/steam/apps/388210/library_600x900.jpg',
+    },
+    {
+      name: 'Full Throttle',
+      steamId: '228360',
+      image: 'https://cdn.akamai.steamstatic.com/steam/apps/228360/library_600x900.jpg',
+    },
   ];
 
   constructor(private httpClient: HttpClient) {

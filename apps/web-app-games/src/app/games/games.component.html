@@ -8,7 +8,7 @@
 
   <section class="games">
 
-    <article *ngFor="let game of games">
+    <article *ngFor="let game of games | orderBy : [ 'favorite', 'name' ] : [ 'asc', 'asc' ] ">
       <floating-game [game]="game" (hover)="gameHover($event, game)"></floating-game>
     </article>
 
