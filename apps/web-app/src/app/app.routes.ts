@@ -10,15 +10,13 @@ export const appRoutes: Route[] = [
       ),
   },
   {
-    path: 'web-app-skills',
+    path: 'skills',
     loadChildren: () =>
-      loadRemoteModule('web-app-skills', './Module').then(
-        (m) => m.SkillsModule
-      ),
+      import('./skills/skills.module').then((m) => m.SkillsModule),
   },
   {
-    path: '',
-    redirectTo: 'web-app-portfolio',
+    path: '**',
+    redirectTo: 'skills',
     pathMatch: 'full',
-  },
+  }
 ];

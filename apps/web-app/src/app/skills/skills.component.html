@@ -21,9 +21,9 @@
       <hr class="gradient" />
 
       <section class="skills">
-        <article class="skill" *ngFor="let skill of skillType.skills">
+        <article class="skill" *ngFor="let skill of skillType.skills ; let i = index">
 
-          <skills-floating-skill [skill]="skill"></skills-floating-skill>
+          <floating-skill [skill]="skill" [position]="i"></floating-skill>
 
         </article>
       </section>
