@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
-import { Skill } from '../shared/skill.interface';
+import { Skill } from '../skills/skill.interface';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

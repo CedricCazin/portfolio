@@ -17,6 +17,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ColorSchemeService } from './colorScheme.service';
 import { StyleManagerService } from './styleManager.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +39,7 @@ import { StyleManagerService } from './styleManager.service';
     MatCardModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatSidenavModule,
 
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],

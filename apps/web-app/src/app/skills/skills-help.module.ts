@@ -13,27 +13,19 @@ import { SkillsService } from './skills.service';
 
 const routes: Routes = [
   {
-    path: '',
-    component: SkillsComponent,
-    children: [
-      {
-        path: 'medals',
-        component: SkillsMedalsComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'medals',
-        pathMatch: 'full',
-      }
-    ],
+    path: 'medals',
+    component: SkillsMedalsHelpComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'medals',
+    pathMatch: 'full',
+  }
 ];
 
 @NgModule({
   declarations: [
-    SkillsComponent,
     SkillsMedalsHelpComponent,
-    SkillsMedalsComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -43,11 +35,9 @@ const routes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-
-    FloatingSkillModule,
   ],
   providers: [
     SkillsService,
   ],
 })
-export class SkillsModule { }
+export class SkillsHelpModule { }

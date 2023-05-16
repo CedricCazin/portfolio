@@ -1,0 +1,29 @@
+<section class="skills-medals-page">
+
+  <mat-card class="skill-type" *ngFor="let skillType of skills">
+
+    <mat-card-header>
+      <mat-card-title>
+        <h1 class="mat-headline-1">{{ skillType.name }}</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <hr class="gradient" />
+
+      <section class="skills">
+        <article class="skill" *ngFor="let skill of skillType.skills ; let i = index">
+
+          <floating-skill [skill]="skill" [position]="i"></floating-skill>
+
+        </article>
+      </section>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</section>

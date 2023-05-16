@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { loadRemoteModule } from '@nrwl/angular/mf';
+import { CvComicsComponent } from './cv/cv-comics/cv-comics.component';
 
 export const appRoutes: Route[] = [
   {
@@ -9,8 +10,19 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'skills',
-    loadChildren: () =>
-      import('./skills/skills.module').then((m) => m.SkillsModule),
+    children: [
+      {
+        path: '',
+        outlet: 'help',
+        loadChildren: () =>
+          import('./skills/skills-help.module').then((m) => m.SkillsHelpModule),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./skills/skills.module').then((m) => m.SkillsModule),
+      },
+    ]
   },
   {
     path: 'web-app-games',

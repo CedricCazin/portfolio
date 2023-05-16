@@ -47,6 +47,8 @@ export class AppComponent implements AfterViewInit {
     },
   ];
 
+  public showHelp = true;
+
   private _darkTheme = true;
   public get darkTheme(): boolean {
     return this._darkTheme;
