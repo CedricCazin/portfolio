@@ -4,11 +4,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { FloatingSkillModule } from '../floating-skill/floating-skill.module';
+import { CvComicsModule } from './cv-comics/cv-comics.module';
+import { CvTimelineModule } from './cv-timeline/cv-timeline.module';
 
-const routes: Routes = [{ path: '', component: CvComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    component: CvComponent,
+    children: [
+      {
+        path: 'timeline',
+        loadChildren: () =>
+          import('./cv-timeline/cv-timeline.module').then((m) => m.CvTimelineModule),
+      },
+      {
+        path: 'comics',
+        loadChildren: () =>
+          import('./cv-comics/cv-comics.module').then((m) => m.CvComicsModule),
+      },
+      {
+        path: '**',
+        redirectTo: 'timeline',
+        pathMatch: 'full',
+      },
+    ],
+  },
+];
 
 @NgModule({
   declarations: [CvComponent],
@@ -16,12 +38,10 @@ const routes: Routes = [{ path: '', component: CvComponent }];
     RouterModule.forChild(routes),
 
     CommonModule,
+
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule,
-
-    FloatingSkillModule,
   ],
   providers: [],
 })
