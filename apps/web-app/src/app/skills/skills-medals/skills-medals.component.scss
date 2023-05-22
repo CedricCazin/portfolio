@@ -29,10 +29,9 @@ section.skills-medals-page {
       }
 
       section.skills {
-        display: inline-flex;
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        // gap: 2vw;
 
         article.skill {
           display: flex;
@@ -60,29 +59,43 @@ section.skills-medals-page {
             margin-bottom: -25px;
           }
 
-          &:nth-child(11n - 4) {
-            floating-skill {
-              margin-left: 65%;
-            }
-          }
+          // &:nth-child(11n - 4) {
+          //   floating-skill {
+          //     margin-left: 65%;
+          //   }
+          // }
 
-          &:nth-child(11n - 3) {
-            floating-skill {
-              margin-left: 33%;
-            }
-          }
+          // &:nth-child(11n - 3) {
+          //   floating-skill {
+          //     margin-left: 33%;
+          //   }
+          // }
 
-          &:nth-child(11n -1) {
-            floating-skill {
-              margin-right: 33%;
-            }
-          }
+          // &:nth-child(11n -1) {
+          //   floating-skill {
+          //     margin-right: 33%;
+          //   }
+          // }
 
-          &:nth-child(11n) {
-            floating-skill {
-              margin-right: 65%;
-            }
-          }
+          // &:nth-child(11n) {
+          //   floating-skill {
+          //     margin-right: 65%;
+          //   }
+          // }
+
+          // &:nth-child(11n - 4):last-child,
+          // &:nth-child(11n - 3):last-child {
+          //   floating-skill {
+          //     margin-left: 0;
+          //   }
+          // }
+
+          // &:nth-child(11n -1):last-child,
+          // &:nth-child(11n):last-child {
+          //   floating-skill {
+          //     margin-right: 0;
+          //   }
+          // }
         }
       }
     }
