@@ -1,0 +1,55 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  justify-content: center;
+}
+
+section.cv-material-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  mat-card {
+    mat-card-header {
+      .company-logo {
+        height: 25px;
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
+      }
+    }
+    mat-card-content {
+      hr.gradient {
+        width: 100%;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0)
+        );
+      }
+
+      section.cv-item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    mat-card-footer {
+      section.skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+      }
+    }
+  }
+}

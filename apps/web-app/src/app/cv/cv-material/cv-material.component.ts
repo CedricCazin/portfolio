@@ -3,11 +3,11 @@ import { CVItem } from '../cv.interface';
 import { CvService } from '../cv.service';
 
 @Component({
-  selector: 'portfolio-cv-timeline',
-  templateUrl: './cv-timeline.component.html',
-  styleUrls: ['./cv-timeline.component.scss'],
+  selector: 'portfolio-cv-material',
+  templateUrl: './cv-material.component.html',
+  styleUrls: ['./cv-material.component.scss'],
 })
-export class CvTimelineComponent {
+export class CvMaterialComponent {
   public cvItems: CVItem[];
 
   constructor(private cvService: CvService) {

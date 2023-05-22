@@ -18,7 +18,7 @@
 
       <hr class="gradient" />
 
-      <div class="cv-item-description">{{cvItem.Description}}</div>
+      <div class="cv-item-description" [innerHTML]="cvItem._DescriptionHtml"></div>
 
       <hr class="gradient" />
 
@@ -31,30 +31,33 @@
 
     <mat-card-footer>
 
-    </mat-card-footer>
+      <mat-accordion *ngIf="cvItem.Skills">
+        <mat-expansion-panel>
 
-    <mat-accordion *ngIf="cvItem.Skills">
-      <mat-expansion-panel>
+          <mat-expansion-panel-header>
 
-        <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h1>Skills</h1>
+            </mat-panel-title>
 
-          <mat-panel-title>
-            <h1>Skills</h1>
-          </mat-panel-title>
-
-          <!-- <mat-panel-description>
+            <!-- <mat-panel-description>
             Currently I am
           </mat-panel-description> -->
 
-        </mat-expansion-panel-header>
+          </mat-expansion-panel-header>
 
-        <article class="skill" *ngFor="let skill of cvItem.Skills ; let i = index">
-          <floating-skill [skill]="skill" [position]="i"></floating-skill>
-        </article>
+          <section class="skills">
+            <article class="skill" *ngFor="let skill of cvItem.Skills ; let i = index">
+              <floating-skill [skill]="skill" [position]="i" size="100px"></floating-skill>
+            </article>
+          </section>
 
-      </mat-expansion-panel>
+        </mat-expansion-panel>
 
-    </mat-accordion>
+      </mat-accordion>
+
+    </mat-card-footer>
+
 
   </mat-card>
 
