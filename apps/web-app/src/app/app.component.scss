@@ -142,12 +142,23 @@
     flex-grow: 1;
   }
 
+  ::ng-deep .mat-drawer {
+    min-width: 25%;
+    max-width: 25%;
+  }
+
   .help-button {
     position: absolute;
-    border-radius: 24px 0 0 24px;
     width: 100px;
     right: 0;
     top: 50px;
+    z-index: 666;
+
+    button {
+      position: fixed;
+      border-radius: 24px 0 0 24px;
+      width: 100px;
+    }
   }
 
   .content {

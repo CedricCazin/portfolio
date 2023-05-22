@@ -21,8 +21,10 @@
     "@nrwl/angular": "^15.9.2",
     "axios": "^1.0.0",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
+    "showdown": "^2.1.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
@@ -52,6 +54,7 @@
     "@types/jest": "^29.4.0",
     "@types/lodash": "^4.14.194",
     "@types/node": "~18.7.1",
+    "@types/showdown": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "autoprefixer": "^10.4.0",

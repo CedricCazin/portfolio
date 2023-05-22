@@ -31,7 +31,6 @@ import { MaterialModule } from './material.module';
 
     HttpClientModule,
 
-    // MaterialModule,
     MatMenuModule,
     MatIconModule,
     MatToolbarModule,

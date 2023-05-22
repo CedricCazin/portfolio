@@ -48,7 +48,7 @@
       <span>Cédric Cazin</span>
 
       <button mat-button routerLink="cv">CV</button>
-      <button mat-button routerLink="[{ outlets: { primary: ['skills'], help: ['skills'] } }]">Skills</button>
+      <button mat-button routerLink="skills">Skills</button>
       <button mat-button routerLink="web-app-games">Games</button>
 
       <a mat-button href="https://www.google.com/" target="_blank">Link</a>
@@ -98,9 +98,11 @@
     <router-outlet name="help"></router-outlet>
   </mat-drawer>
 
-  <button class="help-button" mat-fab extended color="primary" (click)="drawer.toggle()">
-    Help
-  </button>
+  <div class="help-button">
+    <button mat-fab extended color="primary" (click)="drawer.toggle()">
+      Help
+    </button>
+  </div>
 
   <section class="content">
     <router-outlet></router-outlet>

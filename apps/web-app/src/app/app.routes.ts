@@ -5,8 +5,19 @@ import { CvComicsComponent } from './cv/cv-comics/cv-comics.component';
 export const appRoutes: Route[] = [
   {
     path: 'cv',
-    loadChildren: () =>
-      import('./cv/cv.module').then((m) => m.CvModule),
+    children: [
+      {
+        path: '',
+        outlet: 'help',
+        loadChildren: () =>
+          import('./cv/cv-help.module').then((m) => m.CvHelpModule),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./cv/cv.module').then((m) => m.CvModule),
+      },
+    ]
   },
   {
     path: 'skills',
