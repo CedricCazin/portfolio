@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
-import { Skill } from '../skills/skill.interface';
+import { Skill } from '../../skills/skill.interface';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -25,6 +25,11 @@ export class FloatingSkillComponent {
 
   @HostBinding('style.--floating-skill-position')
   @Input() position = 1;
+
+  @HostBinding('style.--floating-skill-size')
+  @Input() size = '150px';
+
+  @Input() borderSize = '10px';
 
   handleMouseLeave() {
     this.animationHoverOut = 'floating-content-path-hover-out';

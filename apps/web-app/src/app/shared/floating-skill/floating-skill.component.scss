@@ -86,8 +86,10 @@ kazaam-floating-content {
     background-color: whitesmoke;
 
     .skill-icon {
-      width: 80px;
+      width: 50%;
       margin-bottom: 25px;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 
@@ -95,8 +97,9 @@ kazaam-floating-content {
     position: absolute;
     z-index: 10;
 
-    bottom: 20px;
-    width: 120px;
+    bottom: 15%;
+    right: 5px;
+    left: 5px;
 
     .ribbon-front {
       position: relative;
@@ -188,7 +191,7 @@ kazaam-floating-content {
     .ribbon-edge-topleft {
       top: -5px;
       left: 0;
-      border-width: 5px 15px 0 0;
+      border-width: 5px 25px 0 0;
 
       border-color: transparent #9b1724 transparent transparent;
     }
@@ -196,7 +199,7 @@ kazaam-floating-content {
     .ribbon-edge-topright {
       top: -5px;
       right: 0;
-      border-width: 5px 0 0 15px;
+      border-width: 5px 0 0 25px;
 
       border-color: transparent transparent transparent #9b1724;
     }

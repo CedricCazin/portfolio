@@ -3,7 +3,7 @@
   [rotateYShift]="0.5" [style.--animation-hover-out]="animationHoverOut" [style.--clip-path]="path"
   (mouseleave)="handleMouseLeave()" (clickWithin)="clickWithin($event)">
 
-  <kazaam-floating-content-path [path]="path" [borderColor]="skill.borderColor || 'grey'">
+  <kazaam-floating-content-path [path]="path" [size]="size" [borderSize]="borderSize" [borderColor]="skill.borderColor || 'grey'">
 
     <div preClipPath class="ribbon-wrapper">
       <div class="ribbon-front">
