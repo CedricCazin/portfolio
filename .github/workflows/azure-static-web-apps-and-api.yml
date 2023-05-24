@@ -1,5 +1,9 @@
 name: Azure Static Web Apps CI/CD
 
+permissions:
+  contents: read
+  pull-requests: write
+
 on:
   push:
     branches:
@@ -27,9 +31,7 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm ci, build, and test
-        run: |
-          npm ci
+      - run: npm ci
 
       # - run: npx nx format:check --verbose
 
@@ -39,7 +41,15 @@ jobs:
 
       - run: npx nx affected -t build --parallel=3
 
+      - name: Get Affected
+        id: get_affected
+        run: |
+          AFFECTED_APPS=$(npx nx print-affected --select=projects --type=app | sed -e 's/^/|/' -e 's/, /|/g' -e 's/$/|/')
+          echo "affected_apps=$AFFECTED_APPS" >> $GITHUB_OUTPUT
+          echo "affected_apps=$AFFECTED_APPS"
+
       - name: Deploy web-app
+        if: contains(steps.get_affected.outputs.affected_apps, '|web-app|')
         id: deploywebapp
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -53,6 +63,7 @@ jobs:
           output_location: ''
 
       - name: Deploy web-app-games
+        if: contains(steps.get_affected.outputs.affected_apps, '|web-app-games|')
         id: deploywebappgames
         uses: Azure/static-web-apps-deploy@v1
         with:
