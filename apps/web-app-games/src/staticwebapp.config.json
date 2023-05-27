@@ -1,0 +1,22 @@
+{
+  "trailingSlash": "auto",
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+  },
+  "routes": [
+    {
+      "route": "/remoteEntry.mjs",
+      "methods": [
+        "GET"
+      ],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+      }
+    }
+  ],
+  "mimeTypes": {
+    ".mjs": "text/javascript"
+  }
+}
