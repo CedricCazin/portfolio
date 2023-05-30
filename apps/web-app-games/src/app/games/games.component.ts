@@ -281,9 +281,9 @@ export class GamesComponent {
 
   constructor(private httpClient: HttpClient) {
 
-    for (const game of this.games) {
-      this.getGameInfo(game);
-    }
+    // for (const game of this.games) {
+    //   this.getGameInfo(game);
+    // }
   }
 
   private getGameInfo(game: Game) {
