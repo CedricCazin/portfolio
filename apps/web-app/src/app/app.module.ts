@@ -19,6 +19,7 @@ import { ColorSchemeService } from './colorScheme.service';
 import { StyleManagerService } from './styleManager.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MaterialModule } from './material.module';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { MaterialModule } from './material.module';
     MatSlideToggleModule,
     MatDividerModule,
     MatSidenavModule,
+    MatListModule,
 
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],

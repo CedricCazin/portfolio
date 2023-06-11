@@ -39,19 +39,9 @@
 
   <nav>
     <mat-toolbar color="primary">
-      <button mat-icon-button aria-label="Example icon-button with menu icon">
+      <button mat-icon-button (click)="navDrawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-
-      <span class="spacer"></span>
-
-      <span>Cédric Cazin</span>
-
-      <button mat-button routerLink="cv">CV</button>
-      <button mat-button routerLink="skills">Skills</button>
-      <button mat-button routerLink="web-app-games">Games</button>
-
-      <a mat-button href="https://www.google.com/" target="_blank">Link</a>
 
       <span class="spacer"></span>
 
@@ -92,14 +82,80 @@
 
 </header>
 
-<mat-drawer-container class="help-drawer-container" autosize>
+<mat-drawer-container class="drawer-container" autosize>
 
-  <mat-drawer #drawer class="help-drawer" mode="side" position="end">
+  <mat-drawer #navDrawer class="nav-drawer" mode="side" position="start" opened>
+
+    <div class="identity">
+
+      <img class="avatar mat-elevation-z8"
+        src="https://media.licdn.com/dms/image/C4E03AQErqk0E4nFA-Q/profile-displayphoto-shrink_200_200/0/1658070640158?e=1692230400&v=beta&t=_po1XS3xOIJfPjYICcvk6JrTeWmgzqUqEZMlxzHpYcc" />
+
+      <h4 class="name">Cédric Cazin</h4>
+
+      <p class="designation">Lead Software Engineer</p>
+
+      <br />
+
+    </div>
+
+    <mat-nav-list role="navigation">
+
+      <div mat-subheader>Work</div>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item routerLink="about">
+        <mat-icon matListItemIcon>portrait</mat-icon>
+        <div matListItemTitle>About</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="cv">
+        <mat-icon matListItemIcon>view_timeline</mat-icon>
+        <div matListItemTitle>Experience</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="cv">
+        <mat-icon matListItemIcon>description</mat-icon>
+        <div matListItemTitle>Resume</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="skills">
+        <mat-icon matListItemIcon>bar_chart</mat-icon>
+        <div matListItemTitle>Skills</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="contact">
+        <mat-icon matListItemIcon>email</mat-icon>
+        <div matListItemTitle>Contact</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <br />
+      <br />
+
+      <div mat-subheader>Perso</div>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item routerLink="web-app-games">
+        <mat-icon matListItemIcon>sports_esports</mat-icon>
+        <div matListItemTitle>Games</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+    </mat-nav-list>
+
+  </mat-drawer>
+
+  <mat-drawer #helpDrawer class="help-drawer" mode="side" position="end">
     <router-outlet name="help"></router-outlet>
   </mat-drawer>
 
   <div class="help-button">
-    <button mat-fab extended color="primary" (click)="drawer.toggle()">
+    <button mat-fab extended color="primary" (click)="helpDrawer.toggle()">
       Help
     </button>
   </div>
