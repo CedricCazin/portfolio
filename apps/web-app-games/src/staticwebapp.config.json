@@ -1,10 +1,5 @@
 {
   "trailingSlash": "auto",
-  "globalHeaders": {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "*",
-    "Access-Control-Allow-Headers": "*"
-  },
   "routes": [
     {
       "route": "/remoteEntry.mjs",
@@ -12,9 +7,9 @@
         "GET"
       ],
       "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "*",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Origin": "icy-field-04e7d6e10.*.azurestaticapps.net",
+        "Access-Control-Allow-Methods": "icy-field-04e7d6e10.*.azurestaticapps.net",
+        "Access-Control-Allow-Headers": "icy-field-04e7d6e10.*.azurestaticapps.net"
       }
     }
   ],
