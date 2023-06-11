@@ -131,7 +131,7 @@
   }
 }
 
-.help-drawer-container {
+.drawer-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -142,9 +142,14 @@
     flex-grow: 1;
   }
 
-  ::ng-deep .mat-drawer {
+  ::ng-deep .mat-drawer.help-drawer {
     min-width: 25%;
     max-width: 25%;
+  }
+
+  ::ng-deep .mat-drawer.nav-drawer {
+    min-width: 250px;
+    max-width: 250px;
   }
 
   .help-button {
@@ -171,5 +176,39 @@
 
   .help-drawer {
     padding: 20px;
+  }
+
+  .nav-drawer {
+    padding: 20px;
+
+    .identity {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex-grow: 1;
+
+      .avatar {
+        margin-top: 16px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .name {
+        margin-top: 8px;
+        font-weight: normal;
+      }
+
+      .designation {
+        margin-top: 2px;
+        font-size: 0.7rem;
+        color: lightgrey;
+      }
+    }
+
+    .mat-mdc-list-base {
+      --mdc-list-list-item-one-line-container-height: 48px;
+
+    }
   }
 }
