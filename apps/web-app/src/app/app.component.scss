@@ -179,7 +179,6 @@
   }
 
   .nav-drawer {
-    padding: 20px;
 
     .identity {
       display: flex;
@@ -189,20 +188,17 @@
 
       .avatar {
         margin-top: 16px;
-        width: 100px;
-        height: 100px;
+        width: 175px;
+        height: 175px;
         border-radius: 50%;
       }
 
       .name {
         margin-top: 8px;
-        font-weight: normal;
       }
 
       .designation {
-        margin-top: 2px;
-        font-size: 0.7rem;
-        color: lightgrey;
+        margin-top: 8px;
       }
     }
 
