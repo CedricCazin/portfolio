@@ -7,9 +7,9 @@
         "GET"
       ],
       "headers": {
-        "Access-Control-Allow-Origin": "icy-field-04e7d6e10.*.azurestaticapps.net, cazin.net",
-        "Access-Control-Allow-Methods": "icy-field-04e7d6e10.*.azurestaticapps.net, cazin.net",
-        "Access-Control-Allow-Headers": "icy-field-04e7d6e10.*.azurestaticapps.net, cazin.net"
+        "Access-Control-Allow-Origin": "icy-field-04e7d6e10.*.azurestaticapps.net, cazin.dev",
+        "Access-Control-Allow-Methods": "icy-field-04e7d6e10.*.azurestaticapps.net, cazin.dev",
+        "Access-Control-Allow-Headers": "icy-field-04e7d6e10.*.azurestaticapps.net, cazin.dev"
       }
     }
   ],
