@@ -42,7 +42,10 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatListModule,
 
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(appRoutes, {
+      initialNavigation: 'enabledBlocking',
+      useHash: true
+    }),
   ],
   providers: [ColorSchemeService, StyleManagerService],
   bootstrap: [AppComponent],
