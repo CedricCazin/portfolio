@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
             ),
         },
       ],
-      { initialNavigation: 'enabledBlocking' }
+      { initialNavigation: 'enabledBlocking', useHash: true }
     ),
   ],
   providers: [],
