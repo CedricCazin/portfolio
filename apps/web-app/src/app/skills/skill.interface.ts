@@ -1,7 +1,11 @@
+import { MatTableDataSource } from "@angular/material/table";
+
 export interface Skill {
   name: string;
-  description: string;
   image: string;
+  progress: number;
+  url?: string;
+  description?: string;
   borderColor?: string;
 }
 

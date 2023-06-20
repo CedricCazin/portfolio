@@ -9,6 +9,13 @@ import { CommonModule } from '@angular/common';
 import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.module';
 import { SkillsMedalsComponent } from './skills-medals/skills-medals.component';
 import { SkillsService } from './skills.service';
+import { SkillsTableComponent } from './skills-table/skills-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { SkillsTablesComponent } from './skills-tables/skills-tables.component';
 
 const routes: Routes = [
   {
@@ -18,6 +25,10 @@ const routes: Routes = [
       {
         path: 'medals',
         component: SkillsMedalsComponent,
+      },
+      {
+        path: 'tables',
+        component: SkillsTablesComponent,
       },
       {
         path: '**',
@@ -32,6 +43,8 @@ const routes: Routes = [
   declarations: [
     SkillsContainerComponent,
     SkillsMedalsComponent,
+    SkillsTablesComponent,
+    SkillsTableComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -41,6 +54,11 @@ const routes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    HttpClientModule,
 
     FloatingSkillModule,
   ],
