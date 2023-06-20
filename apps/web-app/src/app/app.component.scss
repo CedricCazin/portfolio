@@ -1,8 +1,75 @@
 :host {
+  height: 100%;
+
   display: flex;
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1;
 }
+
+.finisher-header {
+  z-index: -1;
+  position: absolute;
+
+  overflow: hidden;
+  height: 350px;
+  width: 100vw;
+}
+
+mat-toolbar {
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .github {
+    mat-icon {
+      height: 24px;
+      width: 24px;
+    }
+    img {
+      height: 24px;
+    }
+  }
+
+  .linked {
+    img {
+      height: 24px;
+    }
+  }
+
+  ::ng-deep .theme-configuration {
+    width: 300px !important;
+  }
+
+  .mat-icon.theme-preview {
+    margin-right: 0;
+    margin-left: auto;
+    padding-left: 8px;
+    order: 1;
+
+    min-height: 32px;
+    min-width: 32px;
+
+    img {
+      min-height: 24px;
+      min-width: 24px;
+    }
+  }
+}
+
+// .help-button {
+//   position: absolute;
+//   width: 100px;
+//   right: 0;
+//   top: 50px;
+//   z-index: 666;
+
+//   button {
+//     position: fixed;
+//     border-radius: 24px 0 0 24px;
+//     width: 100px;
+//   }
+// }
 
 .background {
   z-index: -3;
@@ -10,19 +77,14 @@
   position: absolute;
   overflow: hidden;
 
+  // display: flex;
+  // flex-direction: column;
+  // flex-grow: 1;
+
   min-width: 100%;
   width: 100%;
   min-height: 100%;
   height: 100%;
-
-  .finisher-header {
-    z-index: -1;
-    position: absolute;
-
-    overflow: hidden;
-    height: 350px;
-    width: 100%;
-  }
 
   .cursor {
     z-index: -3;
@@ -83,102 +145,17 @@
   }
 }
 
-.header {
-  position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
-
-  mat-toolbar {
-    .spacer {
-      flex: 1 1 auto;
-    }
-
-    .github {
-      mat-icon {
-        height: 24px;
-        width: 24px;
-      }
-      img {
-        height: 24px;
-      }
-    }
-
-    .linked {
-      img {
-        height: 24px;
-      }
-    }
-
-    ::ng-deep .theme-configuration {
-      width: 300px !important;
-    }
-
-    .mat-icon.theme-preview {
-      margin-right: 0;
-      margin-left: auto;
-      padding-left: 8px;
-      order: 1;
-
-      min-height: 32px;
-      min-width: 32px;
-
-      img {
-        min-height: 24px;
-        min-width: 24px;
-      }
-    }
-  }
-}
-
-.drawer-container {
+.sidenav-container {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1;
 
-  ::ng-deep .mat-drawer-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  ::ng-deep .mat-drawer.help-drawer {
-    min-width: 25%;
-    max-width: 25%;
-  }
-
-  ::ng-deep .mat-drawer.nav-drawer {
+  ::ng-deep .mat-sidenav.nav-sidenav {
     min-width: 250px;
     max-width: 250px;
   }
 
-  .help-button {
-    position: absolute;
-    width: 100px;
-    right: 0;
-    top: 50px;
-    z-index: 666;
-
-    button {
-      position: fixed;
-      border-radius: 24px 0 0 24px;
-      width: 100px;
-    }
-  }
-
-  .content {
-    margin: 0 auto;
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .help-drawer {
-    padding: 20px;
-  }
-
-  .nav-drawer {
+  .nav-sidenav {
 
     .identity {
       display: flex;
@@ -206,5 +183,68 @@
       --mdc-list-list-item-one-line-container-height: 48px;
 
     }
+  }
+
+  ::ng-deep .mat-sidenav.help-sidenav {
+    min-width: 25%;
+    max-width: 25%;
+  }
+
+  .help-sidenav {
+    padding: 20px;
+  }
+
+  mat-sidenav-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .content {
+      margin: 0 auto;
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // based on https://codepen.io/zkreations/pen/bZRgqd
+
+    $bg-mask: rgb(255 255 255 / 25%);
+    --scrollbar-size: 12px;
+    --scrollbar-thumb: linear-gradient(
+      45deg,
+      #{$bg-mask} 20%,
+      transparent 20%,
+      transparent 40%,
+      #{$bg-mask} 40%,
+      #{$bg-mask} 60%,
+      transparent 60%,
+      transparent 80%,
+      #{$bg-mask} 80%
+    );
+    --scrollbar-thumb-color: #f97316;
+    --scrollbar-track-radius: 20px;
+    --scrollbar-track-color: rgb(0 0 0 / 40%);
+
+    scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: var(--scrollbar-size);
+      height: var(--scrollbar-size);
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--scrollbar-track-color);
+      border-radius: var(--scrollbar-track-radius);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb-color);
+      background-image: var(--scrollbar-thumb);
+      border-radius: var(--scrollbar-thumb-radius);
+    }
+
+    // based on https://codepen.io/zkreations/pen/bZRgqd
+
   }
 }

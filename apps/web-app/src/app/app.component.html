@@ -7,10 +7,54 @@
 <!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
 <!-- https://codepen.io/techyt/pen/qBOBEJL -->
 
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="navSidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menuThemes">
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+
+  <mat-menu #menuThemes="matMenu" class="theme-configuration">
+
+    <div mat-menu-item (click)="$event.stopPropagation();">
+      <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
+      <span>Dark Mode</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item *ngFor="let _theme of themes" class="theme-button"
+      (click)="theme = _theme; $event.stopPropagation();">
+      <mat-icon class="theme-selected">{{ _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
+        }}</mat-icon>
+      <span>{{_theme.name}}</span>
+      <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
+    </button>
+
+  </mat-menu>
+
+  <button mat-button class="linked">
+    <img src="/assets/linkedIn/linkedIn-logo.png" />
+  </button>
+
+  <button mat-button class="github">
+    <mat-icon svgIcon="github" inline="true"></mat-icon>
+    <img src="/assets/github/github_logo.png" />
+  </button>
+
+</mat-toolbar>
+
+<!-- <div class="help-button">
+  <button mat-fab extended color="primary" (click)="helpSidenav.toggle()">
+    Help
+  </button>
+</div> -->
+
 <div #background class="background">
-
-  <div class="finisher-header"></div>
-
   <svg>
     <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
     <defs>
@@ -35,56 +79,9 @@
 
 </div>
 
-<header class="header">
+<mat-sidenav-container class="sidenav-container" autosize>
 
-  <nav>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="navDrawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <span class="spacer"></span>
-
-      <button mat-icon-button [matMenuTriggerFor]="menuThemes">
-        <mat-icon>format_color_fill</mat-icon>
-      </button>
-
-      <mat-menu #menuThemes="matMenu" class="theme-configuration">
-
-        <div mat-menu-item (click)="$event.stopPropagation();">
-          <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
-          <span>Dark Mode</span>
-        </div>
-
-        <mat-divider></mat-divider>
-
-        <button mat-menu-item *ngFor="let _theme of themes" class="theme-button"
-          (click)="theme = _theme; $event.stopPropagation();">
-          <mat-icon class="theme-selected">{{ _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
-            }}</mat-icon>
-          <span>{{_theme.name}}</span>
-          <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
-        </button>
-
-      </mat-menu>
-
-      <button mat-button class="linked">
-        <img src="/assets/linkedIn/linkedIn-logo.png" />
-      </button>
-
-      <button mat-button class="github">
-        <mat-icon svgIcon="github" inline="true"></mat-icon>
-        <img src="/assets/github/github_logo.png" />
-      </button>
-
-    </mat-toolbar>
-  </nav>
-
-</header>
-
-<mat-drawer-container class="drawer-container" autosize>
-
-  <mat-drawer #navDrawer class="nav-drawer" mode="side" position="start" opened>
+  <mat-sidenav #navSidenav class="nav-sidenav" mode="side" position="start" opened>
 
     <div class="identity">
 
@@ -150,20 +147,23 @@
 
     </mat-nav-list>
 
-  </mat-drawer>
+  </mat-sidenav>
 
-  <mat-drawer #helpDrawer class="help-drawer" mode="side" position="end">
+  <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
     <router-outlet name="help"></router-outlet>
-  </mat-drawer>
+  </mat-sidenav>
 
-  <div class="help-button">
-    <button mat-fab extended color="primary" (click)="helpDrawer.toggle()">
-      Help
-    </button>
-  </div>
+  <mat-sidenav-content>
 
-  <section class="content">
-    <router-outlet></router-outlet>
-  </section>
+    <div class="finisher-header"></div>
 
-</mat-drawer-container>
+    <div class="content">
+
+      <router-outlet></router-outlet>
+
+
+
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
