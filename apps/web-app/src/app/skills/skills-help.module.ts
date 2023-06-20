@@ -9,6 +9,7 @@ import { SkillsMedalsHelpComponent } from './skills-medals-help/skills-medals-he
 import { SkillsService } from './skills.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SkillsContainerHelpComponent } from './skills-help/skills-container-help.component';
+import { SkillsTablesHelpComponent } from './skills-tables-help/skills-tables-help.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'medals',
         component: SkillsMedalsHelpComponent,
+      },
+      {
+        path: 'table',
+        component: SkillsTablesHelpComponent,
       },
       {
         path: '**',
@@ -32,6 +37,7 @@ const routes: Routes = [
   declarations: [
     SkillsContainerHelpComponent,
     SkillsMedalsHelpComponent,
+    SkillsTablesHelpComponent,
   ],
   imports: [
     RouterModule.forChild(routes),

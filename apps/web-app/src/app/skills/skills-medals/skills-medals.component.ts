@@ -8,9 +8,9 @@ import { SkillsService } from '../skills.service';
   styleUrls: ['./skills-medals.component.scss'],
 })
 export class SkillsMedalsComponent {
-  public skills!: SkillType[];
+  public skillTypes!: SkillType[];
 
   constructor(private skillsService: SkillsService) {
-    this.skills = this.skillsService.skills;
+    this.skillsService.skillTypes.subscribe((skillTypes) => this.skillTypes = skillTypes);
   }
 }
