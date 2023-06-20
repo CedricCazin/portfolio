@@ -14,7 +14,7 @@ export type Months =
   | 'November'
   | 'December';
 
-export interface CVItem {
+export interface ResumeItem {
   FromMonth: Months,
   FromYear: number,
   ToMonth?: Months,
@@ -30,6 +30,7 @@ export interface CVItem {
   Title: string,
   Location: string,
   Description: string,
+  DescriptionUrl: string,
   _DescriptionHtml?: string,
   Skills?: Skill[],
 

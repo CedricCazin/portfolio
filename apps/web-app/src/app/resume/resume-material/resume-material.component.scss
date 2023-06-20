@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-section.cv-material-page {
+section.resume-material-page {
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -37,7 +37,7 @@ section.cv-material-page {
         );
       }
 
-      section.cv-item {
+      section.resume-item {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

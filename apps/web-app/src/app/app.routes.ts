@@ -1,21 +1,20 @@
 import { Route } from '@angular/router';
 import { loadRemoteModule } from '@nrwl/angular/mf';
-import { CvComicsComponent } from './cv/cv-comics/cv-comics.component';
 
 export const appRoutes: Route[] = [
   {
-    path: 'cv',
+    path: 'resume',
     children: [
       {
         path: '',
         outlet: 'help',
         loadChildren: () =>
-          import('./cv/cv-help.module').then((m) => m.CvHelpModule),
+          import('./resume/resume-help.module').then((m) => m.ResumeHelpModule),
       },
       {
         path: '',
         loadChildren: () =>
-          import('./cv/cv.module').then((m) => m.CvModule),
+          import('./resume/resume.module').then((m) => m.ResumeModule),
       },
     ]
   },

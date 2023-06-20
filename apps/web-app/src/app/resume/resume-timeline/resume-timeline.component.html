@@ -1,16 +1,17 @@
-<section class="cv-material-page">
+<section class="resume-timeline-page">
 
-  <mat-card class="cv-item" *ngFor="let cvItem of cvItems">
+  <mat-card class="resume-item" *ngFor="let resumeItem of resumeItems">
 
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>
-          <h2>{{ cvItem.Title }}</h2>
+          <h2>{{ resumeItem.Title }}</h2>
         </mat-card-title>
         <mat-card-subtitle>
-          <h1>{{ cvItem.Company.Name }} <span *ngIf="cvItem.Company.Team"> - {{ cvItem.Company.Team }}</span></h1>
+          <h1>{{ resumeItem.Company.Name }} <span *ngIf="resumeItem.Company.Team"> - {{ resumeItem.Company.Team
+              }}</span></h1>
         </mat-card-subtitle>
-        <img class="company-logo" [src]="cvItem.Company.LogoUrl">
+        <img class="company-logo" [src]="resumeItem.Company.LogoUrl">
       </mat-card-title-group>
     </mat-card-header>
 
@@ -18,7 +19,7 @@
 
       <hr class="gradient" />
 
-      <div class="cv-item-description">{{cvItem.Description}}</div>
+      <div class="resume-item-description">{{resumeItem.Description}}</div>
 
       <hr class="gradient" />
 
@@ -33,7 +34,7 @@
 
     </mat-card-footer>
 
-    <mat-accordion *ngIf="cvItem.Skills">
+    <mat-accordion *ngIf="resumeItem.Skills">
       <mat-expansion-panel>
 
         <mat-expansion-panel-header>
@@ -48,7 +49,7 @@
 
         </mat-expansion-panel-header>
 
-        <article class="skill" *ngFor="let skill of cvItem.Skills ; let i = index">
+        <article class="skill" *ngFor="let skill of resumeItem.Skills ; let i = index">
           <floating-skill [skill]="skill" [position]="i"></floating-skill>
         </article>
 

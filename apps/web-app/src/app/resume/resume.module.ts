@@ -1,38 +1,32 @@
 import { NgModule } from '@angular/core';
-import { CvContainerComponent } from './cv-container/cv-container.component';
+import { ResumeContainerComponent } from './resume-container/resume-container.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { CvTimelineComponent } from './cv-timeline/cv-timeline.component';
-import { CvComicsComponent } from './cv-comics/cv-comics.component';
-import { CvMaterialComponent } from './cv-material/cv-material.component';
-import { CvMaterialHelpComponent } from './cv-material-help/cv-material-help.component';
+import { ResumeTimelineComponent } from './resume-timeline/resume-timeline.component';
+import { ResumeMaterialComponent } from './resume-material/resume-material.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: CvContainerComponent,
+    component: ResumeContainerComponent,
     children: [
       {
         path: 'material',
-        component: CvMaterialComponent,
+        component: ResumeMaterialComponent,
       },
       {
         path: 'timeline',
-        component: CvTimelineComponent,
-      },
-      {
-        path: 'comics',
-        component: CvComicsComponent,
+        component: ResumeTimelineComponent,
       },
       {
         path: '**',
@@ -45,10 +39,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    CvContainerComponent,
-    CvTimelineComponent,
-    CvComicsComponent,
-    CvMaterialComponent,
+    ResumeContainerComponent,
+    ResumeTimelineComponent,
+    ResumeMaterialComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -69,4 +62,4 @@ const routes: Routes = [
   ],
   providers: [],
 })
-export class CvModule { }
+export class ResumeModule { }
