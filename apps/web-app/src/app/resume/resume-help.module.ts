@@ -6,28 +6,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CvContainerHelpComponent } from './cv-container-help/cv-container-help.component';
-import { CvTimelineHelpComponent } from './cv-timeline-help/cv-timeline-help.component';
-import { CvComicsHelpComponent } from './cv-comics-help/cv-comics-help.component';
+import { ResumeContainerHelpComponent } from './resume-container-help/resume-container-help.component';
+import { ResumeTimelineHelpComponent } from './resume-timeline-help/resume-timeline-help.component';
 import { SkillsService } from '../skills/skills.service';
-import { CvMaterialHelpComponent } from './cv-material-help/cv-material-help.component';
+import { ResumeMaterialHelpComponent } from './resume-material-help/resume-material-help.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CvContainerHelpComponent,
+    component: ResumeContainerHelpComponent,
     children: [
       {
         path: 'material',
-        component: CvMaterialHelpComponent,
+        component: ResumeMaterialHelpComponent,
       },
       {
         path: 'timeline',
-        component: CvTimelineHelpComponent,
-      },
-      {
-        path: 'comics',
-        component: CvComicsHelpComponent,
+        component: ResumeTimelineHelpComponent,
       },
       {
         path: '**',
@@ -40,10 +35,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    CvContainerHelpComponent,
-    CvMaterialHelpComponent,
-    CvTimelineHelpComponent,
-    CvComicsHelpComponent,
+    ResumeContainerHelpComponent,
+    ResumeMaterialHelpComponent,
+    ResumeTimelineHelpComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -59,4 +53,4 @@ const routes: Routes = [
     SkillsService,
   ],
 })
-export class CvHelpModule { }
+export class ResumeHelpModule { }
