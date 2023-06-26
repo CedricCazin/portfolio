@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { SkillsMedalsHelpComponent } from './skills-medals-help/skills-medals-help.component';
 import { SkillsService } from './skills.service';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SkillsContainerHelpComponent } from './skills-help/skills-container-help.component';
+import { SkillsContainerHelpComponent } from './skills-container-help/skills-container-help.component';
 import { SkillsTablesHelpComponent } from './skills-tables-help/skills-tables-help.component';
 
 const routes: Routes = [
