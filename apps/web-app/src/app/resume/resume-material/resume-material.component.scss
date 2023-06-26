@@ -19,24 +19,8 @@ section.resume-material-page {
         margin-block-end: 1.33em;
       }
     }
+
     mat-card-content {
-      hr.gradient {
-        width: 100%;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0.75),
-          rgba(0, 0, 0, 0.9),
-          rgba(0, 0, 0, 0.75),
-          rgba(0, 0, 0, 0)
-        );
-      }
-
       section.resume-item {
         display: flex;
         flex-wrap: wrap;
@@ -45,11 +29,30 @@ section.resume-material-page {
     }
 
     mat-card-footer {
+      padding: 0 16px 16px;
+
       section.skills {
         display: flex;
         flex-wrap: wrap;
         gap: 2em;
       }
+    }
+
+    hr.gradient {
+      width: 100%;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0)
+      );
     }
   }
 }
