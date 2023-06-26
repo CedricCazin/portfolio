@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ResumeContainerHelpComponent } from './resume-container-help/resume-container-help.component';
+import { ResumeHelpComponent } from './resume-help/resume-help.component';
 import { ResumeTimelineHelpComponent } from './resume-timeline-help/resume-timeline-help.component';
 import { SkillsService } from '../skills/skills.service';
 import { ResumeMaterialHelpComponent } from './resume-material-help/resume-material-help.component';
@@ -14,7 +14,7 @@ import { ResumeMaterialHelpComponent } from './resume-material-help/resume-mater
 const routes: Routes = [
   {
     path: '',
-    component: ResumeContainerHelpComponent,
+    component: ResumeHelpComponent,
     children: [
       {
         path: 'material',
@@ -35,7 +35,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ResumeContainerHelpComponent,
+    ResumeHelpComponent,
     ResumeMaterialHelpComponent,
     ResumeTimelineHelpComponent,
   ],

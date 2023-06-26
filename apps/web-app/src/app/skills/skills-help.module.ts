@@ -8,13 +8,13 @@ import { CommonModule } from '@angular/common';
 import { SkillsMedalsHelpComponent } from './skills-medals-help/skills-medals-help.component';
 import { SkillsService } from './skills.service';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SkillsContainerHelpComponent } from './skills-container-help/skills-container-help.component';
+import { SkillsHelpComponent } from './skills-help/skills-help.component';
 import { SkillsTablesHelpComponent } from './skills-tables-help/skills-tables-help.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SkillsContainerHelpComponent,
+    component: SkillsHelpComponent,
     children: [
       {
         path: 'medals',
@@ -35,7 +35,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SkillsContainerHelpComponent,
+    SkillsHelpComponent,
     SkillsMedalsHelpComponent,
     SkillsTablesHelpComponent,
   ],

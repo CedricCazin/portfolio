@@ -7,6 +7,29 @@
 
   // Get the primary color palette from the color-config.
   $primary-palette: map.get($color-config, 'primary');
+  $accent-palette: map.get($color-config, 'accent');
+  $warn-palette: map.get($color-config, 'warn');
+  $is-dark-theme: map.get($color-config, 'is-dark');
+
+  $accent-color: mat.get-color-from-palette($accent-palette, 'default');
+
+  section.about-page {
+    header {
+      h1 {
+        color: $accent-color;
+      }
+    }
+
+    section.skills-medals-page {
+      mat-card {
+        mat-card-content {
+          blockquote {
+            border-left-color: $accent-color;
+          }
+        }
+      }
+    }
+  }
 }
 
 @mixin typography($theme) {

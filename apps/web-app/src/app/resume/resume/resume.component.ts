@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'portfolio-resume-container',
-  templateUrl: './resume-container.component.html',
-  styleUrls: ['./resume-container.component.scss'],
+  selector: 'portfolio-resume',
+  templateUrl: './resume.component.html',
+  styleUrls: ['./resume.component.scss'],
 })
-export class ResumeContainerComponent {
+export class ResumeComponent {
   constructor(private router: Router) { }
 
   public navigateToMResumeMaterial() {

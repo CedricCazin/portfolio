@@ -2,7 +2,9 @@
   "name": "portfolio",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "ng": "ng"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~15.2.0",
@@ -20,8 +22,10 @@
     "@nestjs/platform-express": "~9.4.1",
     "@nrwl/angular": "~15.9.2",
     "axios": "~1.4.0",
+    "chart.js": "~4.3.0",
     "lodash": "~4.17.21",
     "moment": "~2.29.4",
+    "ng2-charts": "~4.1.1",
     "reflect-metadata": "~0.1.13",
     "rxjs": "~7.8.1",
     "showdown": "~2.1.0",

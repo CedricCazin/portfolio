@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'portfolio-experiences-container',
-  templateUrl: './experiences-container.component.html',
-  styleUrls: ['./experiences-container.component.scss'],
+  selector: 'portfolio-experiences',
+  templateUrl: './experiences.component.html',
+  styleUrls: ['./experiences.component.scss'],
 })
-export class ExperiencesContainerComponent {
+export class ExperiencesComponent {
   constructor(private router: Router) { }
 
   public navigateToMExperienceMaterial() {

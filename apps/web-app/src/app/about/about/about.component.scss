@@ -21,28 +21,31 @@ section.about-page {
       margin-block-start: 0.75em;
       margin-block-end: 0.75em;
     }
+  }
 
-    nav {
-      position: absolute;
-      right: 50px;
+  section.skills-medals-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 
-      display: flex;
-      align-items: end;
-      justify-content: end;
-      gap: 2em;
+    mat-card {
+      mat-card-content {
+        padding: 30px;
 
-      button {
-        min-height: 50px;
+        ::ng-deep blockquote {
+          border-left-width: 5px;
+          border-left-style: solid;
 
-        mat-icon {
-          height: auto;
-          width: auto;
-          overflow: unset;
+          font-style: italic;
+          padding-left: 20px;
+        }
+      }
 
-          img {
-            width: 50px;
-            transform: rotate(-15deg);
-          }
+      &.radar-chart {
+        mat-card-content {
+          height: 700px;
+          min-height: 700px;
+          max-height: 700px;
         }
       }
     }

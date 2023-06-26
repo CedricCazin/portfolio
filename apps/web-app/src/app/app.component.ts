@@ -20,7 +20,7 @@ interface Theme {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'web-app';
 
   cursorLeft = '';
@@ -104,9 +104,9 @@ export class AppComponent implements AfterViewInit {
     this.renderer.addClass(this.document.body, this.currentTheme);
   }
 
-  ngAfterViewInit(): void {
-    this.initHeader();
-  }
+  // ngAfterViewInit(): void {
+  //   // this.initHeader();
+  // }
 
   private initHeader() {
     new FinisherHeader({
