@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SkillsContainerComponent } from './skills/skills-container.component';
+import { SkillsContainerComponent } from './skills-container/skills-container.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
