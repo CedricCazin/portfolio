@@ -1,0 +1,54 @@
+<section class="experiences-material-page">
+
+  <mat-card class="experience" *ngFor="let experience of experiences">
+
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>
+          <h2>{{ experience.title }}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h1>
+            {{ experience.company.name }}
+            <span *ngIf="experience.company.team"> - {{ experience.company.team }}</span>
+          </h1>
+        </mat-card-subtitle>
+        <img class="company-logo" [src]="experience.company.logoUrl">
+      </mat-card-title-group>
+    </mat-card-header>
+
+    <hr class="gradient" />
+
+    <mat-card-content>
+
+      <div class="experience-description" [innerHTML]="experience._descriptionHtml"></div>
+
+    </mat-card-content>
+
+    <hr class="gradient" />
+
+    <mat-card-actions>
+
+      <a [href]="link.url " mat-flat-button href="link" target="_blank"
+        *ngFor="let link of experience.links ; let i = index">
+        <mat-icon>link</mat-icon>
+        {{ link.label }}
+      </a>
+
+    </mat-card-actions>
+
+    <hr class="gradient" />
+
+    <mat-card-footer>
+
+      <section class="skills">
+        <article class="skill" *ngFor="let skill of experience.skills ; let i = index">
+          <floating-skill [skill]="skill" [position]="i" size="100px"></floating-skill>
+        </article>
+      </section>
+
+    </mat-card-footer>
+
+  </mat-card>
+
+</section>
