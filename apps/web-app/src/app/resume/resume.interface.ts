@@ -15,24 +15,24 @@ export type Months =
   | 'December';
 
 export interface ResumeItem {
-  FromMonth: Months,
-  FromYear: number,
-  ToMonth?: Months,
-  ToYear?: number,
+  fromMonth: Months,
+  fromYear: number,
+  toMonth?: Months,
+  toYear?: number,
   InPost?: boolean,
-  Company: {
-    Name: string,
-    LogoUrl?: string,
-    Team?: string,
-    LinkedInUrl?: string,
-    Url?: string,
+  company: {
+    name: string,
+    logoUrl?: string,
+    team?: string,
+    linkedInUrl?: string,
+    url?: string,
   },
-  Title: string,
-  Location: string,
-  Description: string,
-  DescriptionUrl: string,
-  _DescriptionHtml?: string,
-  Skills?: Skill[],
-
+  title: string,
+  location: string,
+  description: string,
+  descriptionUrl: string,
+  _descriptionHtml?: string,
+  skills?: Skill[],
   _skillsOpen?: boolean,
+  links?: { url: string, label: string }[],
 }

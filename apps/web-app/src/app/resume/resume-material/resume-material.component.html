@@ -5,60 +5,49 @@
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>
-          <h2>{{ resumeItem.Title }}</h2>
+          <h2>{{ resumeItem.title }}</h2>
         </mat-card-title>
         <mat-card-subtitle>
-          <h1>{{ resumeItem.Company.Name }} <span *ngIf="resumeItem.Company.Team"> - {{ resumeItem.Company.Team
-              }}</span></h1>
+          <h1>
+            {{ resumeItem.company.name }}
+            <span *ngIf="resumeItem.company.team"> - {{ resumeItem.company.team }}</span>
+          </h1>
         </mat-card-subtitle>
-        <img class="company-logo" [src]="resumeItem.Company.LogoUrl">
+        <img class="company-logo" [src]="resumeItem.company.logoUrl">
       </mat-card-title-group>
     </mat-card-header>
 
+    <hr class="gradient" />
+
     <mat-card-content>
 
-      <hr class="gradient" />
-
-      <div class="resume-item-description" [innerHTML]="resumeItem._DescriptionHtml"></div>
-
-      <hr class="gradient" />
+      <div class="resume-item-description" [innerHTML]="resumeItem._descriptionHtml"></div>
 
     </mat-card-content>
 
-    <!-- <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
+    <hr class="gradient" />
+
+    <mat-card-actions>
+
+      <a [href]="link.url " mat-flat-button href="link" target="_blank"
+        *ngFor="let link of resumeItem.links ; let i = index">
+        <mat-icon>link</mat-icon>
+        {{ link.label }}
+      </a>
+
+    </mat-card-actions>
+
+    <hr class="gradient" />
 
     <mat-card-footer>
 
-      <mat-accordion *ngIf="resumeItem.Skills">
-        <mat-expansion-panel>
-
-          <mat-expansion-panel-header>
-
-            <mat-panel-title>
-              <h1>Skills</h1>
-            </mat-panel-title>
-
-            <!-- <mat-panel-description>
-            Currently I am
-          </mat-panel-description> -->
-
-          </mat-expansion-panel-header>
-
-          <section class="skills">
-            <article class="skill" *ngFor="let skill of resumeItem.Skills ; let i = index">
-              <floating-skill [skill]="skill" [position]="i" size="100px"></floating-skill>
-            </article>
-          </section>
-
-        </mat-expansion-panel>
-
-      </mat-accordion>
+      <section class="skills">
+        <article class="skill" *ngFor="let skill of resumeItem.skills ; let i = index">
+          <floating-skill [skill]="skill" [position]="i" size="100px"></floating-skill>
+        </article>
+      </section>
 
     </mat-card-footer>
-
 
   </mat-card>
 

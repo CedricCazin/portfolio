@@ -17,10 +17,10 @@ export class ResumeService {
       switchMap(resumeItems => {
 
         const convertAllDescriptions = resumeItems.map((resumeItem) => {
-          return this.http.get(resumeItem.DescriptionUrl, { responseType: 'text' })
+          return this.http.get(resumeItem.descriptionUrl, { responseType: 'text' })
             .pipe(
               tap((resumeItemDescription) => {
-                resumeItem._DescriptionHtml = converter.makeHtml(resumeItemDescription);
+                resumeItem._descriptionHtml = converter.makeHtml(resumeItemDescription);
               }),
             )
         });
