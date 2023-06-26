@@ -11,12 +11,11 @@
   position: absolute;
 
   overflow: hidden;
-  height: 350px;
+  height: 300px;
   width: 100vw;
 }
 
 mat-toolbar {
-
   .spacer {
     flex: 1 1 auto;
   }
@@ -156,7 +155,6 @@ mat-toolbar {
   }
 
   .nav-sidenav {
-
     .identity {
       display: flex;
       align-items: center;
@@ -164,10 +162,27 @@ mat-toolbar {
       flex-grow: 1;
 
       .avatar {
-        margin-top: 16px;
-        width: 175px;
-        height: 175px;
-        border-radius: 50%;
+        // margin-top: 16px;
+        width: 225px;
+        height: calc(225px * 1.1547);
+
+        // https://bennettfeely.com/clippy/
+        // https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/
+        --clip-path: polygon(
+          25% 10%,
+          75% 10%,
+          100% 50%,
+          75% 90%,
+          25% 90%,
+          0% 50%
+        );
+
+        -webkit-clip-path: var(--clip-path);
+        clip-path: var(--clip-path);
+
+        img {
+          width: 100%;
+        }
       }
 
       .name {
@@ -181,7 +196,6 @@ mat-toolbar {
 
     .mat-mdc-list-base {
       --mdc-list-list-item-one-line-container-height: 48px;
-
     }
   }
 
@@ -245,6 +259,5 @@ mat-toolbar {
     }
 
     // based on https://codepen.io/zkreations/pen/bZRgqd
-
   }
 }

@@ -8,6 +8,7 @@
 <!-- https://codepen.io/techyt/pen/qBOBEJL -->
 
 <mat-toolbar color="primary">
+
   <button mat-icon-button (click)="navSidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -85,16 +86,14 @@
 
     <div class="identity">
 
-      <img class="avatar mat-elevation-z8"
-        src="https://media.licdn.com/dms/image/C4E03AQErqk0E4nFA-Q/profile-displayphoto-shrink_200_200/0/1658070640158?e=1692230400&v=beta&t=_po1XS3xOIJfPjYICcvk6JrTeWmgzqUqEZMlxzHpYcc" />
-
-      <br />
+      <div class="avatar">
+        <img
+          src="https://media.licdn.com/dms/image/C4E03AQErqk0E4nFA-Q/profile-displayphoto-shrink_200_200/0/1658070640158?e=1692230400&v=beta&t=_po1XS3xOIJfPjYICcvk6JrTeWmgzqUqEZMlxzHpYcc" />
+      </div>
 
       <h2 class="name">Cédric Cazin</h2>
 
       <h3 class="designation">Lead Software Engineer</h3>
-
-      <br />
 
     </div>
 
@@ -111,7 +110,7 @@
 
       <mat-list-item routerLink="experiences" routerLinkActive="list-item-active">
         <mat-icon matListItemIcon>view_timeline</mat-icon>
-        <div matListItemTitle>Experience</div>
+        <div matListItemTitle>Experiences</div>
       </mat-list-item>
 
       <mat-list-item routerLink="resume" routerLinkActive="list-item-active">
@@ -155,15 +154,14 @@
 
   <mat-sidenav-content>
 
-    <div class="finisher-header"></div>
+    <!-- <div class="finisher-header"></div> -->
 
     <div class="content">
 
       <router-outlet></router-outlet>
 
-
-
     </div>
+
   </mat-sidenav-content>
 
 </mat-sidenav-container>
