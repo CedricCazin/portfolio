@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ResumeContainerComponent } from './resume-container/resume-container.component';
+import { ResumeComponent } from './resume/resume.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,7 +18,7 @@ import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.mod
 const routes: Routes = [
   {
     path: '',
-    component: ResumeContainerComponent,
+    component: ResumeComponent,
     children: [
       {
         path: 'material',
@@ -39,7 +39,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ResumeContainerComponent,
+    ResumeComponent,
     ResumeTimelineComponent,
     ResumeMaterialComponent,
   ],

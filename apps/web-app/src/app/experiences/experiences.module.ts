@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ExperiencesContainerComponent } from './experiences-container/experiences-container.component';
+import { ExperiencesComponent } from './experiences/experiences.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +19,7 @@ import { ExperiencesService } from './experiences.service';
 const routes: Routes = [
   {
     path: '',
-    component: ExperiencesContainerComponent,
+    component: ExperiencesComponent,
     children: [
       {
         path: 'material',
@@ -40,7 +40,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExperiencesContainerComponent,
+    ExperiencesComponent,
     ExperiencesTimelineComponent,
     ExperiencesMaterialComponent,
   ],

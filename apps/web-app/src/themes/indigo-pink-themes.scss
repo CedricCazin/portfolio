@@ -1,7 +1,13 @@
 @use '@angular/material' as mat;
-@include mat.core();
 
-@import '../app/app.component.theme.scss';
+@use '../app/app.component.theme' as app;
+@use '../app/about/about/about.component-theme' as about;
+@use '../app/contact/contact/contact.component-theme' as contact;
+@use '../app/experiences/experiences/experiences.component-theme' as experiences;
+@use '../app/resume/resume/resume.component-theme' as resume;
+@use '../app/skills/skills/skills.component-theme' as skills;
+
+@include mat.core();
 
 // Define a dark theme
 $dark-theme: mat.define-dark-theme(
@@ -29,7 +35,13 @@ $light-theme: mat.define-light-theme(
 // Apply the dark theme by default
 @include mat.core-theme($dark-theme);
 @include mat.all-component-colors($dark-theme);
-@include app-theme($dark-theme);
+
+@include app.theme($dark-theme);
+@include about.theme($dark-theme);
+@include contact.theme($dark-theme);
+@include experiences.theme($dark-theme);
+@include resume.theme($dark-theme);
+@include skills.theme($dark-theme);
 
 // Apply the light theme only when the user prefers light themes.
 // @media (prefers-color-scheme: light) {}
@@ -39,5 +51,11 @@ body.color-scheme-light {
   // typography and density styles.
   @include mat.core-color($light-theme);
   @include mat.all-component-colors($light-theme);
-  @include app-theme($light-theme);
+
+  @include app.theme($light-theme);
+  @include about.theme($light-theme);
+  @include contact.theme($light-theme);
+  @include experiences.theme($light-theme);
+  @include resume.theme($light-theme);
+  @include skills.theme($light-theme);
 }

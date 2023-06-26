@@ -4,22 +4,30 @@
     <h1>
       ABOUT ME
     </h1>
-
-    <nav>
-
-      <button mat-fab extended color="primary">
-        <mat-icon>portrait</mat-icon>
-        About Me
-      </button>
-
-      <button mat-fab extended color="primary">
-        <mat-icon>radar</mat-icon>
-        Radar
-      </button>
-
-    </nav>
-
   </header>
+
+  <section class="skills-medals-page">
+
+
+    <mat-card>
+      <mat-card-content>
+
+        <div [innerHTML]="about"></div>
+
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="radar-chart">
+      <mat-card-content>
+
+        <canvas baseChart [datasets]="radarChartDatasets" [options]="radarChartOptions" [labels]="radarChartLabels"
+          [type]="'radar'">
+        </canvas>
+
+      </mat-card-content>
+    </mat-card>
+
+  </section>
 
 
 

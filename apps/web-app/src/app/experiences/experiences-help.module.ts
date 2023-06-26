@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ExperiencesContainerHelpComponent } from './experiences-container-help/experiences-container-help.component';
+import { ExperiencesHelpComponent } from './experiences-help/experiences-help.component';
 import { ExperiencesTimelineHelpComponent } from './experiences-timeline-help/experiences-timeline-help.component';
 import { ExperiencesMaterialHelpComponent } from './experiences-material-help/experiences-material-help.component';
 import { ExperiencesService } from './experiences.service';
@@ -15,7 +15,7 @@ import { SkillsService } from '../skills/skills.service';
 const routes: Routes = [
   {
     path: '',
-    component: ExperiencesContainerHelpComponent,
+    component: ExperiencesHelpComponent,
     children: [
       {
         path: 'material',
@@ -36,7 +36,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ExperiencesContainerHelpComponent,
+    ExperiencesHelpComponent,
     ExperiencesMaterialHelpComponent,
     ExperiencesTimelineHelpComponent,
   ],

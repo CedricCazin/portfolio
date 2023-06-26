@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SkillsContainerComponent } from './skills-container/skills-container.component';
+import { SkillsComponent } from './skills/skills.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,7 +20,7 @@ import { SkillsTablesComponent } from './skills-tables/skills-tables.component';
 const routes: Routes = [
   {
     path: '',
-    component: SkillsContainerComponent,
+    component: SkillsComponent,
     children: [
       {
         path: 'medals',
@@ -41,7 +41,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SkillsContainerComponent,
+    SkillsComponent,
     SkillsMedalsComponent,
     SkillsTablesComponent,
     SkillsTableComponent,
