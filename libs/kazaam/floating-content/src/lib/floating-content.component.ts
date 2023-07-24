@@ -1,15 +1,18 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   HostBinding,
   HostListener,
   Input,
+  OnDestroy,
   Output,
   Renderer2,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { fromEvent, Subscription, tap, throttleTime } from 'rxjs';
 
 ///* Based on
 ///* * https://deck-24abcd.netlify.app/
@@ -21,7 +24,7 @@ import {
   styleUrls: ['./floating-content.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FloatingContentComponent {
+export class FloatingContentComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class.kazaam-floating-content') class = true;
 
   @ViewChild('translator') translator!: ElementRef;
@@ -83,11 +86,23 @@ export class FloatingContentComponent {
   public foilRadiusX = '50%';
   public foilRadiusY = '50%';
 
+  private rotatorThrottleMouseMove?: Subscription = undefined;
+
   constructor(
     private renderer: Renderer2
-  ) {
+  ) { }
+
+  ngAfterViewInit(): void {
+    this.rotatorThrottleMouseMove = fromEvent(this.rotator.nativeElement, 'mousemove').pipe(
+      throttleTime(10),
+      tap(event => this.handleMouseMove(event))
+    ).subscribe();
   }
 
+
+  ngOnDestroy() {
+    this.rotatorThrottleMouseMove && this.rotatorThrottleMouseMove.unsubscribe();
+  }
   //------
 
   // @HostListener('mousemove', ['$event'])
@@ -120,7 +135,6 @@ export class FloatingContentComponent {
       this.foilRadiusY = `${foilY}%`;
 
     }
-
   }
 
   handleMouseEnter() {

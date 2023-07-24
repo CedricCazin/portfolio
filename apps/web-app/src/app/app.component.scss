@@ -16,6 +16,11 @@
 }
 
 mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+
   .spacer {
     flex: 1 1 auto;
   }
@@ -37,6 +42,25 @@ mat-toolbar {
   }
 
   ::ng-deep .theme-configuration {
+    width: 300px !important;
+  }
+
+  .mat-icon.theme-preview {
+    margin-right: 0;
+    margin-left: auto;
+    padding-left: 8px;
+    order: 1;
+
+    min-height: 32px;
+    min-width: 32px;
+
+    img {
+      min-height: 24px;
+      min-width: 24px;
+    }
+  }
+
+  ::ng-deep .language-configuration {
     width: 300px !important;
   }
 
