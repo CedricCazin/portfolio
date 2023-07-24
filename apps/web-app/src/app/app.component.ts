@@ -1,18 +1,13 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, Inject, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Inject, Renderer2, RendererFactory2, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ColorSchemeService } from './colorScheme.service';
-import { StyleManagerService } from './styleManager.service';
+import { Language, LanguageService } from './language.service';
+import { ThemeService } from './theme.service';
+import { Theme } from './theme.service';
 
 declare class FinisherHeader {
   constructor(i: any);
-}
-
-interface Theme {
-  name: string;
-  id: string;
-  isDefault?: boolean;
 }
 
 @Component({
@@ -20,93 +15,97 @@ interface Theme {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'web-app';
 
   cursorLeft = '';
   cursorTop = '';
   cursorOpacity = '';
 
-  themes: Theme[] = [
-    {
-      name: 'Deep Purple & Amber',
-      id: 'deep-purple-amber',
-      isDefault: true,
-    },
-    {
-      name: 'Indigo & Pink',
-      id: 'indigo-pink',
-    },
-    {
-      name: 'Pink & Blue Grey',
-      id: 'pink-blue-grey',
-    },
-    {
-      name: 'Purple a Green',
-      id: 'purple-green',
-    },
-  ];
-
   public showHelp = true;
 
-  private _darkTheme = true;
-  public get darkTheme(): boolean {
-    return this._darkTheme;
+  public languages: Language[] = this.languageService.languages;
+
+  private _language: Language = this.languages[0];
+  public get language(): Language {
+    return this._language;
   }
-  public set darkTheme(isDark: boolean) {
-    this.renderer.removeClass(this.document.body, this.currentTheme);
-    this._darkTheme = isDark;
-    this.colorSchemeService.update(this._darkTheme ? 'dark' : 'light');
-    this.renderer.addClass(this.document.body, this.currentTheme);
+  public set language(language: Language) {
+    this._language = language;
+    this.languageService.language = language;
   }
+
+  public themes: Theme[] = this.themeService.themes;
 
   private _theme: Theme = this.themes[0];
   public get theme(): Theme {
     return this._theme;
   }
   public set theme(theme: Theme) {
-    this.renderer.removeClass(this.document.body, this.currentTheme);
     this._theme = theme;
-    this.styleManagerService.setStyle('theme', `${theme.id}-themes.css`);
-    this.renderer.addClass(this.document.body, this.currentTheme);
+    this.themeService.theme = theme;
   }
 
-  public get currentTheme() {
-    return `${this._theme.id}-${this.darkTheme ? 'dark' : 'light'}-theme`;
+  private _darkMode = true;
+  public get darkMode(): boolean {
+    return this._darkMode;
+  }
+  public set darkMode(isDark: boolean) {
+    this._darkMode = isDark;
+    this.themeService.darkMode = this._darkMode;
+  }
+
+  private _glassMode = true;
+  public get glassMode(): boolean {
+    return this._glassMode;
+  }
+  public set glassMode(glassMode: boolean) {
+    this._glassMode = glassMode;
+    this.themeService.glassMode = this._glassMode;
   }
 
   public getThemePreview(theme: Theme) {
-    return `/assets/themes/${theme.id}-${this.darkTheme ? 'dark' : 'light'}-theme.svg`;
+    return `/assets/themes/${theme.id}-${this.darkMode ? 'dark' : 'light'}-theme.svg`;
   }
+
+  public getLanguagePreview(language: Language) {
+    return `/assets/i18n/${language.id}.svg`;
+  }
+
+  private renderer: Renderer2;
 
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private host: ElementRef<HTMLElement>,
+    private themeService: ThemeService,
+    private languageService: LanguageService,
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2,
-    private colorSchemeService: ColorSchemeService,
-    private styleManagerService: StyleManagerService,
+    private rendererFactory: RendererFactory2,
 
   ) {
-    // Load Color Scheme
-    this.colorSchemeService.load();
-    this._darkTheme = this.colorSchemeService.currentActive() === 'dark' ? true : false;
+    this.renderer = rendererFactory.createRenderer(null, null);
 
-    // Load theme
-    this.theme = this.themes[0];
+    this.themes = this.themeService.themes;
+
+    this._theme = this.themeService.theme;
+    this._darkMode = this.themeService.darkMode;
+    this._glassMode = this.themeService.glassMode;
+
+    this.languages = this.languageService.languages;
+
+    this._language = this.languageService.language;
 
     this.matIconRegistry.addSvgIcon(
       'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg')
     );
-
-    this.renderer.addClass(this.document.body, this.currentTheme);
   }
 
-  // ngAfterViewInit(): void {
-  //   // this.initHeader();
-  // }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.renderer.removeClass(this.document.body, 'cold-start');
+    }, 2000);
+  }
 
   private initHeader() {
     new FinisherHeader({

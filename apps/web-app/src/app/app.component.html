@@ -7,47 +7,6 @@
 <!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
 <!-- https://codepen.io/techyt/pen/qBOBEJL -->
 
-<mat-toolbar color="primary">
-
-  <button mat-icon-button (click)="navSidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <span class="spacer"></span>
-
-  <button mat-icon-button [matMenuTriggerFor]="menuThemes">
-    <mat-icon>format_color_fill</mat-icon>
-  </button>
-
-  <mat-menu #menuThemes="matMenu" class="theme-configuration">
-
-    <div mat-menu-item (click)="$event.stopPropagation();">
-      <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
-      <span>Dark Mode</span>
-    </div>
-
-    <mat-divider></mat-divider>
-
-    <button mat-menu-item *ngFor="let _theme of themes" class="theme-button"
-      (click)="theme = _theme; $event.stopPropagation();">
-      <mat-icon class="theme-selected">{{ _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
-        }}</mat-icon>
-      <span>{{_theme.name}}</span>
-      <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
-    </button>
-
-  </mat-menu>
-
-  <button mat-button class="linked">
-    <img src="/assets/linkedIn/linkedIn-logo.png" />
-  </button>
-
-  <button mat-button class="github">
-    <mat-icon svgIcon="github" inline="true"></mat-icon>
-    <img src="/assets/github/github_logo.png" />
-  </button>
-
-</mat-toolbar>
 
 <!-- <div class="help-button">
   <button mat-fab extended color="primary" (click)="helpSidenav.toggle()">
@@ -149,18 +108,86 @@
   </mat-sidenav>
 
   <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
+
     <router-outlet name="help"></router-outlet>
+
   </mat-sidenav>
 
   <mat-sidenav-content>
 
-    <!-- <div class="finisher-header"></div> -->
+    <mat-toolbar color="primary">
+
+      <button mat-icon-button (click)="navSidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menuLanguages">
+        <mat-icon>
+          <img [src]="getLanguagePreview(language)" />
+        </mat-icon>
+      </button>
+
+      <mat-menu #menuLanguages="matMenu" class="language-configuration">
+
+        <button mat-menu-item *ngFor="let _language of languages" class="language-button"
+          (click)="language = _language; $event.stopPropagation();">
+          <mat-icon class="language-selected">{{ _language === language ? 'radio_button_checked' :
+            'radio_button_unchecked'
+            }}</mat-icon>
+          <span>{{_language.name}}</span>
+          <mat-icon class="language-preview"><img [src]="getLanguagePreview(_language)" /></mat-icon>
+        </button>
+
+      </mat-menu>
+
+      <button mat-icon-button [matMenuTriggerFor]="menuThemes">
+        <mat-icon>format_color_fill</mat-icon>
+      </button>
+
+      <mat-menu #menuThemes="matMenu" class="theme-configuration">
+
+        <div mat-menu-item (click)="$event.stopPropagation();">
+          <mat-slide-toggle [(ngModel)]="darkMode"></mat-slide-toggle>
+          <span>Dark Mode</span>
+        </div>
+
+        <div mat-menu-item (click)="$event.stopPropagation();">
+          <mat-slide-toggle [(ngModel)]="glassMode"></mat-slide-toggle>
+          <span>Glass</span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item *ngFor="let _theme of themes" class="theme-button"
+          (click)="theme = _theme; $event.stopPropagation();">
+          <mat-icon class="theme-selected">{{ _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
+            }}</mat-icon>
+          <span>{{_theme.name}}</span>
+          <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
+        </button>
+
+      </mat-menu>
+
+      <button mat-button class="linked">
+        <img src="/assets/linkedIn/linkedIn-logo.png" />
+      </button>
+
+      <button mat-button class="github">
+        <mat-icon svgIcon="github" inline="true"></mat-icon>
+        <img src="/assets/github/github_logo.png" />
+      </button>
+
+    </mat-toolbar>
 
     <div class="content">
 
       <router-outlet></router-outlet>
 
     </div>
+
+    <!-- <div class="finisher-header"></div> -->
 
   </mat-sidenav-content>
 
