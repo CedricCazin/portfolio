@@ -16,6 +16,9 @@ declare class FinisherHeader {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
+
+  private renderer: Renderer2;
+
   title = 'web-app';
 
   cursorLeft = '';
@@ -71,8 +74,6 @@ export class AppComponent implements AfterViewInit {
   public getLanguagePreview(language: Language) {
     return `/assets/i18n/${language.id}.svg`;
   }
-
-  private renderer: Renderer2;
 
   constructor(
     private matIconRegistry: MatIconRegistry,
