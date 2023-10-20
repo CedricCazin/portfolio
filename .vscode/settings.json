@@ -1,5 +1,10 @@
 {
-  "cSpell.words": ["Kazaam"],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "js/ts.implicitProjectConfig.experimentalDecorators": true
+    "cSpell.words": ["Kazaam"],
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
+    "angular.enable-strict-mode-prompt": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": ".prettierrc",
+    "prettier.prettierPath": "./node_modules/prettier"
 }

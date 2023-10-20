@@ -9,27 +9,24 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AboutHelpComponent } from './about-help/about-help.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AboutHelpComponent,
-  },
+    {
+        path: '',
+        component: AboutHelpComponent,
+    },
 ];
 
 @NgModule({
-  declarations: [
-    AboutHelpComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [AboutHelpComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTabsModule,
-  ],
-  providers: [
-  ],
+        CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTabsModule,
+    ],
+    providers: [],
 })
-export class AboutHelpModule { }
+export class AboutHelpModule {}

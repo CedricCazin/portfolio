@@ -1,13 +1,13 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
-  justify-content: center;
+    justify-content: center;
 }
 
 section.resume-timeline-page {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }

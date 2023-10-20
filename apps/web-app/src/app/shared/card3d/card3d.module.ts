@@ -7,15 +7,9 @@ import { Card3dComponent } from './card3d.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [Card3dComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatCardModule,
-    MatButtonModule,
-    KazaamFloatingContentModule,
-  ],
-  providers: [],
-  exports: [Card3dComponent],
+    declarations: [Card3dComponent],
+    imports: [CommonModule, MatIconModule, MatCardModule, MatButtonModule, KazaamFloatingContentModule],
+    providers: [],
+    exports: [Card3dComponent],
 })
-export class Card3dModule { }
+export class Card3dModule {}

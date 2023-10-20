@@ -5,22 +5,22 @@ import { map, tap } from 'rxjs';
 import { Chart, ChartData } from 'chart.js';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class AboutService {
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
-  public get about() {
-    const converter = new Showdown.Converter();
+    public get about() {
+        const converter = new Showdown.Converter();
 
-    return this.http.get('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/about/about.md', { responseType: 'text' })
-      .pipe(
-        map((resumeItemDescription) => converter.makeHtml(resumeItemDescription)),
-      );
-  }
+        return this.http
+            .get('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/about/about.md', { responseType: 'text' })
+            .pipe(map((resumeItemDescription) => converter.makeHtml(resumeItemDescription)));
+    }
 
-  public get radar() {
-    return this.http.get('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/about/radar.json', { responseType: 'json' })
-  }
-
+    public get radar() {
+        return this.http.get('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/about/radar.json', {
+            responseType: 'json',
+        });
+    }
 }

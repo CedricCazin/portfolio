@@ -13,45 +13,39 @@ import { ExperiencesService } from './experiences.service';
 import { SkillsService } from '../skills/skills.service';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ExperiencesHelpComponent,
-    children: [
-      {
-        path: 'material',
-        component: ExperiencesMaterialHelpComponent,
-      },
-      {
-        path: 'timeline',
-        component: ExperiencesTimelineHelpComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'timeline',
-        pathMatch: 'full',
-      },
-    ],
-  },
+    {
+        path: '',
+        component: ExperiencesHelpComponent,
+        children: [
+            {
+                path: 'material',
+                component: ExperiencesMaterialHelpComponent,
+            },
+            {
+                path: 'timeline',
+                component: ExperiencesTimelineHelpComponent,
+            },
+            {
+                path: '**',
+                redirectTo: 'timeline',
+                pathMatch: 'full',
+            },
+        ],
+    },
 ];
 
 @NgModule({
-  declarations: [
-    ExperiencesHelpComponent,
-    ExperiencesMaterialHelpComponent,
-    ExperiencesTimelineHelpComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [ExperiencesHelpComponent, ExperiencesMaterialHelpComponent, ExperiencesTimelineHelpComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTabsModule,
-  ],
-  providers: [
-    ExperiencesService,
-  ],
+        CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTabsModule,
+    ],
+    providers: [ExperiencesService],
 })
-export class ExperiencesHelpModule { }
+export class ExperiencesHelpModule {}

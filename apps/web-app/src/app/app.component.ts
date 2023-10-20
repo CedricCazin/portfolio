@@ -1,5 +1,14 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, Inject, Renderer2, RendererFactory2, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    HostListener,
+    Inject,
+    Renderer2,
+    RendererFactory2,
+    ViewChild,
+} from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Language, LanguageService } from './language.service';
@@ -7,152 +16,150 @@ import { ThemeService } from './theme.service';
 import { Theme } from './theme.service';
 
 declare class FinisherHeader {
-  constructor(i: any);
+    constructor(i: any);
 }
 
 @Component({
-  selector: 'portfolio-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'portfolio-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
+    private renderer: Renderer2;
 
-  private renderer: Renderer2;
+    title = 'web-app';
 
-  title = 'web-app';
+    cursorLeft = '';
+    cursorTop = '';
+    cursorOpacity = '';
 
-  cursorLeft = '';
-  cursorTop = '';
-  cursorOpacity = '';
+    public showHelp = true;
 
-  public showHelp = true;
+    public languages: Language[] = this.languageService.languages;
 
-  public languages: Language[] = this.languageService.languages;
+    private _language: Language = this.languages[0];
+    public get language(): Language {
+        return this._language;
+    }
+    public set language(language: Language) {
+        this._language = language;
+        this.languageService.language = language;
+    }
 
-  private _language: Language = this.languages[0];
-  public get language(): Language {
-    return this._language;
-  }
-  public set language(language: Language) {
-    this._language = language;
-    this.languageService.language = language;
-  }
+    public themes: Theme[] = this.themeService.themes;
 
-  public themes: Theme[] = this.themeService.themes;
+    private _theme: Theme = this.themes[0];
+    public get theme(): Theme {
+        return this._theme;
+    }
+    public set theme(theme: Theme) {
+        this._theme = theme;
+        this.themeService.theme = theme;
+    }
 
-  private _theme: Theme = this.themes[0];
-  public get theme(): Theme {
-    return this._theme;
-  }
-  public set theme(theme: Theme) {
-    this._theme = theme;
-    this.themeService.theme = theme;
-  }
+    private _darkMode = true;
+    public get darkMode(): boolean {
+        return this._darkMode;
+    }
+    public set darkMode(isDark: boolean) {
+        this._darkMode = isDark;
+        this.themeService.darkMode = this._darkMode;
+    }
 
-  private _darkMode = true;
-  public get darkMode(): boolean {
-    return this._darkMode;
-  }
-  public set darkMode(isDark: boolean) {
-    this._darkMode = isDark;
-    this.themeService.darkMode = this._darkMode;
-  }
+    private _glassMode = true;
+    public get glassMode(): boolean {
+        return this._glassMode;
+    }
+    public set glassMode(glassMode: boolean) {
+        this._glassMode = glassMode;
+        this.themeService.glassMode = this._glassMode;
+    }
 
-  private _glassMode = true;
-  public get glassMode(): boolean {
-    return this._glassMode;
-  }
-  public set glassMode(glassMode: boolean) {
-    this._glassMode = glassMode;
-    this.themeService.glassMode = this._glassMode;
-  }
+    public getThemePreview(theme: Theme) {
+        return `/assets/themes/${theme.id}-${this.darkMode ? 'dark' : 'light'}-theme.svg`;
+    }
 
-  public getThemePreview(theme: Theme) {
-    return `/assets/themes/${theme.id}-${this.darkMode ? 'dark' : 'light'}-theme.svg`;
-  }
+    public getLanguagePreview(language: Language) {
+        return `/assets/i18n/${language.id}.svg`;
+    }
 
-  public getLanguagePreview(language: Language) {
-    return `/assets/i18n/${language.id}.svg`;
-  }
+    constructor(
+        private matIconRegistry: MatIconRegistry,
+        private domSanitizer: DomSanitizer,
+        private themeService: ThemeService,
+        private languageService: LanguageService,
+        @Inject(DOCUMENT) private document: Document,
+        private rendererFactory: RendererFactory2,
+    ) {
+        this.renderer = rendererFactory.createRenderer(null, null);
 
-  constructor(
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private themeService: ThemeService,
-    private languageService: LanguageService,
-    @Inject(DOCUMENT) private document: Document,
-    private rendererFactory: RendererFactory2,
+        this.themes = this.themeService.themes;
 
-  ) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+        this._theme = this.themeService.theme;
+        this._darkMode = this.themeService.darkMode;
+        this._glassMode = this.themeService.glassMode;
 
-    this.themes = this.themeService.themes;
+        this.languages = this.languageService.languages;
 
-    this._theme = this.themeService.theme;
-    this._darkMode = this.themeService.darkMode;
-    this._glassMode = this.themeService.glassMode;
+        this._language = this.languageService.language;
 
-    this.languages = this.languageService.languages;
+        this.matIconRegistry.addSvgIcon(
+            'github',
+            this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg'),
+        );
+    }
 
-    this._language = this.languageService.language;
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.renderer.removeClass(this.document.body, 'cold-start');
+        }, 2000);
+    }
 
-    this.matIconRegistry.addSvgIcon(
-      'github',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg')
-    );
-  }
+    private initHeader() {
+        new FinisherHeader({
+            count: 6,
+            size: {
+                min: 1100,
+                max: 1300,
+                pulse: 0,
+            },
+            speed: {
+                x: {
+                    min: 0.1,
+                    max: 0.3,
+                },
+                y: {
+                    min: 0.1,
+                    max: 0.3,
+                },
+            },
+            colors: {
+                background: '#9138e5',
+                particles: ['#6bd6ff', '#ffcb57', '#ff333d'],
+            },
+            blending: 'overlay',
+            opacity: {
+                center: 1,
+                edge: 0.1,
+            },
+            skew: -2,
+            shapes: ['c'],
+        });
+    }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.renderer.removeClass(this.document.body, 'cold-start');
-    }, 2000);
-  }
+    onClick() {
+        console.log('click');
+    }
 
-  private initHeader() {
-    new FinisherHeader({
-      count: 6,
-      size: {
-        min: 1100,
-        max: 1300,
-        pulse: 0,
-      },
-      speed: {
-        x: {
-          min: 0.1,
-          max: 0.3,
-        },
-        y: {
-          min: 0.1,
-          max: 0.3,
-        },
-      },
-      colors: {
-        background: '#9138e5',
-        particles: ['#6bd6ff', '#ffcb57', '#ff333d'],
-      },
-      blending: 'overlay',
-      opacity: {
-        center: 1,
-        edge: 0.1,
-      },
-      skew: -2,
-      shapes: ['c'],
-    });
-  }
+    // --
 
-  onClick() {
-    console.log('click');
-  }
+    @HostListener('mousemove', ['$event'])
+    onMousemove(event: any) {
+        const x = event.pageX;
+        const y = event.pageY;
 
-  // --
-
-  @HostListener('mousemove', ['$event'])
-  onMousemove(event: any) {
-    const x = event.pageX;
-    const y = event.pageY;
-
-    this.cursorLeft = (x - 175) + "px";
-    this.cursorTop = (y - 175) + "px";
-    this.cursorOpacity = '1';
-  }
+        this.cursorLeft = x - 175 + 'px';
+        this.cursorTop = y - 175 + 'px';
+        this.cursorOpacity = '1';
+    }
 }

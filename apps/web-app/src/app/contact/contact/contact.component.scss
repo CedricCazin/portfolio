@@ -1,25 +1,25 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: center;
-  min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    min-height: 100%;
 }
 
 section.contact-page {
-  display: flex;
-  flex-direction: column;
-
-  header {
-    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
-    h1 {
-      font-size: 3em;
-      margin-block-start: 0.75em;
-      margin-block-end: 0.75em;
+    header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            font-size: 3em;
+            margin-block-start: 0.75em;
+            margin-block-end: 0.75em;
+        }
     }
-  }
 }

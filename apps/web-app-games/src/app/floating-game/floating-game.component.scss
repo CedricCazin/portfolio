@@ -1,99 +1,91 @@
 .floating-game {
-  position: relative;
+    position: relative;
 
-  width: 200px;
-  height: 300px;
-
-  box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent,
-    0 0 5px 0px transparent, 0px 10px 20px -5px black, 0 2px 15px -5px black,
-    0 0 20px 0px transparent;
-
-  perspective: 600px;
-  transform-origin: center;
-  -webkit-transform-origin: center;
-  transition: transform 0.25s;
-
-  --animation-hover-out: unset;
-
-  animation-name: var(--animation-hover-out);
-  animation-duration: 500ms;
-  animation-fill-mode: both;
-  z-index: 10;
-
-  &:hover {
-    animation-name: floating-game-hover-in;
-    animation-duration: 500ms;
-    animation-fill-mode: both;
-    z-index: 256;
-  }
-
-  @keyframes floating-game-hover-in {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(1.3);
-    }
-  }
-
-  @keyframes floating-game-hover-out {
-    0% {
-      transform: scale(1.3);
-    }
-    50% {
-      transform: scale(0.8);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  .ribbon {
-    $default-right: 10px;
-    $default-top: -3px;
-    $default-color: #2ca7d8;
-    $default-width: 32px;
-    $default-height: 36px;
-
-    position: absolute;
-    right: var(--right, $default-right);
-    top: var(--top, $default-top);
-
-    filter: drop-shadow(2px 3px 2px rgba(black, 0.5));
-
-    &.down > .content {
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - 8px),
-        50% 100%,
-        0 calc(100% - 8px)
-      );
-    }
-
-    > .content {
-      color: white;
-      font-size: 1.25rem;
-      text-align: center;
-      font-weight: 400;
-      background: var(--color, $default-color)
-        linear-gradient(45deg, rgba(black, 0) 0%, rgba(white, 0.25) 100%);
-      padding: 8px 2px 4px;
-
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
-
-      width: var(--width, $default-width);
-      min-height: var(--height, $default-height);
-
-      transition: clip-path 1s, padding 1s, background 1s;
-    }
-  }
-
-  img {
     width: 200px;
     height: 300px;
-  }
+
+    box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent, 0 0 5px 0px transparent, 0px 10px 20px -5px black,
+        0 2px 15px -5px black, 0 0 20px 0px transparent;
+
+    perspective: 600px;
+    transform-origin: center;
+    -webkit-transform-origin: center;
+    transition: transform 0.25s;
+
+    --animation-hover-out: unset;
+
+    animation-name: var(--animation-hover-out);
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    z-index: 10;
+
+    &:hover {
+        animation-name: floating-game-hover-in;
+        animation-duration: 500ms;
+        animation-fill-mode: both;
+        z-index: 256;
+    }
+
+    @keyframes floating-game-hover-in {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1.3);
+        }
+    }
+
+    @keyframes floating-game-hover-out {
+        0% {
+            transform: scale(1.3);
+        }
+        50% {
+            transform: scale(0.8);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .ribbon {
+        $default-right: 10px;
+        $default-top: -3px;
+        $default-color: #2ca7d8;
+        $default-width: 32px;
+        $default-height: 36px;
+
+        position: absolute;
+        right: var(--right, $default-right);
+        top: var(--top, $default-top);
+
+        filter: drop-shadow(2px 3px 2px rgba(black, 0.5));
+
+        &.down > .content {
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 50% 100%, 0 calc(100% - 8px));
+        }
+
+        > .content {
+            color: white;
+            font-size: 1.25rem;
+            text-align: center;
+            font-weight: 400;
+            background: var(--color, $default-color) linear-gradient(45deg, rgba(black, 0) 0%, rgba(white, 0.25) 100%);
+            padding: 8px 2px 4px;
+
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
+
+            width: var(--width, $default-width);
+            min-height: var(--height, $default-height);
+
+            transition: clip-path 1s, padding 1s, background 1s;
+        }
+    }
+
+    img {
+        width: 200px;
+        height: 300px;
+    }
 }

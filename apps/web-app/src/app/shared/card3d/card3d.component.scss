@@ -1,20 +1,19 @@
 kazaam-floating-content {
-  border-radius: 20px;
-
-  .mat-mdc-card {
-    max-width: 300px;
-
     border-radius: 20px;
-    border: 15px solid rgb(214, 213, 213);
 
-    transition: box-shadow 0.4s ease, opacity 0.33s ease-out;
-    box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent,
-      0 0 5px 0px transparent, 0px 10px 20px -5px black, 0 2px 15px -5px black,
-      0 0 20px 0px transparent;
-  }
+    .mat-mdc-card {
+        max-width: 300px;
 
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+        border-radius: 20px;
+        border: 15px solid rgb(214, 213, 213);
+
+        transition: box-shadow 0.4s ease, opacity 0.33s ease-out;
+        box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent, 0 0 5px 0px transparent, 0px 10px 20px -5px black,
+            0 2px 15px -5px black, 0 0 20px 0px transparent;
+    }
+
+    .example-header-image {
+        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-size: cover;
+    }
 }

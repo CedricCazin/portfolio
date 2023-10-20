@@ -5,28 +5,28 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, forkJoin, map, mergeMap, of, switchMap, tap, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ResumeService {
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
-  public get resume() {
-    const converter = new Showdown.Converter();
+    public get resume() {
+        const converter = new Showdown.Converter();
 
-    return this.http.get<ResumeItem[]>('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/resume/resume.json').pipe(
-      switchMap(resumeItems => {
-
-        const convertAllDescriptions = resumeItems.map((resumeItem) => {
-          return this.http.get(resumeItem.descriptionUrl, { responseType: 'text' })
+        return this.http
+            .get<ResumeItem[]>('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/resume/resume.json')
             .pipe(
-              tap((resumeItemDescription) => {
-                resumeItem._descriptionHtml = converter.makeHtml(resumeItemDescription);
-              }),
-            )
-        });
+                switchMap((resumeItems) => {
+                    const convertAllDescriptions = resumeItems.map((resumeItem) => {
+                        return this.http.get(resumeItem.descriptionUrl, { responseType: 'text' }).pipe(
+                            tap((resumeItemDescription) => {
+                                resumeItem._descriptionHtml = converter.makeHtml(resumeItemDescription);
+                            }),
+                        );
+                    });
 
-        return forkJoin(convertAllDescriptions).pipe(map(() => resumeItems));
-      }),
-    );
-  }
+                    return forkJoin(convertAllDescriptions).pipe(map(() => resumeItems));
+                }),
+            );
+    }
 }

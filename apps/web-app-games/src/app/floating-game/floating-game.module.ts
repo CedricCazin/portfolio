@@ -7,15 +7,9 @@ import { FloatingGameComponent } from './floating-game.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [FloatingGameComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatCardModule,
-    MatButtonModule,
-    KazaamFloatingContentModule,
-  ],
-  providers: [],
-  exports: [FloatingGameComponent],
+    declarations: [FloatingGameComponent],
+    imports: [CommonModule, MatIconModule, MatCardModule, MatButtonModule, KazaamFloatingContentModule],
+    providers: [],
+    exports: [FloatingGameComponent],
 })
-export class FloatingContentPathModule { }
+export class FloatingContentPathModule {}

@@ -1,8 +1,50 @@
 {
-  "recommendations": [
-    "nrwl.angular-console",
-    "esbenp.prettier-vscode",
-    "firsttris.vscode-jest-runner",
-    "dbaeumer.vscode-eslint"
-  ]
+    "recommendations": [
+        //--env
+        "amazonwebservices.aws-toolkit-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ahmadalli.vscode-nginx-conf",
+
+        //--github
+        "GitHub.codespaces",
+        "GitHub.vscode-pull-request-github",
+        "GitHub.github-vscode-theme",
+        "GitHub.remotehub",
+        "GitHub.vscode-github-actions",
+
+        //--Markdown
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "dbankier.vscode-instant-markdown",
+
+        //--CSV
+        "phplasma.csv-to-table",
+        "mechatroner.rainbow-csv",
+
+        //--Python
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "njqdev.vscode-python-typehint",
+
+        //--HTML / CSS / JS
+        "SeyyedKhandon.zpack",
+
+        //--Angular
+        "johnpapa.angular-essentials",
+        "mikael.angular-beastcode",
+
+        //--Nx
+        "nrwl.angular-console",
+
+        //--Various
+        // "VisualStudioExptTeam.vscodeintellicode",
+        "streetsidesoftware.code-spell-checker",
+        "hediet.vscode-drawio",
+
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner"
+    ]
 }

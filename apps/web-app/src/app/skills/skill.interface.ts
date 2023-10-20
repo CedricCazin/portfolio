@@ -1,16 +1,16 @@
-import { MatTableDataSource } from "@angular/material/table";
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface Skill {
-  name: string;
-  image: string;
-  progress: number;
-  url?: string;
-  description?: string;
-  borderColor?: string;
+    name: string;
+    image: string;
+    progress: number;
+    url?: string;
+    description?: string;
+    borderColor?: string;
 }
 
 export interface SkillType {
-  name: string;
-  description: string;
-  skills: Skill[],
+    name: string;
+    description: string;
+    skills: Skill[];
 }

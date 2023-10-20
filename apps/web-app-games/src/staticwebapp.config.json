@@ -1,11 +1,11 @@
 {
-  "trailingSlash": "auto",
-  "globalHeaders": {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "*",
-    "Access-Control-Allow-Headers": "*"
-  },
-  "mimeTypes": {
-    ".mjs": "text/javascript"
-  }
+    "trailingSlash": "auto",
+    "globalHeaders": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*"
+    },
+    "mimeTypes": {
+        ".mjs": "text/javascript"
+    }
 }

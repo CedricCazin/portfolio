@@ -16,50 +16,46 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ResumeComponent,
-    children: [
-      {
-        path: 'material',
-        component: ResumeMaterialComponent,
-      },
-      {
-        path: 'timeline',
-        component: ResumeTimelineComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'material',
-        pathMatch: 'full',
-      },
-    ],
-  },
+    {
+        path: '',
+        component: ResumeComponent,
+        children: [
+            {
+                path: 'material',
+                component: ResumeMaterialComponent,
+            },
+            {
+                path: 'timeline',
+                component: ResumeTimelineComponent,
+            },
+            {
+                path: '**',
+                redirectTo: 'material',
+                pathMatch: 'full',
+            },
+        ],
+    },
 ];
 
 @NgModule({
-  declarations: [
-    ResumeComponent,
-    ResumeTimelineComponent,
-    ResumeMaterialComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [ResumeComponent, ResumeTimelineComponent, ResumeMaterialComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
+        CommonModule,
 
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatExpansionModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatExpansionModule,
 
-    FloatingSkillModule,
-  ],
-  providers: [],
+        FloatingSkillModule,
+    ],
+    providers: [],
 })
-export class ResumeModule { }
+export class ResumeModule {}

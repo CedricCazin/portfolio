@@ -16,37 +16,33 @@ import { AboutService } from './about.service';
 import { NgChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AboutComponent,
-  },
+    {
+        path: '',
+        component: AboutComponent,
+    },
 ];
 
 @NgModule({
-  declarations: [
-    AboutComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [AboutComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
+        CommonModule,
 
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatExpansionModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatExpansionModule,
 
-    NgChartsModule,
+        NgChartsModule,
 
-    FloatingSkillModule,
-  ],
-  providers: [
-    AboutService,
-  ],
+        FloatingSkillModule,
+    ],
+    providers: [AboutService],
 })
-export class AboutModule { }
+export class AboutModule {}

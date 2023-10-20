@@ -9,14 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { KazaamModule } from '@ceca/kazaam';
 
 @NgModule({
-  declarations: [GamesComponent, SafeUrlPipe,],
-  imports: [
-    KazaamModule,
-    FloatingContentPathModule,
-    HttpClientModule,
-    CommonModule,
-    RouterModule.forChild(remoteRoutes),
-  ],
-  providers: [],
+    declarations: [GamesComponent, SafeUrlPipe],
+    imports: [KazaamModule, FloatingContentPathModule, HttpClientModule, CommonModule, RouterModule.forChild(remoteRoutes)],
+    providers: [],
 })
-export class GamesModule { }
+export class GamesModule {}

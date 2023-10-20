@@ -1,83 +1,83 @@
 :host {
-  height: 100%;
+    height: 100%;
 
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 }
 
 .finisher-header {
-  z-index: -1;
-  position: absolute;
+    z-index: -1;
+    position: absolute;
 
-  overflow: hidden;
-  height: 300px;
-  width: 100vw;
+    overflow: hidden;
+    height: 300px;
+    width: 100vw;
 }
 
 mat-toolbar {
-  position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 
-  .spacer {
-    flex: 1 1 auto;
-  }
-
-  .github {
-    mat-icon {
-      height: 24px;
-      width: 24px;
+    .spacer {
+        flex: 1 1 auto;
     }
-    img {
-      height: 24px;
+
+    .github {
+        mat-icon {
+            height: 24px;
+            width: 24px;
+        }
+        img {
+            height: 24px;
+        }
     }
-  }
 
-  .linked {
-    img {
-      height: 24px;
+    .linked {
+        img {
+            height: 24px;
+        }
     }
-  }
 
-  ::ng-deep .theme-configuration {
-    width: 300px !important;
-  }
-
-  .mat-icon.theme-preview {
-    margin-right: 0;
-    margin-left: auto;
-    padding-left: 8px;
-    order: 1;
-
-    min-height: 32px;
-    min-width: 32px;
-
-    img {
-      min-height: 24px;
-      min-width: 24px;
+    ::ng-deep .theme-configuration {
+        width: 300px !important;
     }
-  }
 
-  ::ng-deep .language-configuration {
-    width: 300px !important;
-  }
+    .mat-icon.theme-preview {
+        margin-right: 0;
+        margin-left: auto;
+        padding-left: 8px;
+        order: 1;
 
-  .mat-icon.theme-preview {
-    margin-right: 0;
-    margin-left: auto;
-    padding-left: 8px;
-    order: 1;
+        min-height: 32px;
+        min-width: 32px;
 
-    min-height: 32px;
-    min-width: 32px;
-
-    img {
-      min-height: 24px;
-      min-width: 24px;
+        img {
+            min-height: 24px;
+            min-width: 24px;
+        }
     }
-  }
+
+    ::ng-deep .language-configuration {
+        width: 300px !important;
+    }
+
+    .mat-icon.theme-preview {
+        margin-right: 0;
+        margin-left: auto;
+        padding-left: 8px;
+        order: 1;
+
+        min-height: 32px;
+        min-width: 32px;
+
+        img {
+            min-height: 24px;
+            min-width: 24px;
+        }
+    }
 }
 
 // .help-button {
@@ -95,193 +95,175 @@ mat-toolbar {
 // }
 
 .background {
-  z-index: -3;
-
-  position: absolute;
-  overflow: hidden;
-
-  // display: flex;
-  // flex-direction: column;
-  // flex-grow: 1;
-
-  min-width: 100%;
-  width: 100%;
-  min-height: 100%;
-  height: 100%;
-
-  .cursor {
     z-index: -3;
 
-    top: var(--cursor-top);
-    left: var(--cursor-left);
-    opacity: var(--cursor-opacity);
-
-    width: 350px;
-    height: 350px;
-    border-radius: 100%;
     position: absolute;
-    box-shadow: 2px -3px 41px -1px rgba(241, 196, 15, 0.64);
-    background: linear-gradient(
-      45deg,
-      #e8f74d,
-      #ff6600d9,
-      #00ff66,
-      #13ff13,
-      #ad27ad,
-      #bd2681,
-      #6512b9,
-      #ff3300de,
-      #5aabde
-    );
-    background-size: 400%;
-    animation: glower 20s linear infinite;
-    filter: blur(40px);
+    overflow: hidden;
 
-    @keyframes glower {
-      0% {
-        background-position: 0 0;
-      }
-
-      50% {
-        background-position: 400% 0;
-      }
-
-      100% {
-        background-position: 0 0;
-      }
-    }
-  }
-
-  svg {
-    z-index: -2;
-    position: relative;
+    // display: flex;
+    // flex-direction: column;
+    // flex-grow: 1;
 
     min-width: 100%;
     width: 100%;
     min-height: 100%;
     height: 100%;
 
-    polygon {
-      stroke-width: 6;
-      stroke: transparent;
+    .cursor {
+        z-index: -3;
+
+        top: var(--cursor-top);
+        left: var(--cursor-left);
+        opacity: var(--cursor-opacity);
+
+        width: 350px;
+        height: 350px;
+        border-radius: 100%;
+        position: absolute;
+        box-shadow: 2px -3px 41px -1px rgba(241, 196, 15, 0.64);
+        background: linear-gradient(45deg, #e8f74d, #ff6600d9, #00ff66, #13ff13, #ad27ad, #bd2681, #6512b9, #ff3300de, #5aabde);
+        background-size: 400%;
+        animation: glower 20s linear infinite;
+        filter: blur(40px);
+
+        @keyframes glower {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
     }
-  }
+
+    svg {
+        z-index: -2;
+        position: relative;
+
+        min-width: 100%;
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+
+        polygon {
+            stroke-width: 6;
+            stroke: transparent;
+        }
+    }
 }
 
 .sidenav-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 
-  ::ng-deep .mat-sidenav.nav-sidenav {
-    min-width: 250px;
-    max-width: 250px;
-  }
+    ::ng-deep .mat-sidenav.nav-sidenav {
+        min-width: 250px;
+        max-width: 250px;
+    }
 
-  .nav-sidenav {
-    .identity {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      flex-grow: 1;
+    .nav-sidenav {
+        .identity {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            flex-grow: 1;
 
-      .avatar {
-        // margin-top: 16px;
-        width: 225px;
-        height: calc(225px * 1.1547);
+            .avatar {
+                // margin-top: 16px;
+                width: 225px;
+                height: calc(225px * 1.1547);
 
-        // https://bennettfeely.com/clippy/
-        // https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/
-        --clip-path: polygon(
-          25% 10%,
-          75% 10%,
-          100% 50%,
-          75% 90%,
-          25% 90%,
-          0% 50%
-        );
+                // https://bennettfeely.com/clippy/
+                // https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/
+                --clip-path: polygon(25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%, 0% 50%);
 
-        -webkit-clip-path: var(--clip-path);
-        clip-path: var(--clip-path);
+                -webkit-clip-path: var(--clip-path);
+                clip-path: var(--clip-path);
 
-        img {
-          width: 100%;
+                img {
+                    width: 100%;
+                }
+            }
+
+            .name {
+                margin-top: 8px;
+            }
+
+            .designation {
+                margin-top: 8px;
+            }
         }
-      }
 
-      .name {
-        margin-top: 8px;
-      }
-
-      .designation {
-        margin-top: 8px;
-      }
+        .mat-mdc-list-base {
+            --mdc-list-list-item-one-line-container-height: 48px;
+        }
     }
 
-    .mat-mdc-list-base {
-      --mdc-list-list-item-one-line-container-height: 48px;
-    }
-  }
-
-  ::ng-deep .mat-sidenav.help-sidenav {
-    min-width: 25%;
-    max-width: 25%;
-  }
-
-  .help-sidenav {
-    padding: 20px;
-  }
-
-  mat-sidenav-content {
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    .content {
-      margin: 0 auto;
-      max-width: 1200px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+    ::ng-deep .mat-sidenav.help-sidenav {
+        min-width: 25%;
+        max-width: 25%;
     }
 
-    // based on https://codepen.io/zkreations/pen/bZRgqd
-
-    $bg-mask: rgb(255 255 255 / 25%);
-    --scrollbar-size: 12px;
-    --scrollbar-thumb: linear-gradient(
-      45deg,
-      #{$bg-mask} 20%,
-      transparent 20%,
-      transparent 40%,
-      #{$bg-mask} 40%,
-      #{$bg-mask} 60%,
-      transparent 60%,
-      transparent 80%,
-      #{$bg-mask} 80%
-    );
-    --scrollbar-thumb-color: #f97316;
-    --scrollbar-track-radius: 20px;
-    --scrollbar-track-color: rgb(0 0 0 / 40%);
-
-    scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-      width: var(--scrollbar-size);
-      height: var(--scrollbar-size);
+    .help-sidenav {
+        padding: 20px;
     }
 
-    &::-webkit-scrollbar-track {
-      background-color: var(--scrollbar-track-color);
-      border-radius: var(--scrollbar-track-radius);
-    }
+    mat-sidenav-content {
+        overflow-y: auto;
+        overflow-x: hidden;
 
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-thumb-color);
-      background-image: var(--scrollbar-thumb);
-      border-radius: var(--scrollbar-thumb-radius);
-    }
+        .content {
+            margin: 0 auto;
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-    // based on https://codepen.io/zkreations/pen/bZRgqd
-  }
+        // based on https://codepen.io/zkreations/pen/bZRgqd
+
+        $bg-mask: rgb(255 255 255 / 25%);
+        --scrollbar-size: 12px;
+        --scrollbar-thumb: linear-gradient(
+            45deg,
+            #{$bg-mask} 20%,
+            transparent 20%,
+            transparent 40%,
+            #{$bg-mask} 40%,
+            #{$bg-mask} 60%,
+            transparent 60%,
+            transparent 80%,
+            #{$bg-mask} 80%
+        );
+        --scrollbar-thumb-color: #f97316;
+        --scrollbar-track-radius: 20px;
+        --scrollbar-track-color: rgb(0 0 0 / 40%);
+
+        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+            width: var(--scrollbar-size);
+            height: var(--scrollbar-size);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: var(--scrollbar-track-color);
+            border-radius: var(--scrollbar-track-radius);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-thumb-color);
+            background-image: var(--scrollbar-thumb);
+            border-radius: var(--scrollbar-thumb-radius);
+        }
+
+        // based on https://codepen.io/zkreations/pen/bZRgqd
+    }
 }

@@ -7,15 +7,9 @@ import { CommonModule } from '@angular/common';
 import { KazaamFloatingContentModule } from '@ceca/kazaam/floating-content';
 
 @NgModule({
-  declarations: [FloatingContentPathComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatCardModule,
-    MatButtonModule,
-    KazaamFloatingContentModule,
-  ],
-  providers: [],
-  exports: [FloatingContentPathComponent],
+    declarations: [FloatingContentPathComponent],
+    imports: [CommonModule, MatIconModule, MatCardModule, MatButtonModule, KazaamFloatingContentModule],
+    providers: [],
+    exports: [FloatingContentPathComponent],
 })
-export class KazaamFloatingContentPathModule { }
+export class KazaamFloatingContentPathModule {}

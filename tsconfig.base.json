@@ -1,28 +1,24 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@ceca/kazaam": ["libs/kazaam/src/index.ts"],
-      "@ceca/kazaam/floating-content": [
-        "libs/kazaam/floating-content/src/index.ts"
-      ],
-      "@ceca/kazaam/floating-content-path": [
-        "libs/kazaam/floating-content-path/src/index.ts"
-      ]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@ceca/kazaam": ["libs/kazaam/src/index.ts"],
+            "@ceca/kazaam/floating-content": ["libs/kazaam/floating-content/src/index.ts"],
+            "@ceca/kazaam/floating-content-path": ["libs/kazaam/floating-content-path/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }

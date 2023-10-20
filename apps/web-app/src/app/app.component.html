@@ -7,7 +7,6 @@
 <!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
 <!-- https://codepen.io/techyt/pen/qBOBEJL -->
 
-
 <!-- <div class="help-button">
   <button mat-fab extended color="primary" (click)="helpSidenav.toggle()">
     Help
@@ -15,180 +14,180 @@
 </div> -->
 
 <div #background class="background">
-  <svg>
-    <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
-    <defs>
-      <pattern #hexagons id="hexagons" width="25" height="43.4" patternUnits="userSpaceOnUse"
-        patternTransform="scale(2) translate(2) rotate(45)">
-        <polygon points="19.8,7 32.3,14.2 32.3,28.7 19.8,35.9 7.3,28.7 7.3,14.2" id="hex" />
-        <use xlink:href="#hex" x="25" />
-        <use xlink:href="#hex" x="-25" />
-        <use xlink:href="#hex" x="12.5" y="-21.7" />
-        <use xlink:href="#hex" x="-12.5" y="-21.7" />
-        <use xlink:href="#hex" x="12.5" y="21.7" />
-        <use xlink:href="#hex" x="-12.5" y="21.7" />
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#hexagons)" />
-  </svg>
+    <svg>
+        <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
+        <defs>
+            <pattern
+                #hexagons
+                id="hexagons"
+                width="25"
+                height="43.4"
+                patternUnits="userSpaceOnUse"
+                patternTransform="scale(2) translate(2) rotate(45)"
+            >
+                <polygon points="19.8,7 32.3,14.2 32.3,28.7 19.8,35.9 7.3,28.7 7.3,14.2" id="hex" />
+                <use xlink:href="#hex" x="25" />
+                <use xlink:href="#hex" x="-25" />
+                <use xlink:href="#hex" x="12.5" y="-21.7" />
+                <use xlink:href="#hex" x="-12.5" y="-21.7" />
+                <use xlink:href="#hex" x="12.5" y="21.7" />
+                <use xlink:href="#hex" x="-12.5" y="21.7" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hexagons)" />
+    </svg>
 
-  <div #cursor class="cursor" [style.--cursor-left]="this.cursorLeft" [style.--cursor-top]="this.cursorTop"
-    [style.--cursor-opacity]="this.cursorOpacity">
-    <!-- Based on https://codepen.io/nocni_sovac/pen/BaKLwxZ -->
-  </div>
-
+    <div
+        #cursor
+        class="cursor"
+        [style.--cursor-left]="this.cursorLeft"
+        [style.--cursor-top]="this.cursorTop"
+        [style.--cursor-opacity]="this.cursorOpacity"
+    >
+        <!-- Based on https://codepen.io/nocni_sovac/pen/BaKLwxZ -->
+    </div>
 </div>
 
 <mat-sidenav-container class="sidenav-container" autosize>
+    <mat-sidenav #navSidenav class="nav-sidenav" mode="side" position="start" opened>
+        <div class="identity">
+            <div class="avatar">
+                <img
+                    src="https://media.licdn.com/dms/image/C4E03AQErqk0E4nFA-Q/profile-displayphoto-shrink_200_200/0/1658070640158?e=1692230400&v=beta&t=_po1XS3xOIJfPjYICcvk6JrTeWmgzqUqEZMlxzHpYcc"
+                />
+            </div>
 
-  <mat-sidenav #navSidenav class="nav-sidenav" mode="side" position="start" opened>
+            <h2 class="name">Cédric Cazin</h2>
 
-    <div class="identity">
-
-      <div class="avatar">
-        <img
-          src="https://media.licdn.com/dms/image/C4E03AQErqk0E4nFA-Q/profile-displayphoto-shrink_200_200/0/1658070640158?e=1692230400&v=beta&t=_po1XS3xOIJfPjYICcvk6JrTeWmgzqUqEZMlxzHpYcc" />
-      </div>
-
-      <h2 class="name">Cédric Cazin</h2>
-
-      <h3 class="designation">Lead Software Engineer</h3>
-
-    </div>
-
-    <mat-nav-list role="navigation">
-
-      <div mat-subheader>Work</div>
-
-      <mat-divider></mat-divider>
-
-      <mat-list-item routerLink="about" routerLinkActive="list-item-active">
-        <mat-icon matListItemIcon>portrait</mat-icon>
-        <div matListItemTitle>About</div>
-      </mat-list-item>
-
-      <mat-list-item routerLink="experiences" routerLinkActive="list-item-active">
-        <mat-icon matListItemIcon>view_timeline</mat-icon>
-        <div matListItemTitle>Experiences</div>
-      </mat-list-item>
-
-      <mat-list-item routerLink="resume" routerLinkActive="list-item-active">
-        <mat-icon matListItemIcon>description</mat-icon>
-        <div matListItemTitle>Resume</div>
-      </mat-list-item>
-
-      <mat-list-item routerLink="skills" routerLinkActive="list-item-active">
-        <mat-icon matListItemIcon>bar_chart</mat-icon>
-        <div matListItemTitle>Skills</div>
-      </mat-list-item>
-
-      <mat-list-item routerLink="contact" routerLinkActive="list-item-active">
-        <mat-icon matListItemIcon>email</mat-icon>
-        <div matListItemTitle>Contact</div>
-      </mat-list-item>
-
-      <mat-divider></mat-divider>
-
-      <br />
-      <br />
-
-      <div mat-subheader>Perso</div>
-
-      <mat-divider></mat-divider>
-
-      <mat-list-item routerLink="web-app-games" routerLinkActive="list-item-active">
-        <mat-icon matListItemIcon>sports_esports</mat-icon>
-        <div matListItemTitle>Games</div>
-      </mat-list-item>
-
-      <mat-divider></mat-divider>
-
-    </mat-nav-list>
-
-  </mat-sidenav>
-
-  <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
-
-    <router-outlet name="help"></router-outlet>
-
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-
-    <mat-toolbar color="primary">
-
-      <button mat-icon-button (click)="navSidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <span class="spacer"></span>
-
-      <button mat-icon-button [matMenuTriggerFor]="menuLanguages">
-        <mat-icon>
-          <img [src]="getLanguagePreview(language)" />
-        </mat-icon>
-      </button>
-
-      <mat-menu #menuLanguages="matMenu" class="language-configuration">
-
-        <button mat-menu-item *ngFor="let _language of languages" class="language-button"
-          (click)="language = _language; $event.stopPropagation();">
-          <mat-icon class="language-selected">{{ _language === language ? 'radio_button_checked' :
-            'radio_button_unchecked'
-            }}</mat-icon>
-          <span>{{_language.name}}</span>
-          <mat-icon class="language-preview"><img [src]="getLanguagePreview(_language)" /></mat-icon>
-        </button>
-
-      </mat-menu>
-
-      <button mat-icon-button [matMenuTriggerFor]="menuThemes">
-        <mat-icon>format_color_fill</mat-icon>
-      </button>
-
-      <mat-menu #menuThemes="matMenu" class="theme-configuration">
-
-        <div mat-menu-item (click)="$event.stopPropagation();">
-          <mat-slide-toggle [(ngModel)]="darkMode"></mat-slide-toggle>
-          <span>Dark Mode</span>
+            <h3 class="designation">Lead Software Engineer</h3>
         </div>
 
-        <div mat-menu-item (click)="$event.stopPropagation();">
-          <mat-slide-toggle [(ngModel)]="glassMode"></mat-slide-toggle>
-          <span>Glass</span>
+        <mat-nav-list role="navigation">
+            <div mat-subheader>Work</div>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="about" routerLinkActive="list-item-active">
+                <mat-icon matListItemIcon>portrait</mat-icon>
+                <div matListItemTitle>About</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="experiences" routerLinkActive="list-item-active">
+                <mat-icon matListItemIcon>view_timeline</mat-icon>
+                <div matListItemTitle>Experiences</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="resume" routerLinkActive="list-item-active">
+                <mat-icon matListItemIcon>description</mat-icon>
+                <div matListItemTitle>Resume</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="skills" routerLinkActive="list-item-active">
+                <mat-icon matListItemIcon>bar_chart</mat-icon>
+                <div matListItemTitle>Skills</div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="contact" routerLinkActive="list-item-active">
+                <mat-icon matListItemIcon>email</mat-icon>
+                <div matListItemTitle>Contact</div>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <br />
+            <br />
+
+            <div mat-subheader>Perso</div>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="web-app-games" routerLinkActive="list-item-active">
+                <mat-icon matListItemIcon>sports_esports</mat-icon>
+                <div matListItemTitle>Games</div>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
+        <router-outlet name="help"></router-outlet>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="navSidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <span class="spacer"></span>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuLanguages">
+                <mat-icon>
+                    <img [src]="getLanguagePreview(language)" />
+                </mat-icon>
+            </button>
+
+            <mat-menu #menuLanguages="matMenu" class="language-configuration">
+                <button
+                    mat-menu-item
+                    *ngFor="let _language of languages"
+                    class="language-button"
+                    (click)="language = _language; $event.stopPropagation()"
+                >
+                    <mat-icon class="language-selected">{{
+                        _language === language ? 'radio_button_checked' : 'radio_button_unchecked'
+                    }}</mat-icon>
+                    <span>{{ _language.name }}</span>
+                    <mat-icon class="language-preview"><img [src]="getLanguagePreview(_language)" /></mat-icon>
+                </button>
+            </mat-menu>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuThemes">
+                <mat-icon>format_color_fill</mat-icon>
+            </button>
+
+            <mat-menu #menuThemes="matMenu" class="theme-configuration">
+                <div mat-menu-item (click)="$event.stopPropagation()">
+                    <mat-slide-toggle [(ngModel)]="darkMode"></mat-slide-toggle>
+                    <span>Dark Mode</span>
+                </div>
+
+                <div mat-menu-item (click)="$event.stopPropagation()">
+                    <mat-slide-toggle [(ngModel)]="glassMode"></mat-slide-toggle>
+                    <span>Glass</span>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <button
+                    mat-menu-item
+                    *ngFor="let _theme of themes"
+                    class="theme-button"
+                    (click)="theme = _theme; $event.stopPropagation()"
+                >
+                    <mat-icon class="theme-selected">{{
+                        _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
+                    }}</mat-icon>
+                    <span>{{ _theme.name }}</span>
+                    <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
+                </button>
+            </mat-menu>
+
+            <button mat-button class="linked">
+                <img src="/assets/linkedIn/linkedIn-logo.png" />
+            </button>
+
+            <button mat-button class="github">
+                <mat-icon svgIcon="github" inline="true"></mat-icon>
+                <img src="/assets/github/github_logo.png" />
+            </button>
+        </mat-toolbar>
+
+        <div class="content">
+            <router-outlet></router-outlet>
         </div>
 
-        <mat-divider></mat-divider>
-
-        <button mat-menu-item *ngFor="let _theme of themes" class="theme-button"
-          (click)="theme = _theme; $event.stopPropagation();">
-          <mat-icon class="theme-selected">{{ _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
-            }}</mat-icon>
-          <span>{{_theme.name}}</span>
-          <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
-        </button>
-
-      </mat-menu>
-
-      <button mat-button class="linked">
-        <img src="/assets/linkedIn/linkedIn-logo.png" />
-      </button>
-
-      <button mat-button class="github">
-        <mat-icon svgIcon="github" inline="true"></mat-icon>
-        <img src="/assets/github/github_logo.png" />
-      </button>
-
-    </mat-toolbar>
-
-    <div class="content">
-
-      <router-outlet></router-outlet>
-
-    </div>
-
-    <!-- <div class="finisher-header"></div> -->
-
-  </mat-sidenav-content>
-
+        <!-- <div class="finisher-header"></div> -->
+    </mat-sidenav-content>
 </mat-sidenav-container>

@@ -6,14 +6,14 @@ import { Skill, SkillType } from '../skill.interface';
 import { SkillsService } from '../skills.service';
 
 @Component({
-  selector: 'portfolio-skills-tables',
-  templateUrl: './skills-tables.component.html',
-  styleUrls: ['./skills-tables.component.scss'],
+    selector: 'portfolio-skills-tables',
+    templateUrl: './skills-tables.component.html',
+    styleUrls: ['./skills-tables.component.scss'],
 })
 export class SkillsTablesComponent {
-  public skillTypes!: SkillType[];
+    public skillTypes!: SkillType[];
 
-  constructor(private skillsService: SkillsService) {
-    this.skillsService.skillTypes.subscribe((skillTypes) => this.skillTypes = skillTypes);
-  }
+    constructor(private skillsService: SkillsService) {
+        this.skillsService.skillTypes.subscribe((skillTypes) => (this.skillTypes = skillTypes));
+    }
 }

@@ -12,45 +12,39 @@ import { SkillsHelpComponent } from './skills-help/skills-help.component';
 import { SkillsTablesHelpComponent } from './skills-tables-help/skills-tables-help.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SkillsHelpComponent,
-    children: [
-      {
-        path: 'medals',
-        component: SkillsMedalsHelpComponent,
-      },
-      {
-        path: 'table',
-        component: SkillsTablesHelpComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'medals',
-        pathMatch: 'full',
-      }
-    ]
-  }
+    {
+        path: '',
+        component: SkillsHelpComponent,
+        children: [
+            {
+                path: 'medals',
+                component: SkillsMedalsHelpComponent,
+            },
+            {
+                path: 'table',
+                component: SkillsTablesHelpComponent,
+            },
+            {
+                path: '**',
+                redirectTo: 'medals',
+                pathMatch: 'full',
+            },
+        ],
+    },
 ];
 
 @NgModule({
-  declarations: [
-    SkillsHelpComponent,
-    SkillsMedalsHelpComponent,
-    SkillsTablesHelpComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [SkillsHelpComponent, SkillsMedalsHelpComponent, SkillsTablesHelpComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTabsModule,
-  ],
-  providers: [
-    SkillsService,
-  ],
+        CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTabsModule,
+    ],
+    providers: [SkillsService],
 })
-export class SkillsHelpModule { }
+export class SkillsHelpModule {}

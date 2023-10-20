@@ -10,7 +10,6 @@ import { AboutService } from '../about.service';
     styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
-
     public about: string | undefined = undefined;
 
     public radarChartOptions: ChartConfiguration<'radar'>['options'] = {
@@ -24,7 +23,6 @@ export class AboutComponent {
 
     constructor(private router: Router, private aboutService: AboutService) {
         this.aboutService.radar.subscribe((radarData) => {
-
             const rr = radarData as ChartData<'radar'>;
             this.radarChartLabels = rr.labels;
             this.radarChartDatasets = rr.datasets;

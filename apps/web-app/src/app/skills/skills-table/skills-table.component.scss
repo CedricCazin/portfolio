@@ -1,81 +1,81 @@
 :host {
-  --mdc-linear-progress-track-height: 10px;
+    --mdc-linear-progress-track-height: 10px;
 }
 
 table {
-  width: 100%;
+    width: 100%;
 
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 
-  // .skill-details {
-  //   overflow: hidden;
-  //   border-style: none;
-  //   max-height: auto;
+    // .skill-details {
+    //   overflow: hidden;
+    //   border-style: none;
+    //   max-height: auto;
 
-  //   &.collapsed {
-  //     max-height: 0;
-  //     transition: max-height 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-  //   }
+    //   &.collapsed {
+    //     max-height: 0;
+    //     transition: max-height 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    //   }
 
-  //   &.expanded {
-  //     max-height: 1000px;
-  //     transition: max-height 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
-  //   }
-  // }
+    //   &.expanded {
+    //     max-height: 1000px;
+    //     transition: max-height 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    //   }
+    // }
 }
 
 .skill-details-row {
-  height: 0;
+    height: 0;
 }
 
 .mat-column-image {
-  width: 40px !important;
+    width: 40px !important;
 }
 
 .mat-column-name {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 0 0 25% !important;
-  width: 25% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 25% !important;
+    width: 25% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 
-  word-break: break-word;
+    word-break: break-word;
 
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 .mat-column-progress {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 0 0 75% !important;
-  width: 75% !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 75% !important;
+    width: 75% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 
-  word-break: break-word;
+    word-break: break-word;
 
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 .skill-row td {
-  border-bottom-width: 0;
+    border-bottom-width: 0;
 }
 
 .skill-details {
-  overflow: hidden;
-  display: flex;
-
-  .skill-details-content {
-    margin-left: 100px;
+    overflow: hidden;
     display: flex;
-    flex: 1;
-    flex-direction: column;
-  }
+
+    .skill-details-content {
+        margin-left: 100px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
 }

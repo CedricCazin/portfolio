@@ -1,88 +1,88 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
-  justify-content: center;
+    justify-content: center;
 }
 
 section.skills-medals-page {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 
-  mat-card {
-    mat-card-content {
-      section.skills {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    mat-card {
+        mat-card-content {
+            section.skills {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
 
-        article.skill {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+                article.skill {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
-          // top: -25px;
-          flex-grow: 1;
-          min-width: 15%;
+                    // top: -25px;
+                    flex-grow: 1;
+                    min-width: 15%;
 
-          &:nth-child(11n - 4),
-          &:nth-child(11n - 3),
-          &:nth-child(11n - 2),
-          &:nth-child(11n - 1),
-          &:nth-child(11n) {
-            min-width: 20%;
-            margin-top: -25px;
-          }
+                    &:nth-child(11n - 4),
+                    &:nth-child(11n - 3),
+                    &:nth-child(11n - 2),
+                    &:nth-child(11n - 1),
+                    &:nth-child(11n) {
+                        min-width: 20%;
+                        margin-top: -25px;
+                    }
 
-          &:nth-child(11n - 4):not(:last-child),
-          &:nth-child(11n - 3):not(:last-child),
-          &:nth-child(11n - 2):not(:last-child),
-          &:nth-child(11n - 1):not(:last-child),
-          &:nth-child(11n):not(:last-child) {
-            margin-bottom: -25px;
-          }
+                    &:nth-child(11n - 4):not(:last-child),
+                    &:nth-child(11n - 3):not(:last-child),
+                    &:nth-child(11n - 2):not(:last-child),
+                    &:nth-child(11n - 1):not(:last-child),
+                    &:nth-child(11n):not(:last-child) {
+                        margin-bottom: -25px;
+                    }
 
-          // &:nth-child(11n - 4) {
-          //   floating-skill {
-          //     margin-left: 65%;
-          //   }
-          // }
+                    // &:nth-child(11n - 4) {
+                    //   floating-skill {
+                    //     margin-left: 65%;
+                    //   }
+                    // }
 
-          // &:nth-child(11n - 3) {
-          //   floating-skill {
-          //     margin-left: 33%;
-          //   }
-          // }
+                    // &:nth-child(11n - 3) {
+                    //   floating-skill {
+                    //     margin-left: 33%;
+                    //   }
+                    // }
 
-          // &:nth-child(11n -1) {
-          //   floating-skill {
-          //     margin-right: 33%;
-          //   }
-          // }
+                    // &:nth-child(11n -1) {
+                    //   floating-skill {
+                    //     margin-right: 33%;
+                    //   }
+                    // }
 
-          // &:nth-child(11n) {
-          //   floating-skill {
-          //     margin-right: 65%;
-          //   }
-          // }
+                    // &:nth-child(11n) {
+                    //   floating-skill {
+                    //     margin-right: 65%;
+                    //   }
+                    // }
 
-          // &:nth-child(11n - 4):last-child,
-          // &:nth-child(11n - 3):last-child {
-          //   floating-skill {
-          //     margin-left: 0;
-          //   }
-          // }
+                    // &:nth-child(11n - 4):last-child,
+                    // &:nth-child(11n - 3):last-child {
+                    //   floating-skill {
+                    //     margin-left: 0;
+                    //   }
+                    // }
 
-          // &:nth-child(11n -1):last-child,
-          // &:nth-child(11n):last-child {
-          //   floating-skill {
-          //     margin-right: 0;
-          //   }
-          // }
+                    // &:nth-child(11n -1):last-child,
+                    // &:nth-child(11n):last-child {
+                    //   floating-skill {
+                    //     margin-right: 0;
+                    //   }
+                    // }
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -13,55 +13,59 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { MatCardModule } from '@angular/material/card';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThemeService } from './theme.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, 'https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/portfolio/i18n/', '.json');
+    return new TranslateHttpLoader(
+        httpClient,
+        'https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/portfolio/i18n/',
+        '.json',
+    );
 }
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
 
-    FormsModule,
-    ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
 
-    HttpClientModule,
+        HttpClientModule,
 
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatListModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatListModule,
 
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
 
-    RouterModule.forRoot(appRoutes, {
-      initialNavigation: 'enabledBlocking',
-      useHash: true
-    }),
-  ],
-  providers: [ThemeService],
-  bootstrap: [AppComponent],
+        RouterModule.forRoot(appRoutes, {
+            initialNavigation: 'enabledBlocking',
+            useHash: true,
+        }),
+    ],
+    providers: [ThemeService],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

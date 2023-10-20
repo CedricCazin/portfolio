@@ -1,7 +1,7 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/app/floating-game/floating-game.module.ts"],
-  "compilerOptions": {
-    "types": ["jest", "node"]
-  }
+    "extends": "./tsconfig.json",
+    "include": ["src/**/*.ts", "src/app/floating-game/floating-game.module.ts"],
+    "compilerOptions": {
+        "types": ["jest", "node"]
+    }
 }

@@ -9,27 +9,24 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ContactHelpComponent } from './contact-help/contact-help.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ContactHelpComponent,
-  },
+    {
+        path: '',
+        component: ContactHelpComponent,
+    },
 ];
 
 @NgModule({
-  declarations: [
-    ContactHelpComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [ContactHelpComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTabsModule,
-  ],
-  providers: [
-  ],
+        CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTabsModule,
+    ],
+    providers: [],
 })
-export class ContactHelpModule { }
+export class ContactHelpModule {}

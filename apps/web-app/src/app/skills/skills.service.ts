@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { SkillType } from './skill.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class SkillsService {
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
-  public get skillTypes() {
-    return this.http.get<SkillType[]>('https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/portfolio/skills.json');
-  }
-
+    public get skillTypes() {
+        return this.http.get<SkillType[]>(
+            'https://raw.githubusercontent.com/CedricCazin/CedricCazin/main/portfolio/skills.json',
+        );
+    }
 }

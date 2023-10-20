@@ -15,35 +15,31 @@ import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.mod
 import { ContactService } from './contact.service';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ContactComponent,
-  },
+    {
+        path: '',
+        component: ContactComponent,
+    },
 ];
 
 @NgModule({
-  declarations: [
-    ContactComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [ContactComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
+        CommonModule,
 
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatExpansionModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatExpansionModule,
 
-    FloatingSkillModule,
-  ],
-  providers: [
-    ContactService,
-  ],
+        FloatingSkillModule,
+    ],
+    providers: [ContactService],
 })
-export class ContactModule { }
+export class ContactModule {}

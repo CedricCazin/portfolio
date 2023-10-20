@@ -2,63 +2,63 @@
 @use 'sass:map';
 
 @mixin color($theme) {
-  $color-config: mat.get-color-config($theme);
+    $color-config: mat.get-color-config($theme);
 
-  $primary-palette: map.get($color-config, 'primary');
-  $accent-palette: map.get($color-config, 'accent');
-  $warn-palette: map.get($color-config, 'warn');
-  $is-dark-theme: map.get($color-config, 'is-dark');
+    $primary-palette: map.get($color-config, 'primary');
+    $accent-palette: map.get($color-config, 'accent');
+    $warn-palette: map.get($color-config, 'warn');
+    $is-dark-theme: map.get($color-config, 'is-dark');
 
-  $accent-color: mat.get-color-from-palette($accent-palette, 'default');
+    $accent-color: mat.get-color-from-palette($accent-palette, 'default');
 
-  .background {
-    background-color: if($is-dark-theme, #efefef80, #30303080);
+    .background {
+        background-color: if($is-dark-theme, #efefef80, #30303080);
 
-    svg {
-      polygon {
-        fill: if($is-dark-theme, #303030, #efefef);
-      }
-    }
-  }
-
-  .mat-drawer-container {
-    background-color: transparent;
-  }
-
-  mat-nav-list {
-    .mdc-list-item {
-      padding-left: 10px !important;
-
-      &.list-item-active {
-        border-left: 10px solid $accent-color !important;
-        padding-left: 0 !important;
-
-        .mat-mdc-list-item-title {
-          font-weight: bold;
-          color: $accent-color !important;
+        svg {
+            polygon {
+                fill: if($is-dark-theme, #303030, #efefef);
+            }
         }
-
-        .mat-icon {
-          color: $accent-color !important;
-        }
-      }
     }
-  }
+
+    .mat-drawer-container {
+        background-color: transparent;
+    }
+
+    mat-nav-list {
+        .mdc-list-item {
+            padding-left: 10px !important;
+
+            &.list-item-active {
+                border-left: 10px solid $accent-color !important;
+                padding-left: 0 !important;
+
+                .mat-mdc-list-item-title {
+                    font-weight: bold;
+                    color: $accent-color !important;
+                }
+
+                .mat-icon {
+                    color: $accent-color !important;
+                }
+            }
+        }
+    }
 }
 
 @mixin typography($theme) {
-  // Get the typography config from the theme.
-  $typography-config: mat.get-typography-config($theme);
+    // Get the typography config from the theme.
+    $typography-config: mat.get-typography-config($theme);
 }
 
 @mixin theme($theme) {
-  $color-config: mat.get-color-config($theme);
-  @if $color-config != null {
-    @include color($theme);
-  }
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
 
-  $typography-config: mat.get-typography-config($theme);
-  @if $typography-config != null {
-    @include typography($theme);
-  }
+    $typography-config: mat.get-typography-config($theme);
+    @if $typography-config != null {
+        @include typography($theme);
+    }
 }

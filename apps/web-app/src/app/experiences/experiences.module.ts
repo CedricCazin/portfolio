@@ -17,52 +17,46 @@ import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.mod
 import { ExperiencesService } from './experiences.service';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ExperiencesComponent,
-    children: [
-      {
-        path: 'material',
-        component: ExperiencesMaterialComponent,
-      },
-      {
-        path: 'timeline',
-        component: ExperiencesTimelineComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'material',
-        pathMatch: 'full',
-      },
-    ],
-  },
+    {
+        path: '',
+        component: ExperiencesComponent,
+        children: [
+            {
+                path: 'material',
+                component: ExperiencesMaterialComponent,
+            },
+            {
+                path: 'timeline',
+                component: ExperiencesTimelineComponent,
+            },
+            {
+                path: '**',
+                redirectTo: 'material',
+                pathMatch: 'full',
+            },
+        ],
+    },
 ];
 
 @NgModule({
-  declarations: [
-    ExperiencesComponent,
-    ExperiencesTimelineComponent,
-    ExperiencesMaterialComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [ExperiencesComponent, ExperiencesTimelineComponent, ExperiencesMaterialComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
+        CommonModule,
 
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatExpansionModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatExpansionModule,
 
-    FloatingSkillModule,
-  ],
-  providers: [
-    ExperiencesService
-  ],
+        FloatingSkillModule,
+    ],
+    providers: [ExperiencesService],
 })
-export class ExperiencesModule { }
+export class ExperiencesModule {}

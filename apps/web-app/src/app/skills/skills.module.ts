@@ -18,52 +18,45 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SkillsTablesComponent } from './skills-tables/skills-tables.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SkillsComponent,
-    children: [
-      {
-        path: 'medals',
-        component: SkillsMedalsComponent,
-      },
-      {
-        path: 'tables',
-        component: SkillsTablesComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'medals',
-        pathMatch: 'full',
-      }
-    ],
-  },
+    {
+        path: '',
+        component: SkillsComponent,
+        children: [
+            {
+                path: 'medals',
+                component: SkillsMedalsComponent,
+            },
+            {
+                path: 'tables',
+                component: SkillsTablesComponent,
+            },
+            {
+                path: '**',
+                redirectTo: 'medals',
+                pathMatch: 'full',
+            },
+        ],
+    },
 ];
 
 @NgModule({
-  declarations: [
-    SkillsComponent,
-    SkillsMedalsComponent,
-    SkillsTablesComponent,
-    SkillsTableComponent,
-  ],
-  imports: [
-    RouterModule.forChild(routes),
+    declarations: [SkillsComponent, SkillsMedalsComponent, SkillsTablesComponent, SkillsTableComponent],
+    imports: [
+        RouterModule.forChild(routes),
 
-    CommonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    HttpClientModule,
+        CommonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        HttpClientModule,
 
-    FloatingSkillModule,
-  ],
-  providers: [
-    SkillsService,
-  ],
+        FloatingSkillModule,
+    ],
+    providers: [SkillsService],
 })
-export class SkillsModule { }
+export class SkillsModule {}
