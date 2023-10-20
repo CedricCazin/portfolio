@@ -11,39 +11,37 @@
 
 @include mat.core();
 
+$typography: mat.define-typography-config(
+    $font-family: 'Roboto',
+);
+$density: -1;
+
 // Define a dark theme
 $dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: mat.define-palette(mat.$deep-purple-palette),
-      accent: mat.define-palette(mat.$amber-palette),
-    ),
-    // Only include `typography` and `density` in the default dark theme.
-    typography: mat.define-typography-config(),
-    density: 0,
-  )
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette),
+            accent: mat.define-palette(mat.$amber-palette),
+        ),
+        typography: $typography,
+        density: $density,
+    )
 );
 
 // Define a light theme
 $light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: mat.define-palette(mat.$deep-purple-palette),
-      accent: mat.define-palette(mat.$amber-palette),
-    ),
-  )
+    (
+        color: (
+            primary: mat.define-palette(mat.$deep-purple-palette),
+            accent: mat.define-palette(mat.$amber-palette),
+        ),
+        typography: $typography,
+        density: $density,
+    )
 );
 
 // Apply the dark theme by default
-@include mat.core-theme($dark-theme);
-@include mat.all-component-colors(
-  map.merge(
-    $dark-theme,
-    (
-      typography: mat.define-typography-config(),
-    )
-  )
-);
+@include mat.all-component-themes($dark-theme);
 
 @include app.theme($dark-theme);
 @include about.theme($dark-theme);
@@ -53,41 +51,31 @@ $light-theme: mat.define-light-theme(
 @include skills.theme($dark-theme);
 
 body {
-  &.glass-scheme {
-    @include glass.theme($dark-theme);
-  }
-  &:not(.glass-scheme) {
-    @include glass.untheme($dark-theme);
-  }
+    &.glass-scheme {
+        @include glass.theme($dark-theme);
+    }
+    &:not(.glass-scheme) {
+        @include glass.untheme($dark-theme);
+    }
 }
 
 // Apply the light theme only when the user prefers light themes.
 // @media (prefers-color-scheme: light) {}
 
 body.color-scheme-light {
-  // Use the `-color` mixins to only apply color styles without reapplying the same
-  // typography and density styles.
-  @include mat.core-color($light-theme);
-  @include mat.all-component-colors(
-    map.merge(
-      $light-theme,
-      (
-        typography: mat.define-typography-config(),
-      )
-    )
-  );
+    @include mat.all-component-themes($light-theme);
 
-  @include app.theme($light-theme);
-  @include about.theme($light-theme);
-  @include contact.theme($light-theme);
-  @include experiences.theme($light-theme);
-  @include resume.theme($light-theme);
-  @include skills.theme($light-theme);
+    @include app.theme($light-theme);
+    @include about.theme($light-theme);
+    @include contact.theme($light-theme);
+    @include experiences.theme($light-theme);
+    @include resume.theme($light-theme);
+    @include skills.theme($light-theme);
 
-  &.glass-scheme {
-    @include glass.theme($light-theme);
-  }
-  &:not(.glass-scheme) {
-    @include glass.untheme($light-theme);
-  }
+    &.glass-scheme {
+        @include glass.theme($light-theme);
+    }
+    &:not(.glass-scheme) {
+        @include glass.untheme($light-theme);
+    }
 }
