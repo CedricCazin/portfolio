@@ -24,6 +24,7 @@ jobs:
               with:
                   submodules: true
                   fetch-depth: 0
+                  persist-credentials: false
 
             - uses: nrwl/nx-set-shas@v3
 
@@ -40,7 +41,10 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
-                  PRODUCT_VERSION=$(npm run semantic-release -- --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
+                  SEMANTIC_RELEASE_OUTPUT=npm run semantic-release -- --dry-run
+                  echo "product_version=$SEMANTIC_RELEASE_OUTPUT"
+
+                  PRODUCT_VERSION=$($SEMANTIC_RELEASE_OUTPUT | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
                   if [ -z "$PRODUCT_VERSION" ]; then
                       PRODUCT_VERSION=0.0.0
                   fi
@@ -67,6 +71,7 @@ jobs:
             - name: Run semantic-release
               if: github.event_name == 'push'
               env:
+                  GH_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: npm run semantic-release
 
