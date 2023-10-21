@@ -41,7 +41,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
-                  SEMANTIC_RELEASE_OUTPUT=npm run semantic-release -- --dry-run
+                  SEMANTIC_RELEASE_OUTPUT=$(npm run semantic-release -- --dry-run)
                   echo "product_version=$SEMANTIC_RELEASE_OUTPUT"
 
                   PRODUCT_VERSION=$($SEMANTIC_RELEASE_OUTPUT | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
