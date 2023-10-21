@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/CedricCazin/portfolio/compare/v1.0.0...v1.0.1) (2023-10-21)
+
+
+### Bug Fixes
+
+* **ci:** streamline semantic release plugins ([73dce27](https://github.com/CedricCazin/portfolio/commit/73dce2743030f8f9d303a538b93ecd278893714e))
+* **roo:** do not format:check CHANGELOG.md ([ba61f79](https://github.com/CedricCazin/portfolio/commit/ba61f79d2f621e89a5d15b9d5a38ceb0b047e813))
+
 # 1.0.0 (2023-10-21)
 
 
