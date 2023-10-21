@@ -1,8 +1,9 @@
 name: Azure Static Web Apps CI/CD
 
 permissions:
-    contents: read
-    pull-requests: write
+    contents: write # to be able to publish a GitHub release
+    issues: write # to be able to comment on released issues
+    pull-requests: write # to be able to comment on released pull requests
 
 on:
     push:
@@ -36,6 +37,8 @@ jobs:
 
             - name: get version from semantic release
               id: get_version
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                   PRODUCT_VERSION=$(npm run semantic-release -- --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
                   if [ -z "$PRODUCT_VERSION" ]; then
@@ -63,6 +66,8 @@ jobs:
 
             - name: Run semantic-release
               if: github.event_name == 'push'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: npm run semantic-release
 
             - name: Deploy web-app-games
