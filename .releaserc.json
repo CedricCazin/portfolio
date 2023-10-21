@@ -87,15 +87,22 @@
             }
         ],
         [
+            "@semantic-release/npm",
+            {
+                "npmPublish": false,
+                "tarballDir": "dist"
+            }
+        ],
+        [
             "@semantic-release/github",
             {
-                "assets": ["CHANGELOG.md"]
+                "assets": ["CHANGELOG.md", "dist/*.tgz"]
             }
         ],
         [
             "@semantic-release/git",
             {
-                "assets": ["CHANGELOG.md"]
+                "assets": ["CHANGELOG.md", "package.json"]
             }
         ]
     ]
