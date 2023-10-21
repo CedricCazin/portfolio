@@ -1,9 +1,10 @@
 {
     "name": "CedricCazinPortfolio",
-    "version": "1.0.0",
+    "version": "1.0.0-semantically-released",
     "description": "Cedric Cazin Portfolio",
     "homepage": "http://cazin.dev",
     "license": "MIT",
+    "private": true,
     "author": {
         "name": "CedricCazin",
         "email": "cedric.cazin@outlook.com"
@@ -33,7 +34,6 @@
         "prepare": "husky install",
         "semantic-release": "semantic-release"
     },
-    "private": true,
     "dependencies": {
         "@angular/animations": "~15.2.0",
         "@angular/cdk": "~15.2.6",
