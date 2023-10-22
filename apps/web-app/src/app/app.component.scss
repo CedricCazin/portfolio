@@ -181,10 +181,10 @@ mat-toolbar {
 
                 // https://bennettfeely.com/clippy/
                 // https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/
-                --clip-path: polygon(25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%, 0% 50%);
+                --floating-skill-clip-path: polygon(25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%, 0% 50%);
 
-                -webkit-clip-path: var(--clip-path);
-                clip-path: var(--clip-path);
+                -webkit-clip-path: var(--floating-skill-clip-path);
+                clip-path: var(--floating-skill-clip-path);
 
                 img {
                     width: 100%;

@@ -1,40 +1,12 @@
-<kazaam-floating-content
-    #floatingContent
-    [translate]="translate"
-    [translateScale]="translateScale"
-    [translateX]="translateX"
-    [translateY]="translateY"
-    [translateZ]="translateZ"
-    [rotateXShift]="0.5"
-    [rotateYShift]="0.5"
-    [style.--animation-hover-out]="animationHoverOut"
-    [style.--clip-path]="path"
-    (mouseleave)="handleMouseLeave()"
-    (clickWithin)="clickWithin($event)"
->
-    <kazaam-floating-content-path
-        [path]="path"
-        [size]="size"
-        [borderSize]="borderSize"
-        [borderColor]="skill.borderColor || 'grey'"
-    >
-        <div preClipPath class="ribbon-wrapper">
-            <div class="ribbon-front">
-                <div class="ribbon-text">&nbsp;</div>
-            </div>
-            <div class="ribbon-edge-topleft"></div>
-            <div class="ribbon-edge-topright"></div>
-        </div>
+<div class="animation-hover tilt" (mouseleave)="handleMouseLeave()" [style.--animation-hover-out]="animationHoverOut">
+    <div class="clip-path" [style.--border-size]="borderSize" [style.--border-color]="skill.borderColor || 'grey'">
+        <div class="clip-path-border"></div>
+    </div>
 
-        <div class="hexagon-content">
-            <img class="skill-icon" [src]="skill.image" />
-        </div>
+    <img class="skill-icon" [src]="skill.image" />
 
-        <div postClipPath class="ribbon-wrapper">
-            <div class="ribbon-front">
-                <div class="ribbon-glow">&nbsp;</div>
-                <div class="ribbon-text">{{ skill.name }}</div>
-            </div>
-        </div>
-    </kazaam-floating-content-path>
-</kazaam-floating-content>
+    <div class="ribbon-wrapper">
+        <div class="ribbon-glow">&nbsp;</div>
+        <div class="ribbon-text">{{ skill.name }}</div>
+    </div>
+</div>
