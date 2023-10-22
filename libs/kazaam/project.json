@@ -41,14 +41,7 @@
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": [
-                    "libs/kazaam/**/*.ts",
-                    "libs/kazaam/**/*.html",
-                    "libs/kazaam/floating-content-path/**/*.ts",
-                    "libs/kazaam/floating-content-path/**/*.html",
-                    "libs/kazaam/floating-content/**/*.ts",
-                    "libs/kazaam/floating-content/**/*.html"
-                ]
+                "lintFilePatterns": ["libs/kazaam/**/*.ts", "libs/kazaam/**/*.html"]
             }
         }
     }
