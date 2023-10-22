@@ -125,6 +125,13 @@
                     "codeCoverage": true
                 }
             }
+        },
+        "serve-static": {
+            "executor": "@nrwl/web:file-server",
+            "options": {
+                "buildTarget": "web-app:build",
+                "port": 4200
+            }
         }
     }
 }
