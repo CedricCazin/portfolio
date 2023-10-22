@@ -12,6 +12,12 @@ describe('FloatingGameComponent', () => {
 
         fixture = TestBed.createComponent(FloatingGameComponent);
         component = fixture.componentInstance;
+        component.game = {
+            name: 'Full Throttle',
+            favorite: false,
+            steamId: '228360',
+            image: 'https://cdn.akamai.steamstatic.com/steam/apps/228360/library_600x900.jpg',
+        };
         fixture.detectChanges();
     });
 
