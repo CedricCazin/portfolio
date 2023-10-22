@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { KazaamFloatingContentModule } from '@ceca/kazaam/floating-content';
+import { KazaamFloatingContentModule } from '@kazaam/floating-content';
 import { Card3dComponent } from './card3d.component';
 import { CommonModule } from '@angular/common';
 
