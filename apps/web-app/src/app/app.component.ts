@@ -14,6 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Language, LanguageService } from './language.service';
 import { ThemeService } from './theme.service';
 import { Theme } from './theme.service';
+import { HttpClient } from '@angular/common/http';
 
 declare class FinisherHeader {
     constructor(i: any);
@@ -34,6 +35,8 @@ export class AppComponent implements AfterViewInit {
     cursorOpacity = '';
 
     public showHelp = true;
+
+    public version = '0.0.0';
 
     public languages: Language[] = this.languageService.languages;
 
@@ -84,6 +87,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     constructor(
+        private http: HttpClient,
         private matIconRegistry: MatIconRegistry,
         private domSanitizer: DomSanitizer,
         private themeService: ThemeService,
@@ -107,6 +111,8 @@ export class AppComponent implements AfterViewInit {
             'github',
             this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg'),
         );
+
+        this.http.get('/assets/version.json').subscribe((data: any) => (this.version = data.version));
     }
 
     ngAfterViewInit(): void {

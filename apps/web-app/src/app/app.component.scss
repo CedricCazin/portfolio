@@ -168,6 +168,10 @@ mat-toolbar {
     }
 
     .nav-sidenav {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
         .identity {
             display: flex;
             align-items: center;
@@ -202,6 +206,18 @@ mat-toolbar {
 
         .mat-mdc-list-base {
             --mdc-list-list-item-one-line-container-height: 48px;
+        }
+
+        .version {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+            span {
+                display: block;
+                text-align: center;
+            }
         }
     }
 
