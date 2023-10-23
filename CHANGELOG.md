@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/CedricCazin/portfolio/compare/v1.0.1...v1.0.2) (2023-10-23)
+
+
+### Bug Fixes
+
+* **ci,repo:** semantic release rules & set version in apps ([06af1b3](https://github.com/CedricCazin/portfolio/commit/06af1b38ddfb94ad4d04b29a2867911ed05a4808))
+
 ## [1.0.1](https://github.com/CedricCazin/portfolio/compare/v1.0.0...v1.0.1) (2023-10-21)
 
 
