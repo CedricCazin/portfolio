@@ -13,7 +13,7 @@
 $typography: mat.define-typography-config(
     $font-family: 'Roboto',
 );
-$density: -1;
+$density: -3;
 
 // Define a dark theme
 $dark-theme: mat.define-dark-theme(
@@ -40,7 +40,7 @@ $light-theme: mat.define-light-theme(
 );
 
 // Apply the dark theme by default
-@include mat.all-component-colors($dark-theme);
+@include mat.all-component-themes($dark-theme);
 
 @include app.theme($dark-theme);
 @include about.theme($dark-theme);
@@ -59,7 +59,7 @@ body {
 }
 
 body.color-scheme-light {
-    @include mat.all-component-colors($light-theme);
+    @include mat.all-component-themes($light-theme);
 
     @include app.theme($light-theme);
     @include about.theme($light-theme);
