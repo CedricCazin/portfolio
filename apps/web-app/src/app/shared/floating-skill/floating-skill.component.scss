@@ -109,9 +109,6 @@
             width: calc(var(--floating-skill-size) - var(--border-size) * 2);
             height: calc(var(--floating-skill-size) - var(--border-size) * 2);
 
-            //background-color: whitesmoke;
-            background-image: linear-gradient(135deg, #ff00ba 0%, #fae713 100%);
-
             -webkit-clip-path: var(--floating-skill-clip-path);
             clip-path: var(--floating-skill-clip-path);
         }
