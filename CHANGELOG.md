@@ -1,3 +1,5 @@
+## [1.0.3](https://github.com/CedricCazin/portfolio/compare/v1.0.2...v1.0.3) (2023-10-23)
+
 ## [1.0.2](https://github.com/CedricCazin/portfolio/compare/v1.0.1...v1.0.2) (2023-10-23)
 
 
