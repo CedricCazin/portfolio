@@ -43,10 +43,17 @@ jobs:
               run: |
                   PRODUCT_VERSION=$(npm run semantic-release -- --dry-run | grep 'next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
                   if [ -z "$PRODUCT_VERSION" ]; then
-                      PRODUCT_VERSION=0.0.0
+                      if [ ${{ github.event_name }} == "pull_request" ]; then
+                        PRODUCT_VERSION=pr.${{ github.event.pull_request.number }}
+                      else
+                        PRODUCT_VERSION=0.0.0
+                      fi
                   fi
                   echo "product_version=$PRODUCT_VERSION" >> $GITHUB_OUTPUT
                   echo "product_version=$PRODUCT_VERSION"
+
+                  echo "{\"version\": \"$PRODUCT_VERSION\"}" > apps/web-app/src/assets/version.json
+                  echo "{\"version\": \"$PRODUCT_VERSION\"}" > apps/web-app-games/src/assets/version.json
 
             - name: Get Affected
               id: get_affected

@@ -112,7 +112,10 @@ export class AppComponent implements AfterViewInit {
             this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg'),
         );
 
-        this.http.get('/assets/version.json').subscribe((data: any) => (this.version = data.version));
+        this.http.get('/assets/version.json').subscribe((data: any) => {
+            console.log(data);
+            this.version = data.version;
+        });
     }
 
     ngAfterViewInit(): void {
