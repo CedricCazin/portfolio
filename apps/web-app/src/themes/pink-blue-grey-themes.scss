@@ -6,6 +6,7 @@
 @use '../app/experiences/experiences/experiences.component-theme' as experiences;
 @use '../app/resume/resume/resume.component-theme' as resume;
 @use '../app/skills/skills/skills.component-theme' as skills;
+@use '../app/shared/floating-skill/floating-skill.component.theme.scss' as floating-skill;
 @use './glass.theme' as glass;
 
 @include mat.core();
@@ -48,6 +49,7 @@ $light-theme: mat.define-light-theme(
 @include experiences.theme($dark-theme);
 @include resume.theme($dark-theme);
 @include skills.theme($dark-theme);
+@include floating-skill.theme($dark-theme);
 
 body {
     &.glass-scheme {
