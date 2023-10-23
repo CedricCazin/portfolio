@@ -9,76 +9,78 @@
         }
     ],
     "plugins": [
-        "@semantic-release/commit-analyzer",
-        {
-            "preset": "angular",
-            "releaseRules": [
-                {
-                    "type": "release-major",
-                    "release": "major"
-                },
-                {
-                    "type": "feat",
-                    "release": "minor"
-                },
-                {
-                    "type": "deps",
-                    "release": "minor"
-                },
-                {
-                    "type": "release-minor",
-                    "release": "minor"
-                },
-                {
-                    "type": "fix",
-                    "release": "patch"
-                },
-                {
-                    "type": "perf",
-                    "release": "patch"
-                },
-                {
-                    "type": "refactor",
-                    "release": "patch"
-                },
-                {
-                    "type": "style",
-                    "release": "patch"
-                },
-                {
-                    "type": "revert",
-                    "release": "patch"
-                },
-                {
-                    "type": "release-patch",
-                    "release": "patch"
-                },
-                {
-                    "type": "chore",
-                    "release": false
-                },
-                {
-                    "type": "docs",
-                    "release": false
-                },
-                {
-                    "type": "test",
-                    "release": false
-                },
-                {
-                    "type": "lint",
-                    "release": false
-                },
-                {
-                    "type": "wip",
-                    "release": false
-                },
-                {
-                    "type": "config",
-                    "release": false
-                }
-            ]
-        },
+        [
+            "@semantic-release/commit-analyzer",
+            {
+                "preset": "angular",
+                "releaseRules": [
+                    {
+                        "type": "release-major",
+                        "release": "major"
+                    },
+                    {
+                        "type": "feat",
+                        "release": "minor"
+                    },
+                    {
+                        "type": "deps",
+                        "release": "minor"
+                    },
+                    {
+                        "type": "release-minor",
+                        "release": "minor"
+                    },
+                    {
+                        "type": "fix",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "perf",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "refactor",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "style",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "revert",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "release-patch",
+                        "release": "patch"
+                    },
+                    {
+                        "type": "chore",
+                        "release": false
+                    },
+                    {
+                        "type": "docs",
+                        "release": false
+                    },
+                    {
+                        "type": "test",
+                        "release": false
+                    },
+                    {
+                        "type": "lint",
+                        "release": false
+                    },
+                    {
+                        "type": "wip",
+                        "release": false
+                    },
+                    {
+                        "type": "config",
+                        "release": false
+                    }
+                ]
+            }
+        ],
         "@semantic-release/release-notes-generator",
         "@semantic-release/changelog",
         "@semantic-release/npm",
