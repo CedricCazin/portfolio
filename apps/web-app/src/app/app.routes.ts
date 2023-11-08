@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { loadRemoteModule } from '@nrwl/angular/mf';
+import { loadRemoteModule } from '@nx/angular/mf';
 
 export const appRoutes: Route[] = [
     {

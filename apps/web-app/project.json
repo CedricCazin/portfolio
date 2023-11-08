@@ -7,7 +7,7 @@
     "tags": [],
     "targets": {
         "build": {
-            "executor": "@nrwl/angular:webpack-browser",
+            "executor": "@nx/angular:webpack-browser",
             "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/apps/web-app",
@@ -89,7 +89,7 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "executor": "@nrwl/angular:module-federation-dev-server",
+            "executor": "@nx/angular:module-federation-dev-server",
             "options": {
                 "port": 4200,
                 "publicHost": "http://localhost:4200",
@@ -106,14 +106,14 @@
             "defaultConfiguration": "development"
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
                 "lintFilePatterns": ["apps/web-app/**/*.ts", "apps/web-app/**/*.html"]
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
                 "jestConfig": "apps/web-app/jest.config.ts",
@@ -127,7 +127,7 @@
             }
         },
         "serve-static": {
-            "executor": "@nrwl/web:file-server",
+            "executor": "@nx/web:file-server",
             "options": {
                 "buildTarget": "web-app:build",
                 "port": 4200
