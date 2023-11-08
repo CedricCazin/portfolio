@@ -3,3 +3,4 @@
 /coverage
 .angular
 CHANGELOG.md
+/.nx/cache
