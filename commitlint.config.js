@@ -4,18 +4,14 @@ const {
 
 // prettier-ignore
 const types = [
-    { value: 'release-major',   name: 'release-major:   (major) Create a release commit' },
-
     { value: 'feat',            name: 'feat:            (minor) A new feature' },
-    { value: 'deps',            name: 'deps:            (minor) anything related to dependencies' },
-    { value: 'release-minor',   name: 'release-minor:   (minor) Create a release commit' },
+    { value: 'deps',            name: 'deps:            (minor) Anything related to dependencies' },
+    { value: 'revert',          name: 'revert:          (minor) Reverts a previous commit' },
     
     { value: 'fix',             name: 'fix:             (patch) A bug fix' },
     { value: 'perf',            name: 'perf:            (patch) A code change that improves performance' },
     { value: 'refactor',        name: 'refactor:        (patch) A code change that neither fixes a bug or adds a feature' },
     { value: 'style',           name: 'style:           (patch) Markup, white-space, formatting, missing semi-colons...' },
-    { value: 'revert',          name: 'revert:          (patch) Reverts a previous commit' },
-    { value: 'release-patch',   name: 'release-patch:   (patch) Create a release commit' },
 
     { value: 'chore',           name: 'chore:           (none) Build process or auxiliary tool changes' },
     { value: 'docs',            name: 'docs:            (none) Documentation only changes' },
