@@ -13,7 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FloatingSkillModule } from '../shared/floating-skill/floating-skill.module';
 import { AboutService } from './about.service';
-import { NgChartsModule } from 'ng2-charts';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 const routes: Routes = [
     {
@@ -39,10 +39,10 @@ const routes: Routes = [
         MatSidenavModule,
         MatExpansionModule,
 
-        NgChartsModule,
+        BaseChartDirective,
 
         FloatingSkillModule,
     ],
-    providers: [AboutService],
+    providers: [AboutService, provideCharts(withDefaultRegisterables())],
 })
 export class AboutModule {}

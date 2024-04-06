@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChartConfiguration, ChartData } from 'chart.js';
-import { NgChartsModule } from 'ng2-charts';
 import { AboutService } from '../about.service';
 
 @Component({
@@ -21,7 +20,10 @@ export class AboutComponent {
 
     public radarChartDatasets: ChartConfiguration<'radar'>['data']['datasets'] | undefined = undefined;
 
-    constructor(private router: Router, private aboutService: AboutService) {
+    constructor(
+        private router: Router,
+        private aboutService: AboutService,
+    ) {
         this.aboutService.radar.subscribe((radarData) => {
             const rr = radarData as ChartData<'radar'>;
             this.radarChartLabels = rr.labels;
