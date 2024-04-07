@@ -65,11 +65,8 @@ body {
     }
 }
 
-// Apply the light theme only when the user prefers light themes.
-// @media (prefers-color-scheme: light) {}
-
 body.color-scheme-light {
-    @include mat.all-component-themes($light-theme);
+    @include mat.all-component-colors($light-theme);
 
     @include app.theme($light-theme);
     @include about.theme($light-theme);
