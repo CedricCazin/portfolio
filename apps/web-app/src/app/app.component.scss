@@ -20,24 +20,28 @@ mat-toolbar {
     position: -webkit-sticky; /* For macOS/iOS Safari */
     top: 0; /* Sets the sticky toolbar to be on top */
     z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    gap: 10px;
 
     .spacer {
         flex: 1 1 auto;
     }
 
-    .github {
-        mat-icon {
-            height: 24px;
-            width: 24px;
-        }
-        img {
-            height: 24px;
-        }
-    }
+    .link {
+        height: 36px;
 
-    .linked {
         img {
             height: 24px;
+            vertical-align: middle;
+        }
+
+        &.github {
+            mat-icon {
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        &.linkedin {
         }
     }
 
@@ -157,17 +161,23 @@ mat-toolbar {
     }
 }
 
-.sidenav-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+mat-sidenav-container.nav-sidenav-container,
+mat-sidenav-container.help-sidenav-container {
+    mat-sidenav-content.nav-sidenav-content,
+    mat-sidenav-content.help-sidenav-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
 
-    ::ng-deep .mat-sidenav.nav-sidenav {
-        min-width: 250px;
-        max-width: 250px;
+mat-sidenav-container.nav-sidenav-container {
+    ::ng-deep mat-sidenav.nav-sidenav {
+        min-width: 275px;
+        max-width: 275px;
     }
 
-    .nav-sidenav {
+    mat-sidenav.nav-sidenav {
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -221,65 +231,78 @@ mat-toolbar {
         }
     }
 
+    mat-sidenav-content.nav-sidenav-content {
+        mat-toolbar {
+            min-height: var(--mat-toolbar-standard-height);
+        }
+
+        div.scrolling {
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            // based on https://codepen.io/zkreations/pen/bZRgqd
+
+            $bg-mask: rgb(255 255 255 / 25%);
+            --scrollbar-size: 12px;
+            --scrollbar-thumb: linear-gradient(
+                45deg,
+                #{$bg-mask} 20%,
+                transparent 20%,
+                transparent 40%,
+                #{$bg-mask} 40%,
+                #{$bg-mask} 60%,
+                transparent 60%,
+                transparent 80%,
+                #{$bg-mask} 80%
+            );
+            --scrollbar-thumb-color: #f97316;
+            --scrollbar-track-radius: 20px;
+            --scrollbar-track-color: rgb(0 0 0 / 40%);
+
+            scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+            scrollbar-width: thin;
+
+            &::-webkit-scrollbar {
+                width: var(--scrollbar-size);
+                height: var(--scrollbar-size);
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: var(--scrollbar-track-color);
+                border-radius: var(--scrollbar-track-radius);
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: var(--scrollbar-thumb-color);
+                background-image: var(--scrollbar-thumb);
+                border-radius: var(--scrollbar-thumb-radius);
+            }
+
+            // based on https://codepen.io/zkreations/pen/bZRgqd
+
+            div.content {
+                margin: 0 auto;
+                max-width: 1200px;
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+        }
+    }
+}
+
+mat-sidenav-container.help-sidenav-container {
     ::ng-deep .mat-sidenav.help-sidenav {
         min-width: 25%;
         max-width: 25%;
     }
 
-    .help-sidenav {
+    mat-sidenav.help-sidenav {
         padding: 20px;
-    }
-
-    mat-sidenav-content {
-        overflow-y: auto;
-        overflow-x: hidden;
-
-        .content {
-            margin: 0 auto;
-            max-width: 1200px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        // based on https://codepen.io/zkreations/pen/bZRgqd
-
-        $bg-mask: rgb(255 255 255 / 25%);
-        --scrollbar-size: 12px;
-        --scrollbar-thumb: linear-gradient(
-            45deg,
-            #{$bg-mask} 20%,
-            transparent 20%,
-            transparent 40%,
-            #{$bg-mask} 40%,
-            #{$bg-mask} 60%,
-            transparent 60%,
-            transparent 80%,
-            #{$bg-mask} 80%
-        );
-        --scrollbar-thumb-color: #f97316;
-        --scrollbar-track-radius: 20px;
-        --scrollbar-track-color: rgb(0 0 0 / 40%);
-
-        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
-        scrollbar-width: thin;
-
-        &::-webkit-scrollbar {
-            width: var(--scrollbar-size);
-            height: var(--scrollbar-size);
-        }
-
-        &::-webkit-scrollbar-track {
-            background-color: var(--scrollbar-track-color);
-            border-radius: var(--scrollbar-track-radius);
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: var(--scrollbar-thumb-color);
-            background-image: var(--scrollbar-thumb);
-            border-radius: var(--scrollbar-thumb-radius);
-        }
-
-        // based on https://codepen.io/zkreations/pen/bZRgqd
     }
 }

@@ -69,7 +69,10 @@ export class ThemeService {
 
     private glassModePrefix = 'glass-scheme';
 
-    constructor(@Inject(DOCUMENT) private document: Document, rendererFactory: RendererFactory2) {
+    constructor(
+        @Inject(DOCUMENT) private document: Document,
+        rendererFactory: RendererFactory2,
+    ) {
         // Create new renderer from renderFactory, to make it possible to use renderer2 in a service
         this.renderer = rendererFactory.createRenderer(null, null);
 

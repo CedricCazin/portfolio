@@ -7,12 +7,6 @@
 <!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
 <!-- https://codepen.io/techyt/pen/qBOBEJL -->
 
-<!-- <div class="help-button">
-  <button mat-fab extended color="primary" (click)="helpSidenav.toggle()">
-    Help
-  </button>
-</div> -->
-
 <div #background class="background">
     <svg>
         <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
@@ -48,13 +42,11 @@
     </div>
 </div>
 
-<mat-sidenav-container class="sidenav-container" autosize>
+<mat-sidenav-container class="nav-sidenav-container" autosize>
     <mat-sidenav #navSidenav class="nav-sidenav" mode="side" position="start" opened>
         <div class="identity">
             <div class="avatar">
-                <img
-                    src="https://media.licdn.com/dms/image/C4E03AQErqk0E4nFA-Q/profile-displayphoto-shrink_200_200/0/1658070640158?e=1692230400&v=beta&t=_po1XS3xOIJfPjYICcvk6JrTeWmgzqUqEZMlxzHpYcc"
-                />
+                <img src="https://avatars.githubusercontent.com/u/26877462?v=4" />
             </div>
 
             <h2 class="name">Cédric Cazin</h2>
@@ -116,15 +108,13 @@
         </div>
     </mat-sidenav>
 
-    <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
-        <router-outlet name="help"></router-outlet>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
+    <mat-sidenav-content class="nav-sidenav-content">
         <mat-toolbar color="primary">
             <button mat-icon-button (click)="navSidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
+
+            <button mat-icon-button color="secondary" (click)="helpSidenav.toggle()"><mat-icon>help</mat-icon></button>
 
             <span class="spacer"></span>
 
@@ -180,19 +170,31 @@
                 </button>
             </mat-menu>
 
-            <button mat-button class="linked">
+            <a mat-button class="link linkedin" href="https://fr.linkedin.com/in/cedriccazin" target="_blank">
                 <img src="/assets/linkedIn/linkedIn-logo.png" />
-            </button>
+            </a>
 
-            <button mat-button class="github">
+            <a mat-button class="link github" href="https://github.com/cedriccazin" target="_blank">
                 <mat-icon svgIcon="github" inline="true"></mat-icon>
                 <img src="/assets/github/github_logo.png" />
-            </button>
+            </a>
         </mat-toolbar>
 
-        <div class="content">
-            <router-outlet></router-outlet>
-        </div>
+        <mat-sidenav-container class="help-sidenav-container" autosize>
+            <mat-sidenav-content class="help-sidenav-content">
+                <div class="scrolling">
+                    <div class="content">
+                        <router-outlet></router-outlet>
+
+                        <br />
+                    </div>
+                </div>
+            </mat-sidenav-content>
+
+            <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
+                <router-outlet name="help"></router-outlet>
+            </mat-sidenav>
+        </mat-sidenav-container>
 
         <!-- <div class="finisher-header"></div> -->
     </mat-sidenav-content>
