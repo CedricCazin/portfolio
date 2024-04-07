@@ -47,13 +47,7 @@
                         "inject": false
                     }
                 ],
-                "scripts": [
-                    {
-                        "input": "apps/web-app/src/external/finisher-header/finisher-header.es5.min.js",
-                        "inject": true,
-                        "bundleName": "finisher-header"
-                    }
-                ],
+                "scripts": [],
                 "customWebpackConfig": {
                     "path": "apps/web-app/webpack.config.js"
                 }

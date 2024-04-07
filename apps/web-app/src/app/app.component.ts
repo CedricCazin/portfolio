@@ -1,21 +1,11 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    HostListener,
-    Inject,
-    Renderer2,
-    RendererFactory2,
-    ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, HostListener, Inject, Renderer2, RendererFactory2 } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Language, LanguageService } from './shared/language.service';
 import { Theme, ThemeService } from './shared/theme.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,12 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-
-declare class FinisherHeader {
-    constructor(i: any);
-}
 
 @Component({
     standalone: true,
@@ -149,42 +134,6 @@ export class AppComponent implements AfterViewInit {
         setTimeout(() => {
             this.renderer.removeClass(this.document.body, 'cold-start');
         }, 2000);
-    }
-
-    private initHeader() {
-        new FinisherHeader({
-            count: 6,
-            size: {
-                min: 1100,
-                max: 1300,
-                pulse: 0,
-            },
-            speed: {
-                x: {
-                    min: 0.1,
-                    max: 0.3,
-                },
-                y: {
-                    min: 0.1,
-                    max: 0.3,
-                },
-            },
-            colors: {
-                background: '#9138e5',
-                particles: ['#6bd6ff', '#ffcb57', '#ff333d'],
-            },
-            blending: 'overlay',
-            opacity: {
-                center: 1,
-                edge: 0.1,
-            },
-            skew: -2,
-            shapes: ['c'],
-        });
-    }
-
-    onClick() {
-        console.log('click');
     }
 
     // --
