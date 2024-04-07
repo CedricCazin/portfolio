@@ -1,7 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'portfolio-resume-help',
+    standalone: true,
+    imports: [CommonModule, RouterModule, MatTabsModule],
     templateUrl: './resume-help.component.html',
     styleUrls: ['./resume-help.component.scss'],
 })

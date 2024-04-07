@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ResumeItem } from '../resume.interface';
 import { ResumeService } from '../resume.service';
 
 @Component({
-    selector: 'portfolio-resume-timeline',
+    standalone: true,
+    imports: [CommonModule],
+    providers: [ResumeService],
     templateUrl: './resume-timeline.component.html',
     styleUrls: ['./resume-timeline.component.scss'],
 })

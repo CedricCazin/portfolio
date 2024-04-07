@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     Component,
@@ -9,18 +9,45 @@ import {
     RendererFactory2,
     ViewChild,
 } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Language, LanguageService } from './language.service';
-import { ThemeService } from './theme.service';
-import { Theme } from './theme.service';
-import { HttpClient } from '@angular/common/http';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { Language, LanguageService } from './shared/language.service';
+import { Theme, ThemeService } from './shared/theme.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 declare class FinisherHeader {
     constructor(i: any);
 }
 
 @Component({
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule,
+
+        FormsModule,
+
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatListModule,
+    ],
+    providers: [ThemeService, LanguageService],
     selector: 'portfolio-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],

@@ -1,8 +1,12 @@
 import { Component, ElementRef, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Skill } from '../../skills/skill.interface';
 import VanillaTilt from 'vanilla-tilt';
+import { CommonModule } from '@angular/common';
 
 @Component({
+    standalone: true,
+    imports: [CommonModule],
+    providers: [],
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'floating-skill',
     templateUrl: './floating-skill.component.html',

@@ -1,8 +1,8 @@
 import { Route } from '@angular/router';
 
-export const appRoutes: Route[] = [
+export const APP_ROUTES: Route[] = [
     {
         path: '',
-        loadChildren: () => import('./games/games.module').then((m) => m.GamesModule),
+        loadChildren: () => import('./games/games.routes').then((m) => m.ROUTES),
     },
 ];

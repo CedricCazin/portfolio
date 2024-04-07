@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'portfolio-experiences-material-help',
+    standalone: true,
+    imports: [CommonModule],
     templateUrl: './experiences-material-help.component.html',
     styleUrls: ['./experiences-material-help.component.scss'],
 })
