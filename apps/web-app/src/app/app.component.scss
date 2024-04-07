@@ -75,29 +75,11 @@ mat-toolbar {
     }
 }
 
-// .help-button {
-//   position: absolute;
-//   width: 100px;
-//   right: 0;
-//   top: 50px;
-//   z-index: 666;
-
-//   button {
-//     position: fixed;
-//     border-radius: 24px 0 0 24px;
-//     width: 100px;
-//   }
-// }
-
 .background {
     z-index: -3;
 
     position: absolute;
     overflow: hidden;
-
-    // display: flex;
-    // flex-direction: column;
-    // flex-grow: 1;
 
     min-width: 100%;
     width: 100%;
@@ -154,6 +136,10 @@ mat-toolbar {
 
 mat-sidenav-container.nav-sidenav-container,
 mat-sidenav-container.help-sidenav-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
     mat-sidenav-content.nav-sidenav-content,
     mat-sidenav-content.help-sidenav-content {
         display: flex;
