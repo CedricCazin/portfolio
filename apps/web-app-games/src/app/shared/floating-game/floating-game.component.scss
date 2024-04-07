@@ -4,8 +4,13 @@
     width: 200px;
     height: 300px;
 
-    box-shadow: 0 0 3px -1px transparent, 0 0 2px 1px transparent, 0 0 5px 0px transparent, 0px 10px 20px -5px black,
-        0 2px 15px -5px black, 0 0 20px 0px transparent;
+    box-shadow:
+        0 0 3px -1px transparent,
+        0 0 2px 1px transparent,
+        0 0 5px 0px transparent,
+        0px 10px 20px -5px black,
+        0 2px 15px -5px black,
+        0 0 20px 0px transparent;
 
     perspective: 600px;
     transform-origin: center;
@@ -80,7 +85,10 @@
             width: var(--width, $default-width);
             min-height: var(--height, $default-height);
 
-            transition: clip-path 1s, padding 1s, background 1s;
+            transition:
+                clip-path 1s,
+                padding 1s,
+                background 1s;
         }
     }
 
