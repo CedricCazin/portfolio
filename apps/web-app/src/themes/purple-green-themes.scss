@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 
 @use '../app/app.component.theme' as app;
-@use '../app/about/about/about.component-theme' as about;
-@use '../app/contact/contact/contact.component-theme' as contact;
-@use '../app/experiences/experiences/experiences.component-theme' as experiences;
-@use '../app/resume/resume/resume.component-theme' as resume;
-@use '../app/skills/skills/skills.component-theme' as skills;
+@use '../app/about/about-main/about-main.component-theme' as about;
+@use '../app/contact/contact-main/contact-main.component-theme' as contact;
+@use '../app/experiences/experiences-main/experiences-main.component-theme' as experiences;
+@use '../app/resume/resume-main/resume-main.component-theme' as resume;
+@use '../app/skills/skills-main/skills-main.component-theme' as skills;
 @use '../app/shared/floating-skill/floating-skill.component.theme.scss' as floating-skill;
 @use './glass.theme' as glass;
 

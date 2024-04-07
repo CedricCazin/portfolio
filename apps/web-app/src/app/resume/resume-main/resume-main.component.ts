@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { ResumeService } from '../resume.service';
 
 @Component({
-    selector: 'portfolio-resume',
-    templateUrl: './resume.component.html',
-    styleUrls: ['./resume.component.scss'],
+    standalone: true,
+    imports: [CommonModule, RouterModule, MatIconModule, MatButtonModule],
+    providers: [ResumeService],
+    templateUrl: './resume-main.component.html',
+    styleUrls: ['./resume-main.component.scss'],
 })
-export class ResumeComponent {
+export class ResumeMainComponent {
     constructor(private router: Router) {}
 
     public navigateToMResumeMaterial() {

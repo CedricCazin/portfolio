@@ -1,11 +1,16 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Skill, SkillType } from '../skill.interface';
-import { SkillsService } from '../skills.service';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
+    standalone: true,
+    imports: [CommonModule, MatTableModule, MatSortModule, MatProgressBarModule, MatIconModule, MatButtonModule],
     selector: 'portfolio-skills-table',
     templateUrl: './skills-table.component.html',
     styleUrls: ['./skills-table.component.scss'],

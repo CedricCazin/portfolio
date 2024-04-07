@@ -1,1 +1,1 @@
-declare module 'web-app-games/Module';
+declare module 'web-app-games/GamesRoutes';

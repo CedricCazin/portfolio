@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import {
     Component,
     ElementRef,
@@ -12,9 +12,14 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import { Game } from '../shared/game.interface';
+import { Game } from '../game.interface';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
+    standalone: true,
+    imports: [CommonModule, MatIconModule, MatCardModule, MatButtonModule],
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'floating-game',
     templateUrl: './floating-game.component.html',

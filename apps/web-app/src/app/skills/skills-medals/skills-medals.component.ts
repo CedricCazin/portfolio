@@ -1,9 +1,33 @@
 import { Component } from '@angular/core';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { SkillType } from '../skill.interface';
 import { SkillsService } from '../skills.service';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FloatingSkillComponent } from '../../shared/floating-skill/floating-skill.component';
 
 @Component({
-    selector: 'portfolio-skills',
+    standalone: true,
+    imports: [
+        CommonModule,
+
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+
+        FloatingSkillComponent,
+    ],
     templateUrl: './skills-medals.component.html',
     styleUrls: ['./skills-medals.component.scss'],
 })

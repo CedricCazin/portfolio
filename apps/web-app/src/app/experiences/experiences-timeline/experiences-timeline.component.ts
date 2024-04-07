@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { Experience } from '../experiences.interface';
+import { CommonModule } from '@angular/common';
 import { ExperiencesService } from '../experiences.service';
+import { Experience } from '../experiences.interface';
 
 @Component({
-    selector: 'portfolio-experiences-timeline',
+    standalone: true,
+    imports: [CommonModule],
+    providers: [ExperiencesService],
     templateUrl: './experiences-timeline.component.html',
     styleUrls: ['./experiences-timeline.component.scss'],
 })
