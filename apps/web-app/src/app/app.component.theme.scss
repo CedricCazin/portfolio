@@ -1,22 +1,27 @@
 @use '@angular/material' as mat;
 @use 'sass:map';
 
+@include mat.core();
+
 @mixin color($theme) {
     $color-config: mat.get-color-config($theme);
 
     $primary-palette: map.get($color-config, 'primary');
     $accent-palette: map.get($color-config, 'accent');
     $warn-palette: map.get($color-config, 'warn');
+    $background-palette: map.get($color-config, 'background');
     $is-dark-theme: map.get($color-config, 'is-dark');
 
     $accent-color: mat.get-color-from-palette($accent-palette, 'default');
+    $background-color: mat.get-color-from-palette($background-palette, 'hover');
 
     .background {
+        // must find a way to get the inverted color for the line of the polygons background
         background-color: if($is-dark-theme, #efefef80, #30303080);
 
         svg {
             polygon {
-                fill: if($is-dark-theme, #303030, #efefef);
+                fill: var(--mat-app-background-color);
             }
         }
     }
@@ -25,21 +30,48 @@
         background-color: transparent !important;
     }
 
-    mat-nav-list {
-        .mdc-list-item {
-            padding-left: 10px !important;
+    mat-accordion {
+        mat-expansion-panel {
+            .mat-expansion-panel-header {
+                height: var(--mat-expansion-header-expanded-state-height);
+                margin: 0;
+                border-radius: 0;
+            }
 
-            &.list-item-active {
-                border-left: 10px solid $accent-color !important;
-                padding-left: 0 !important;
-
-                .mat-mdc-list-item-title {
+            &.link-active {
+                .mat-expansion-panel-header {
+                    border-left: 10px solid $accent-color !important;
                     font-weight: bold;
                     color: $accent-color !important;
                 }
+            }
 
-                .mat-icon {
-                    color: $accent-color !important;
+            .mat-expansion-panel-body {
+                padding: 0;
+
+                mat-nav-list {
+                    border-left: 10px solid;
+                    border-color: $background-color !important;
+
+                    padding: 0;
+
+                    .mdc-list-item {
+                        border-left: 10px solid transparent !important;
+
+                        &.link-active {
+                            border-left: 10px solid $accent-color !important;
+                            padding-left: 0 !important;
+
+                            .mat-mdc-list-item-title {
+                                font-weight: bold;
+                                color: $accent-color !important;
+                            }
+
+                            .mat-icon {
+                                color: $accent-color !important;
+                            }
+                        }
+                    }
                 }
             }
         }
