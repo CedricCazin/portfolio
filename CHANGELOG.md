@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/CedricCazin/portfolio/compare/v1.1.0...v1.1.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* **web-app:** change menu ([682fb38](https://github.com/CedricCazin/portfolio/commit/682fb38d33c6514a9d76153c5583822c9eb1cd55))
+* **web-app:** scss and up budget ([ce20d94](https://github.com/CedricCazin/portfolio/commit/ce20d947d8f4cbd0f34b8c0f81f9745c0a538ba3))
+* **web-app:** theme and help sidenav ([4344351](https://github.com/CedricCazin/portfolio/commit/43443517a5358464ddaf74572caa8d4765ae1695))
+
 # [1.1.0](https://github.com/CedricCazin/portfolio/compare/v1.0.3...v1.1.0) (2023-11-10)
 
 ## [1.0.3](https://github.com/CedricCazin/portfolio/compare/v1.0.2...v1.0.3) (2023-10-23)
