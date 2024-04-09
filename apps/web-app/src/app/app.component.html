@@ -54,52 +54,64 @@
             <h3 class="designation">Lead Software Engineer</h3>
         </div>
 
-        <mat-nav-list role="navigation">
-            <div mat-subheader>Work</div>
+        <mat-accordion role="navigation" displayMode="flat">
+            <mat-divider></mat-divider>
+
+            <mat-expansion-panel
+                [class.mat-elevation-z0]="true"
+                expanded="true"
+                routerLinkActive="link-active"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                <mat-expansion-panel-header mat-subheader> Work </mat-expansion-panel-header>
+
+                <mat-divider></mat-divider>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/work/about" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>portrait</mat-icon>
+                        <div matListItemTitle>About</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/experiences" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>view_timeline</mat-icon>
+                        <div matListItemTitle>Experiences</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/resume" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>description</mat-icon>
+                        <div matListItemTitle>Resume</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/skills" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>bar_chart</mat-icon>
+                        <div matListItemTitle>Skills</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/contact" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>email</mat-icon>
+                        <div matListItemTitle>Contact</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
 
             <mat-divider></mat-divider>
 
-            <mat-list-item routerLink="about" routerLinkActive="list-item-active">
-                <mat-icon matListItemIcon>portrait</mat-icon>
-                <div matListItemTitle>About</div>
-            </mat-list-item>
+            <mat-expansion-panel [class.mat-elevation-z0]="true" routerLinkActive="link-active">
+                <mat-expansion-panel-header mat-subheader> Perso </mat-expansion-panel-header>
 
-            <mat-list-item routerLink="experiences" routerLinkActive="list-item-active">
-                <mat-icon matListItemIcon>view_timeline</mat-icon>
-                <div matListItemTitle>Experiences</div>
-            </mat-list-item>
+                <mat-divider></mat-divider>
 
-            <mat-list-item routerLink="resume" routerLinkActive="list-item-active">
-                <mat-icon matListItemIcon>description</mat-icon>
-                <div matListItemTitle>Resume</div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="skills" routerLinkActive="list-item-active">
-                <mat-icon matListItemIcon>bar_chart</mat-icon>
-                <div matListItemTitle>Skills</div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="contact" routerLinkActive="list-item-active">
-                <mat-icon matListItemIcon>email</mat-icon>
-                <div matListItemTitle>Contact</div>
-            </mat-list-item>
+                <mat-nav-list>
+                    <mat-list-item routerLink="/personal/games" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>sports_esports</mat-icon>
+                        <div matListItemTitle>Games</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
 
             <mat-divider></mat-divider>
-
-            <br />
-            <br />
-
-            <div mat-subheader>Perso</div>
-
-            <mat-divider></mat-divider>
-
-            <mat-list-item routerLink="web-app-games" routerLinkActive="list-item-active">
-                <mat-icon matListItemIcon>sports_esports</mat-icon>
-                <div matListItemTitle>Games</div>
-            </mat-list-item>
-
-            <mat-divider></mat-divider>
-        </mat-nav-list>
+        </mat-accordion>
 
         <div class="version">
             <mat-divider></mat-divider>

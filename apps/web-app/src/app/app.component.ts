@@ -14,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
     standalone: true,
@@ -31,6 +32,7 @@ import { RouterModule } from '@angular/router';
         MatDividerModule,
         MatSidenavModule,
         MatListModule,
+        MatExpansionModule,
     ],
     providers: [ThemeService, LanguageService],
     selector: 'portfolio-root',
