@@ -34,10 +34,14 @@ export class LanguageService {
         },
     ];
 
-    private _language: Language = this.languages[0];
+    private defaultLanguage: Language = this.languages[0];
+
+    private _language: Language = this.defaultLanguage;
     public set language(language: Language) {
-        this.updateLanguage(language);
+        this._language = language;
+        this.translateService.use(language.language);
     }
+
     public get language(): Language {
         return this._language;
     }
@@ -48,15 +52,8 @@ export class LanguageService {
         translateService.setDefaultLang(this._language.language);
     }
 
-    updateLanguage(language: Language) {
-        this._language = language;
-
-        this.translateService.use(language.language);
-    }
-
     detectLanguages() {
         const i18n = this.languages.filter((language) => language.id === this.translateService.getBrowserCultureLang());
-
-        this._language = i18n[0];
+        this.language = i18n?.[0] ?? this.defaultLanguage;
     }
 }
