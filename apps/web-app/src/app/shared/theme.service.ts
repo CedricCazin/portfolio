@@ -59,7 +59,7 @@ export class ThemeService {
 
     private darkModePrefix = 'color-scheme-';
 
-    private _glassMode = false;
+    private _glassMode = true;
     public set glassMode(glassMode: boolean) {
         this.updateGlassMode(glassMode);
     }

@@ -13,7 +13,9 @@
     $is-dark-theme: map.get($color-config, 'is-dark');
 
     $accent-color: mat.get-color-from-palette($accent-palette, 'default');
-    $background-color: mat.get-color-from-palette($background-palette, 'hover');
+    $primary-color: mat.get-color-from-palette($primary-palette, 'default');
+    $background-color: mat.get-color-from-palette($background-palette, 'background');
+    $hover-color: mat.get-color-from-palette($background-palette, 'hover');
 
     .background {
         // must find a way to get the inverted color for the line of the polygons background
@@ -30,45 +32,73 @@
         background-color: transparent !important;
     }
 
-    mat-accordion {
-        mat-expansion-panel {
-            .mat-expansion-panel-header {
-                height: var(--mat-expansion-header-expanded-state-height);
-                margin: 0;
-                border-radius: 0;
-            }
+    mat-sidenav-container.nav-sidenav-container {
+        .mat-sidenav.nav-sidenav {
+            mat-accordion {
+                mat-expansion-panel {
+                    margin: 10px;
+                    background-color: transparent !important;
 
-            &.link-active {
-                .mat-expansion-panel-header {
-                    border-left: 10px solid $accent-color !important;
-                    font-weight: bold;
-                    color: $accent-color !important;
-                }
-            }
+                    .mat-expansion-panel-header {
+                        height: var(--mat-expansion-header-expanded-state-height);
+                        border-radius: 10px;
+                        border: 1px solid $primary-color;
+                        background: rgba($primary-color, 0.25);
 
-            .mat-expansion-panel-body {
-                padding: 0;
+                        &:hover {
+                            background: rgba($primary-color, 0.5);
+                        }
 
-                mat-nav-list {
-                    border-left: 10px solid;
-                    border-color: $background-color !important;
+                        mat-panel-title {
+                            .mat-icon {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
 
-                    padding: 0;
-
-                    .mdc-list-item {
-                        border-left: 10px solid transparent !important;
-
-                        &.link-active {
-                            border-left: 10px solid $accent-color !important;
-                            padding-left: 0 !important;
-
-                            .mat-mdc-list-item-title {
+                    &.link-active {
+                        .mat-expansion-panel-header {
+                            mat-panel-title {
                                 font-weight: bold;
                                 color: $accent-color !important;
                             }
+                        }
+                    }
 
-                            .mat-icon {
-                                color: $accent-color !important;
+                    .mat-expansion-panel-body {
+                        padding: 0;
+
+                        mat-nav-list {
+                            // border-left: 10px solid;
+                            // border-color: $hover-color !important;
+                            // padding: 0;
+
+                            .mdc-list-item {
+                                padding: 0 24px;
+
+                                mat-icon {
+                                    margin: 0 10px 0 0;
+                                }
+
+                                // border-left: 10px solid transparent !important;
+
+                                &:hover {
+                                    border-radius: 10px;
+                                }
+
+                                &.link-active {
+                                    // border-left: 10px solid $accent-color !important;
+                                    // padding-left: 0 !important;
+
+                                    .mat-mdc-list-item-title {
+                                        font-weight: bold;
+                                        color: $accent-color !important;
+                                    }
+
+                                    .mat-icon {
+                                        color: $accent-color !important;
+                                    }
+                                }
                             }
                         }
                     }
