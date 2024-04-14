@@ -1,9 +1,9 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, HostListener, Inject, Renderer2, RendererFactory2 } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Inject, Renderer2, RendererFactory2, computed } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Language, LanguageService } from './shared/language.service';
-import { Theme, ThemeService } from './shared/theme.service';
+import { Language, LanguageService } from '@portfolio/angular/common';
+import { Theme, ThemeService } from '@portfolio/angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
@@ -53,47 +53,42 @@ export class AppComponent implements AfterViewInit {
     public version = '0.0.0';
 
     public languages: Language[] = this.languageService.languages;
-
-    private _language: Language = this.languages[0];
-    public get language(): Language {
-        return this._language;
+    #currentLanguage = this.languageService.currentLanguage;
+    public get currentLanguage(): Language {
+        return this.#currentLanguage();
     }
-    public set language(language: Language) {
-        this._language = language;
-        this.languageService.language = language;
+    public set currentLanguage(language: Language) {
+        this.languageService.setCurrentLanguage(language);
     }
 
     public themes: Theme[] = this.themeService.themes;
 
-    private _theme: Theme = this.themes[0];
+    #theme = computed(() => this.themeService.themeSettings().theme);
     public get theme(): Theme {
-        return this._theme;
+        return this.#theme();
     }
     public set theme(theme: Theme) {
-        this._theme = theme;
-        this.themeService.theme = theme;
+        this.themeService.setTheme(theme);
     }
 
-    private _darkMode = true;
-    public get darkMode(): boolean {
-        return this._darkMode;
+    #isDarkMode = computed(() => this.themeService.themeSettings().isDarkMode);
+    public get isDarkMode(): boolean {
+        return this.#isDarkMode();
     }
-    public set darkMode(isDark: boolean) {
-        this._darkMode = isDark;
-        this.themeService.darkMode = this._darkMode;
+    public set isDarkMode(isDarkMode: boolean) {
+        this.themeService.setIsDarkMode(isDarkMode);
     }
 
-    private _glassMode = true;
-    public get glassMode(): boolean {
-        return this._glassMode;
+    #isGlassMode = computed(() => this.themeService.themeSettings().isGlassMode);
+    public get isGlassMode(): boolean {
+        return this.#isGlassMode();
     }
-    public set glassMode(glassMode: boolean) {
-        this._glassMode = glassMode;
-        this.themeService.glassMode = this._glassMode;
+    public set isGlassMode(isGlassMode: boolean) {
+        this.themeService.setIsGlassMode(isGlassMode);
     }
 
     public getThemePreview(theme: Theme) {
-        return `/assets/themes/${theme.id}-${this.darkMode ? 'dark' : 'light'}-theme.svg`;
+        return `/assets/themes/${theme.id}-${this.isDarkMode ? 'dark' : 'light'}-theme.svg`;
     }
 
     public getLanguagePreview(language: Language) {
@@ -110,16 +105,6 @@ export class AppComponent implements AfterViewInit {
         private rendererFactory: RendererFactory2,
     ) {
         this.renderer = rendererFactory.createRenderer(null, null);
-
-        this.themes = this.themeService.themes;
-
-        this._theme = this.themeService.theme;
-        this._darkMode = this.themeService.darkMode;
-        this._glassMode = this.themeService.glassMode;
-
-        this.languages = this.languageService.languages;
-
-        this._language = this.languageService.language;
 
         this.matIconRegistry.addSvgIcon(
             'github',
