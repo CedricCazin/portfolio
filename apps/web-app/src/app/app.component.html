@@ -110,8 +110,14 @@
 
         <div class="version">
             <mat-divider></mat-divider>
-
+            <span>{{ theme.name }}</span>
+            <span>{{ isGlassMode ? 'glass' : 'no-glass' }}</span>
+            <span>{{ isDarkMode ? 'dark' : 'light' }}</span>
+            <mat-divider></mat-divider>
+            <span>{{ currentLanguage.name }}</span>
+            <mat-divider></mat-divider>
             <span>Version: {{ version }}</span>
+            <mat-divider></mat-divider>
         </div>
     </mat-sidenav>
 
@@ -127,22 +133,22 @@
 
             <button mat-icon-button [matMenuTriggerFor]="menuLanguages">
                 <mat-icon>
-                    <img [src]="getLanguagePreview(language)" />
+                    <img [src]="getLanguagePreview(currentLanguage)" />
                 </mat-icon>
             </button>
 
             <mat-menu #menuLanguages="matMenu" class="language-configuration">
                 <button
                     mat-menu-item
-                    *ngFor="let _language of languages"
+                    *ngFor="let language of languages"
                     class="language-button"
-                    (click)="language = _language; $event.stopPropagation()"
+                    (click)="currentLanguage = language; $event.stopPropagation()"
                 >
                     <mat-icon class="language-selected">{{
-                        _language === language ? 'radio_button_checked' : 'radio_button_unchecked'
+                        currentLanguage.id === language.id ? 'radio_button_checked' : 'radio_button_unchecked'
                     }}</mat-icon>
-                    <span>{{ _language.name }}</span>
-                    <mat-icon class="language-preview"><img [src]="getLanguagePreview(_language)" /></mat-icon>
+                    <span>{{ language.name }}</span>
+                    <mat-icon class="language-preview"><img [src]="getLanguagePreview(language)" /></mat-icon>
                 </button>
             </mat-menu>
 
@@ -152,12 +158,12 @@
 
             <mat-menu #menuThemes="matMenu" class="theme-configuration">
                 <div mat-menu-item (click)="$event.stopPropagation()">
-                    <mat-slide-toggle [(ngModel)]="darkMode"></mat-slide-toggle>
+                    <mat-slide-toggle [(ngModel)]="isDarkMode"></mat-slide-toggle>
                     <span>Dark Mode</span>
                 </div>
 
                 <div mat-menu-item (click)="$event.stopPropagation()">
-                    <mat-slide-toggle [(ngModel)]="glassMode"></mat-slide-toggle>
+                    <mat-slide-toggle [(ngModel)]="isGlassMode"></mat-slide-toggle>
                     <span>Glass</span>
                 </div>
 
