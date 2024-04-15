@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CedricCazin/portfolio/compare/v1.1.1...v1.2.0) (2024-04-15)
+
+
+### Features
+
+* **angular:** move theme and language service to signal + in common lib ([444fc8f](https://github.com/CedricCazin/portfolio/commit/444fc8f6bd8a0235986707ce210929cf9ba4d534))
+
 ## [1.1.1](https://github.com/CedricCazin/portfolio/compare/v1.1.0...v1.1.1) (2024-04-09)
 
 
