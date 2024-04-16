@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import { AboutService } from '../about.service';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { switchMap } from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, MatCardModule, BaseChartDirective],
+    imports: [CommonModule, MatCardModule, BaseChartDirective, RouterModule],
     providers: [AboutService],
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './about-main.component.html',
