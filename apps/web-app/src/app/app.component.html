@@ -56,7 +56,7 @@
                 [routerLinkActiveOptions]="{ exact: false }"
             >
                 <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>business</mat-icon> Work {{ workIsActive.isActive }}</mat-panel-title>
+                    <mat-panel-title> <mat-icon>business</mat-icon> Work</mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <mat-nav-list>
@@ -96,7 +96,7 @@
                 routerLinkActive="link-active"
             >
                 <mat-expansion-panel-header>
-                    <mat-panel-title><mat-icon>cottage</mat-icon> Perso {{ personalIsActive.isActive }}</mat-panel-title>
+                    <mat-panel-title><mat-icon>cottage</mat-icon> Personal</mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <mat-nav-list>
@@ -126,6 +126,17 @@
             <button mat-icon-button (click)="navSidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
+
+            <kazaam-breadcrumb>
+                <ng-template #breadcrumbChildTemplate let-item>
+                    <img [src]="item?.image" style="width: 50px" />
+                    <span>{{ item?.name }}</span>
+                </ng-template>
+                <ng-template #breadcrumbTemplate let-item>
+                    <img [src]="item?.image" style="width: 50px" />
+                    <span>{{ item?.name }}</span>
+                </ng-template>
+            </kazaam-breadcrumb>
 
             <button mat-icon-button color="secondary" (click)="helpSidenav.toggle()"><mat-icon>help</mat-icon></button>
 
@@ -176,7 +187,7 @@
                     (click)="theme = _theme; $event.stopPropagation()"
                 >
                     <mat-icon class="theme-selected">{{
-                        _theme === theme ? 'radio_button_checked' : 'radio_button_unchecked'
+                        _theme.id === theme.id ? 'radio_button_checked' : 'radio_button_unchecked'
                     }}</mat-icon>
                     <span>{{ _theme.name }}</span>
                     <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>

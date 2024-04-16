@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { KazaamBreadcrumbComponent } from '@kazaam';
 
 @Component({
     standalone: true,
@@ -33,6 +34,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
         MatSidenavModule,
         MatListModule,
         MatExpansionModule,
+
+        KazaamBreadcrumbComponent,
     ],
     providers: [ThemeService, LanguageService],
     selector: 'portfolio-root',
@@ -42,11 +45,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 export class AppComponent implements AfterViewInit {
     private renderer: Renderer2;
 
-    title = 'web-app';
-
-    cursorLeft = '';
-    cursorTop = '';
-    cursorOpacity = '';
+    title = 'Cédric Cazin - Portfolio';
 
     public showHelp = true;
 
@@ -121,17 +120,5 @@ export class AppComponent implements AfterViewInit {
         setTimeout(() => {
             this.renderer.removeClass(this.document.body, 'cold-start');
         }, 2000);
-    }
-
-    // --
-
-    @HostListener('mousemove', ['$event'])
-    onMousemove(event: any) {
-        const x = event.pageX;
-        const y = event.pageY;
-
-        this.cursorLeft = x - 175 + 'px';
-        this.cursorTop = y - 175 + 'px';
-        this.cursorOpacity = '1';
     }
 }
