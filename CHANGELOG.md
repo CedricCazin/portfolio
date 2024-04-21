@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/CedricCazin/portfolio/compare/v1.2.0...v1.3.0) (2024-04-21)
+
+
+### Bug Fixes
+
+* **repo:** CRLF to LF ([0445402](https://github.com/CedricCazin/portfolio/commit/044540228e663f18e09066a4a7bf9f378817b63e))
+
+
+### Features
+
+* **angular:** add breadcrumbs ([551fbd1](https://github.com/CedricCazin/portfolio/commit/551fbd1d09d96dd5210f852eb71cef4e04df0228))
+
 # [1.2.0](https://github.com/CedricCazin/portfolio/compare/v1.1.1...v1.2.0) (2024-04-15)
 
 
