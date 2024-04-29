@@ -34,8 +34,8 @@
     <div class="rainbow"></div>
 </div>
 
-<mat-sidenav-container class="nav-sidenav-container" autosize>
-    <mat-sidenav #navSidenav class="nav-sidenav" mode="side" position="start" opened>
+<mat-sidenav-container class="nav-sidenav" autosize>
+    <mat-sidenav #navSidenav mode="side" position="start" [(opened)]="navSidenavOpened">
         <div class="identity">
             <div class="avatar">
                 <img src="https://avatars.githubusercontent.com/u/26877462?v=4" />
@@ -46,17 +46,18 @@
             <h3 class="designation">Lead Software Engineer</h3>
         </div>
 
-        <mat-accordion role="navigation" displayMode="default">
+        <mat-accordion class="nav-accordion" role="navigation" displayMode="default">
             <mat-expansion-panel
-                [class.mat-elevation-z0]="true"
-                [@.disabled]="true"
-                expanded="{{ workIsActive.isActive }}"
+                #workPanel
                 #workIsActive="routerLinkActive"
+                expanded="{{ workIsActive.isActive }}"
                 routerLinkActive="link-active"
                 [routerLinkActiveOptions]="{ exact: false }"
+                [@.disabled]="true"
+                [class.mat-elevation-z0]="true"
             >
                 <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>business</mat-icon> Work</mat-panel-title>
+                    <mat-panel-title> <mat-icon>business</mat-icon> Work </mat-panel-title>
                 </mat-expansion-panel-header>
 
                 <mat-nav-list>
@@ -90,6 +91,31 @@
             <mat-expansion-panel
                 [class.mat-elevation-z0]="true"
                 [@.disabled]="true"
+                expanded="{{ examplesIsActive.isActive }}"
+                #examplesIsActive="routerLinkActive"
+                [class.mat-elevation-z0]="true"
+                routerLinkActive="link-active"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title><mat-icon>science</mat-icon> Examples</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/examples/angular" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/angular/angular.svg" />
+                        <div matListItemTitle>Angular</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/examples/angular-material" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/angular/material.svg" />
+                        <div matListItemTitle>Angular Material</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                [class.mat-elevation-z0]="true"
+                [@.disabled]="true"
                 expanded="{{ personalIsActive.isActive }}"
                 #personalIsActive="routerLinkActive"
                 [class.mat-elevation-z0]="true"
@@ -110,18 +136,12 @@
 
         <div class="version">
             <mat-divider></mat-divider>
-            <span>{{ theme.name }}</span>
-            <span>{{ isGlassMode ? 'glass' : 'no-glass' }}</span>
-            <span>{{ isDarkMode ? 'dark' : 'light' }}</span>
-            <mat-divider></mat-divider>
-            <span>{{ currentLanguage.name }}</span>
-            <mat-divider></mat-divider>
             <span>Version: {{ version }}</span>
             <mat-divider></mat-divider>
         </div>
     </mat-sidenav>
 
-    <mat-sidenav-content class="nav-sidenav-content">
+    <mat-sidenav-content>
         <mat-toolbar color="primary">
             <button mat-icon-button (click)="navSidenav.toggle()">
                 <mat-icon>menu</mat-icon>
@@ -137,8 +157,6 @@
                     <span>{{ item?.name }}</span>
                 </ng-template>
             </kazaam-breadcrumb>
-
-            <button mat-icon-button color="secondary" (click)="helpSidenav.toggle()"><mat-icon>help</mat-icon></button>
 
             <span class="spacer"></span>
 
@@ -204,18 +222,8 @@
             </a>
         </mat-toolbar>
 
-        <mat-sidenav-container class="help-sidenav-container" autosize>
-            <mat-sidenav-content class="help-sidenav-content">
-                <div class="content">
-                    <br />
-                    <router-outlet></router-outlet>
-                    <br />
-                </div>
-            </mat-sidenav-content>
-
-            <mat-sidenav #helpSidenav class="help-sidenav" mode="side" position="end">
-                <router-outlet name="help"></router-outlet>
-            </mat-sidenav>
-        </mat-sidenav-container>
+        <div class="content" [ngClass]="!examplesIsActive.isActive ? 'content-articles' : 'content-examples'">
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

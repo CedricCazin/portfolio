@@ -4,287 +4,316 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-}
 
-mat-toolbar {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 0; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
-    gap: 10px;
+    --nav-sidenav-opened: false;
 
-    .spacer {
-        flex: 1 1 auto;
-    }
+    mat-toolbar {
+        position: sticky;
+        position: -webkit-sticky; /* For macOS/iOS Safari */
+        top: 0; /* Sets the sticky toolbar to be on top */
+        z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+        gap: 10px;
 
-    .link {
-        height: 36px;
-
-        img {
-            height: 24px;
-            vertical-align: middle;
+        .spacer {
+            flex: 1 1 auto;
         }
 
-        &.github {
-            mat-icon {
+        .link {
+            height: 36px;
+
+            img {
                 height: 24px;
-                width: 24px;
+                vertical-align: middle;
+            }
+
+            &.github {
+                mat-icon {
+                    height: 24px;
+                    width: 24px;
+                }
+            }
+
+            &.linkedin {
             }
         }
 
-        &.linkedin {
+        ::ng-deep .theme-configuration {
+            width: 300px !important;
+        }
+
+        .mat-icon.theme-preview {
+            margin-right: 0;
+            margin-left: auto;
+            padding-left: 8px;
+            order: 1;
+
+            min-height: 32px;
+            min-width: 32px;
+
+            img {
+                min-height: 24px;
+                min-width: 24px;
+            }
+        }
+
+        ::ng-deep .language-configuration {
+            width: 300px !important;
+        }
+
+        .mat-icon.theme-preview {
+            margin-right: 0;
+            margin-left: auto;
+            padding-left: 8px;
+            order: 1;
+
+            min-height: 32px;
+            min-width: 32px;
+
+            img {
+                min-height: 24px;
+                min-width: 24px;
+            }
         }
     }
 
-    ::ng-deep .theme-configuration {
-        width: 300px !important;
-    }
-
-    .mat-icon.theme-preview {
-        margin-right: 0;
-        margin-left: auto;
-        padding-left: 8px;
-        order: 1;
-
-        min-height: 32px;
-        min-width: 32px;
-
-        img {
-            min-height: 24px;
-            min-width: 24px;
-        }
-    }
-
-    ::ng-deep .language-configuration {
-        width: 300px !important;
-    }
-
-    .mat-icon.theme-preview {
-        margin-right: 0;
-        margin-left: auto;
-        padding-left: 8px;
-        order: 1;
-
-        min-height: 32px;
-        min-width: 32px;
-
-        img {
-            min-height: 24px;
-            min-width: 24px;
-        }
-    }
-}
-
-.background {
-    z-index: -3;
-
-    position: absolute;
-    overflow: hidden;
-
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    .rainbow {
+    .background {
         z-index: -3;
+
+        position: absolute;
+        overflow: hidden;
+
         top: 0;
         left: 0;
-        opacity: 0.5;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        box-shadow: 2px -3px 41px -1px rgba(241, 196, 15, 0.64);
-        background: linear-gradient(45deg, #e8f74d, #ff6600d9, #00ff66, #13ff13, #ad27ad, #bd2681, #6512b9, #ff3300de, #5aabde);
-        background-size: 400%;
-        animation: glower 20s linear infinite;
-        filter: blur(40px);
+        bottom: 0;
+        right: 0;
 
-        @keyframes glower {
-            0% {
-                background-position: 0 0;
-            }
-
-            50% {
-                background-position: 400% 0;
-            }
-
-            100% {
-                background-position: 0 0;
-            }
-        }
-    }
-
-    svg {
-        z-index: -2;
-        position: relative;
-
-        min-width: 100%;
-        width: 100%;
-        min-height: 100%;
-        height: 100%;
-
-        polygon {
-            stroke-width: 6;
-            stroke: transparent;
-        }
-    }
-}
-
-mat-sidenav-container.nav-sidenav-container,
-mat-sidenav-container.help-sidenav-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-
-    mat-sidenav-content.nav-sidenav-content,
-    mat-sidenav-content.help-sidenav-content {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-    }
-}
-
-mat-sidenav-container.nav-sidenav-container {
-    ::ng-deep mat-sidenav.nav-sidenav {
-        min-width: 275px;
-        max-width: 275px;
-    }
-
-    mat-sidenav.nav-sidenav {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-
-        .identity {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            flex-grow: 1;
-
-            .avatar {
-                width: 225px;
-                height: calc(225px * 1.1547);
-
-                // https://bennettfeely.com/clippy/
-                // https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/
-                --floating-skill-clip-path: polygon(25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%, 0% 50%);
-
-                -webkit-clip-path: var(--floating-skill-clip-path);
-                clip-path: var(--floating-skill-clip-path);
-
-                img {
-                    width: 100%;
-                }
-            }
-
-            .name {
-                margin-top: 8px;
-            }
-
-            .designation {
-                margin-top: 8px;
-            }
-        }
-
-        .mat-mdc-list-base {
-            --mdc-list-list-item-one-line-container-height: 48px;
-        }
-
-        .version {
-            position: absolute;
+        .rainbow {
+            z-index: -3;
+            top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            box-shadow: 2px -3px 41px -1px rgba(241, 196, 15, 0.64);
+            background: linear-gradient(
+                45deg,
+                #e8f74d,
+                #ff6600d9,
+                #00ff66,
+                #13ff13,
+                #ad27ad,
+                #bd2681,
+                #6512b9,
+                #ff3300de,
+                #5aabde
+            );
+            background-size: 400%;
+            animation: glower 20s linear infinite;
+            filter: blur(40px);
 
-            span {
-                display: block;
-                text-align: center;
+            @keyframes glower {
+                0% {
+                    background-position: 0 0;
+                }
+
+                50% {
+                    background-position: 400% 0;
+                }
+
+                100% {
+                    background-position: 0 0;
+                }
+            }
+        }
+
+        svg {
+            z-index: -2;
+            position: relative;
+
+            min-width: 100%;
+            width: 100%;
+            min-height: 100%;
+            height: 100%;
+
+            polygon {
+                stroke-width: 6;
+                stroke: transparent;
             }
         }
     }
 
-    mat-sidenav-content.nav-sidenav-content {
-        overflow: visible;
+    .mat-sidenav-container.nav-sidenav {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
 
-        mat-toolbar {
-            min-height: var(--mat-toolbar-standard-height);
+        background-color: transparent !important;
+
+        --mat-sidenav-container-width: 275px;
+
+        .mat-sidenav {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            .identity {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                flex-grow: 1;
+
+                .avatar {
+                    width: 225px;
+                    height: calc(225px * 1.1547);
+
+                    // https://bennettfeely.com/clippy/
+                    // https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/
+                    --floating-skill-clip-path: polygon(25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%, 0% 50%);
+
+                    -webkit-clip-path: var(--floating-skill-clip-path);
+                    clip-path: var(--floating-skill-clip-path);
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .name {
+                    margin-top: 8px;
+                }
+
+                .designation {
+                    margin-top: 8px;
+                }
+            }
+
+            .version {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                right: 0;
+
+                span {
+                    display: block;
+                    text-align: center;
+                }
+            }
+
+            .mat-accordion.nav-accordion {
+                .mat-expansion-panel {
+                    margin: 10px;
+
+                    &.link-active {
+                        .mat-expansion-panel-header {
+                            .mat-panel-title {
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
+                    .mat-expansion-panel-header {
+                        height: var(--mat-expansion-header-expanded-state-height);
+                        border-radius: 10px;
+                        border-width: 1px;
+                        border-style: solid;
+
+                        .mat-expansion-panel-header-title {
+                            .mat-icon {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+
+                    ::ng-deep .mat-expansion-panel-content {
+                        .mat-expansion-panel-body {
+                            padding: 0;
+
+                            .mat-mdc-nav-list {
+                                .mat-mdc-list-item {
+                                    padding: 0 24px;
+                                    border-radius: 10px;
+
+                                    &.link-active {
+                                        .mat-mdc-list-item-title {
+                                            font-weight: bold;
+                                        }
+                                    }
+
+                                    .mat-mdc-list-item-icon {
+                                        margin: 0 10px 0 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        mat-sidenav-container.help-sidenav-container {
-            // overflow: hidden;
+        .mat-sidenav-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
             overflow: visible;
+            overflow-y: auto;
 
-            mat-sidenav-content.help-sidenav-content {
-                overflow: visible;
-                overflow-y: auto;
-                // overflow-x: hidden;
+            // based on https://codepen.io/zkreations/pen/bZRgqd
 
-                // based on https://codepen.io/zkreations/pen/bZRgqd
+            $bg-mask: rgb(255 255 255 / 25%);
+            --scrollbar-size: 12px;
+            --scrollbar-thumb: linear-gradient(
+                45deg,
+                #{$bg-mask} 20%,
+                transparent 20%,
+                transparent 40%,
+                #{$bg-mask} 40%,
+                #{$bg-mask} 60%,
+                transparent 60%,
+                transparent 80%,
+                #{$bg-mask} 80%
+            );
+            --scrollbar-thumb-color: #f97316;
+            --scrollbar-track-radius: 20px;
+            --scrollbar-track-color: rgb(0 0 0 / 40%);
 
-                $bg-mask: rgb(255 255 255 / 25%);
-                --scrollbar-size: 12px;
-                --scrollbar-thumb: linear-gradient(
-                    45deg,
-                    #{$bg-mask} 20%,
-                    transparent 20%,
-                    transparent 40%,
-                    #{$bg-mask} 40%,
-                    #{$bg-mask} 60%,
-                    transparent 60%,
-                    transparent 80%,
-                    #{$bg-mask} 80%
-                );
-                --scrollbar-thumb-color: #f97316;
-                --scrollbar-track-radius: 20px;
-                --scrollbar-track-color: rgb(0 0 0 / 40%);
+            scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+            scrollbar-width: thin;
 
-                scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
-                scrollbar-width: thin;
+            &::-webkit-scrollbar {
+                width: var(--scrollbar-size);
+                height: var(--scrollbar-size);
+            }
 
-                &::-webkit-scrollbar {
-                    width: var(--scrollbar-size);
-                    height: var(--scrollbar-size);
-                }
+            &::-webkit-scrollbar-track {
+                background-color: var(--scrollbar-track-color);
+                border-radius: var(--scrollbar-track-radius);
+            }
 
-                &::-webkit-scrollbar-track {
-                    background-color: var(--scrollbar-track-color);
-                    border-radius: var(--scrollbar-track-radius);
-                }
+            &::-webkit-scrollbar-thumb {
+                background-color: var(--scrollbar-thumb-color);
+                background-image: var(--scrollbar-thumb);
+                border-radius: var(--scrollbar-thumb-radius);
+            }
 
-                &::-webkit-scrollbar-thumb {
-                    background-color: var(--scrollbar-thumb-color);
-                    background-image: var(--scrollbar-thumb);
-                    border-radius: var(--scrollbar-thumb-radius);
-                }
+            // based on https://codepen.io/zkreations/pen/bZRgqd
 
-                // based on https://codepen.io/zkreations/pen/bZRgqd
+            .mat-toolbar {
+                min-height: var(--mat-toolbar-standard-height);
+            }
 
-                div.content {
-                    overflow: visible;
-                    // overflow-x: hidden;
-                    // overflow-y: hidden;
+            .content {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
 
+                &.content-articles {
                     margin: 0 auto;
                     max-width: 1200px;
                     width: 100%;
-
-                    display: flex;
-                    flex-direction: column;
-                    flex: 1;
                 }
             }
         }
-    }
-}
-
-mat-sidenav-container.help-sidenav-container {
-    ::ng-deep .mat-sidenav.help-sidenav {
-        min-width: 25%;
-        max-width: 25%;
-    }
-
-    mat-sidenav.help-sidenav {
-        padding: 20px;
     }
 }
