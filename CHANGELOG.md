@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/CedricCazin/portfolio/compare/v1.3.0...v1.4.0) (2024-04-29)
+
+
+### Features
+
+* **web-app:** add angular examples page ([f4c217d](https://github.com/CedricCazin/portfolio/commit/f4c217d39edde5f1f165b5eab24b11e2634fd281))
+
 # [1.3.0](https://github.com/CedricCazin/portfolio/compare/v1.2.0...v1.3.0) (2024-04-21)
 
 
