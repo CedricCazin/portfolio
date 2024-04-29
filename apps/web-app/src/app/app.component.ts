@@ -1,5 +1,17 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, HostListener, Inject, Renderer2, RendererFactory2, computed } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    HostBinding,
+    HostListener,
+    Inject,
+    Input,
+    Renderer2,
+    RendererFactory2,
+    ViewChild,
+    ViewEncapsulation,
+    computed,
+} from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Language, LanguageService } from '@portfolio/angular/common';
@@ -11,7 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -47,9 +59,13 @@ export class AppComponent implements AfterViewInit {
 
     title = 'Cédric Cazin - Portfolio';
 
-    public showHelp = true;
-
     public version = '0.0.0';
+
+    @HostBinding('style.--nav-sidenav-opened')
+    navSidenavOpened = true;
+
+    @ViewChild('navSidenav')
+    navSidenav!: MatSidenav;
 
     public languages: Language[] = this.languageService.languages;
     #currentLanguage = this.languageService.currentLanguage;

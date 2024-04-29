@@ -17,6 +17,7 @@
         "paths": {
             "@kazaam": ["libs/kazaam/src/index.ts"],
             "@portfolio/angular/about": ["libs/angular/about/src/index.ts"],
+            "@portfolio/angular/angular-examples": ["libs/angular/angular-examples/src/index.ts"],
             "@portfolio/angular/common": ["libs/angular/common/src/index.ts"],
             "@portfolio/angular/contact": ["libs/angular/contact/src/index.ts"],
             "@portfolio/angular/experiences": ["libs/angular/experiences/src/index.ts"],

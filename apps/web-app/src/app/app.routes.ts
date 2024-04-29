@@ -87,6 +87,23 @@ export const APP_ROUTES: Route[] = [
                 ],
             },
             {
+                path: 'examples',
+                data: { breadcrumb: { name: 'Examples', icon: 'email', order: 5 } },
+                children: [
+                    {
+                        path: 'angular',
+                        data: { breadcrumb: { name: 'Angular', image: '/assets/angular/angular.svg', order: 0 } },
+                        loadChildren: () => import('@portfolio/angular/angular-examples').then((r) => r.ANGULAR_ROUTES),
+                    },
+                    {
+                        path: 'angular-material',
+                        data: { breadcrumb: { name: 'Material', image: '/assets/angular/material.svg', order: 1 } },
+                        loadChildren: () =>
+                            import('@portfolio/angular/angular-examples').then((r) => r.ANGULAR_MATERIAL_ROUTES),
+                    },
+                ],
+            },
+            {
                 path: 'personal',
                 data: {
                     breadcrumb: { name: 'Personal', icon: 'cottage' },

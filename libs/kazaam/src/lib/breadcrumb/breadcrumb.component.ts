@@ -32,6 +32,7 @@ export interface Breadcrumb {
 
     children?: Breadcrumb[];
     childrenHasIcon?: boolean;
+    childrenHasImage?: boolean;
     childrenUseTemplate?: boolean;
 
     parent?: Breadcrumb;
@@ -79,7 +80,10 @@ export interface Breadcrumb {
                 >
                     @if (breadcrumb.icon) {
                         <mat-icon>{{ breadcrumb.icon }}</mat-icon>
+                    } @else if (breadcrumb.image) {
+                        <img [src]="breadcrumb?.image" class="mat-icon" />
                     }
+
                     @if (breadcrumb.useTemplate) {
                         <template
                             [ngTemplateOutletContext]="{
@@ -90,6 +94,7 @@ export interface Breadcrumb {
                     } @else {
                         <span>{{ breadcrumb.name }}</span>
                     }
+
                     <mat-icon iconPositionEnd>{{ menuTrigger.menuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
                 </button>
 
@@ -104,7 +109,10 @@ export interface Breadcrumb {
                         >
                             @if (breadcrumb.parent?.childrenHasIcon) {
                                 <mat-icon>{{ breadcrumbChild.icon }}</mat-icon>
+                            } @else if (breadcrumb.parent?.childrenHasImage) {
+                                <img [src]="breadcrumbChild.image" class="mat-icon" />
                             }
+
                             @if (breadcrumbChild.useTemplate) {
                                 <template
                                     [ngTemplateOutletContext]="{
@@ -119,7 +127,7 @@ export interface Breadcrumb {
                     }
                 </mat-menu>
             } @else {
-                @if (breadcrumb.icon && !breadcrumb.name && !breadcrumb.useTemplate) {
+                @if ((breadcrumb.icon || breadcrumb.image) && !breadcrumb.name && !breadcrumb.useTemplate) {
                     <button
                         mat-icon-button
                         class="breadcrumb-button"
@@ -127,7 +135,11 @@ export interface Breadcrumb {
                         [routerLink]="breadcrumb.path"
                         [disabled]="last"
                     >
-                        <mat-icon>{{ breadcrumb.icon }}</mat-icon>
+                        @if (breadcrumb.icon) {
+                            <mat-icon>{{ breadcrumb.icon }}</mat-icon>
+                        } @else if (breadcrumb.image) {
+                            <img [src]="breadcrumb?.image" class="mat-icon" />
+                        }
                     </button>
                 } @else {
                     <button
@@ -139,6 +151,8 @@ export interface Breadcrumb {
                     >
                         @if (breadcrumb.icon) {
                             <mat-icon>{{ breadcrumb.icon }}</mat-icon>
+                        } @else if (breadcrumb.image) {
+                            <img [src]="breadcrumb?.image" class="mat-icon" />
                         }
                         @if (breadcrumb.useTemplate) {
                             <template
@@ -201,6 +215,8 @@ export class KazaamBreadcrumbComponent {
                 }
 
                 breadcrumb.childrenHasIcon = breadcrumb.children?.some((c) => c.icon !== undefined);
+                breadcrumb.childrenHasImage = breadcrumb.children?.some((c) => c.image !== undefined);
+
                 breadcrumbs.push(breadcrumb);
             }
             currentRoute = currentRoute.firstChild;
