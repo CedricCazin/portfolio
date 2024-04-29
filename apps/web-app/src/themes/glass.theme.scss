@@ -16,15 +16,21 @@
     $hover-color: mat.get-color-from-palette($background-palette, 'hover');
     $contrast-color: mat.get-color-from-palette($primary-palette, 'default-contrast');
 
-    mat-sidenav-container.nav-sidenav-container {
+    mat-sidenav-container.nav-sidenav {
         background-color: transparent !important;
 
-        .mat-sidenav.nav-sidenav {
+        .mat-sidenav {
             backdrop-filter: blur(if($is-dark-theme, 2.5px, 0.5px)) saturate(if($is-dark-theme, 50%, 5));
             -webkit-backdrop-filter: blur(if($is-dark-theme, 2.5px, 0.5px)) saturate(if($is-dark-theme, 50%, 5));
 
             background: rgba($background-color, if($is-dark-theme, 0.33, 0.5));
             box-shadow: rgba(0, 0, 0, 0.25) 15px 4px 30px;
+
+            mat-accordion {
+                mat-expansion-panel {
+                    background-color: transparent !important;
+                }
+            }
         }
     }
 
@@ -56,7 +62,7 @@
     &:not(.cold-start) {
         .mat-toolbar,
         .mat-mdc-card,
-        .mat-sidenav.nav-sidenav {
+        .mat-sidenav {
             transition-property: all;
             transition:
                 margin 700ms ease-in-out,
