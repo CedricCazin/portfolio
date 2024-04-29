@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
 import { loadRemoteModule } from '@nx/angular/mf';
-import { AboutHelpComponent } from './about/about-help/about-help.component';
 
 export const APP_ROUTES: Route[] = [
     {
@@ -21,27 +20,27 @@ export const APP_ROUTES: Route[] = [
                     {
                         path: 'about',
                         data: { breadcrumb: { name: 'About', icon: 'portrait', order: 0 } },
-                        loadChildren: () => import('./about/routes').then((r) => r.ROUTES),
+                        loadChildren: () => import('@portfolio/angular/about').then((r) => r.ROUTES),
                     },
                     {
                         path: 'experiences',
                         data: { breadcrumb: { name: 'Experiences', icon: 'view_timeline', order: 1 } },
-                        loadChildren: () => import('./experiences/routes').then((r) => r.ROUTES),
+                        loadChildren: () => import('@portfolio/angular/experiences').then((r) => r.ROUTES),
                     },
                     {
                         path: 'resume',
                         data: { breadcrumb: { name: 'Resume', icon: 'description', order: 2 } },
-                        loadChildren: () => import('./resume/routes').then((r) => r.ROUTES),
+                        loadChildren: () => import('@portfolio/angular/resume').then((r) => r.ROUTES),
                     },
                     {
                         path: 'skills',
                         data: { breadcrumb: { name: 'skills', icon: 'bar_chart', order: 3 } },
-                        loadChildren: () => import('./skills/routes').then((r) => r.ROUTES),
+                        loadChildren: () => import('@portfolio/angular/skills').then((r) => r.ROUTES),
                     },
                     {
                         path: 'contact',
                         data: { breadcrumb: { name: 'Contact', icon: 'email', order: 4 } },
-                        loadChildren: () => import('./contact/routes').then((r) => r.ROUTES),
+                        loadChildren: () => import('@portfolio/angular/contact').then((r) => r.ROUTES),
                     },
                     {
                         path: 'aaa',
@@ -74,7 +73,7 @@ export const APP_ROUTES: Route[] = [
                                     {
                                         path: 'bbb',
                                         data: { breadcrumb: { name: 'bbb' } },
-                                        component: AboutHelpComponent,
+                                        loadChildren: () => import('@portfolio/angular/about').then((r) => r.ROUTES),
                                     },
                                 ],
                             },

@@ -10,6 +10,16 @@
             "executor": "@nx/angular:webpack-browser",
             "outputs": ["{options.outputPath}"],
             "options": {
+                "stylePreprocessorOptions": {
+                    "includePaths": [
+                        "libs/angular/about/src/lib",
+                        "libs/angular/contact/src/lib",
+                        "libs/angular/experiences/src/lib",
+                        "libs/angular/resume/src/lib",
+                        "libs/angular/skills/src/lib",
+                        "libs/angular/common/src/lib/floating-skill/"
+                    ]
+                },
                 "outputPath": "dist/apps/web-app",
                 "index": "apps/web-app/src/index.html",
                 "main": "apps/web-app/src/main.ts",

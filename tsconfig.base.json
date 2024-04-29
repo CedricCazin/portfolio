@@ -16,7 +16,12 @@
         "baseUrl": ".",
         "paths": {
             "@kazaam": ["libs/kazaam/src/index.ts"],
-            "@portfolio/angular/common": ["libs/angular/common/src/index.ts"]
+            "@portfolio/angular/about": ["libs/angular/about/src/index.ts"],
+            "@portfolio/angular/common": ["libs/angular/common/src/index.ts"],
+            "@portfolio/angular/contact": ["libs/angular/contact/src/index.ts"],
+            "@portfolio/angular/experiences": ["libs/angular/experiences/src/index.ts"],
+            "@portfolio/angular/resume": ["libs/angular/resume/src/index.ts"],
+            "@portfolio/angular/skills": ["libs/angular/skills/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
