@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { Skill } from '../skill/skill.interface';
+import { Skill } from '../skill.interface/skill.interface';
 import VanillaTilt from 'vanilla-tilt';
 import { CommonModule } from '@angular/common';
 
