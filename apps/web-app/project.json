@@ -17,7 +17,7 @@
                         "libs/angular/experiences/src/lib",
                         "libs/angular/resume/src/lib",
                         "libs/angular/skills/src/lib",
-                        "libs/angular/common/src/lib/floating-skill/"
+                        "libs/angular/common/src/lib/floating-skill.component/"
                     ]
                 },
                 "outputPath": "dist/apps/web-app",
