@@ -1,6 +1,12 @@
 import { importProvidersFrom } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import {
+    RouterModule,
+    provideRouter,
+    withComponentInputBinding,
+    withEnabledBlockingInitialNavigation,
+    withHashLocation,
+} from '@angular/router';
 import { APP_ROUTES } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -37,11 +43,6 @@ bootstrapApplication(AppComponent, {
             }),
         ),
 
-        importProvidersFrom(
-            RouterModule.forRoot(APP_ROUTES, {
-                initialNavigation: 'enabledBlocking',
-                useHash: true,
-            }),
-        ),
+        provideRouter(APP_ROUTES, withComponentInputBinding(), withHashLocation(), withEnabledBlockingInitialNavigation()),
     ],
 });

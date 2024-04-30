@@ -89,10 +89,20 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
+                #tutorialsIsActive="routerLinkActive"
+                routerLinkActive="link-active"
                 [class.mat-elevation-z0]="true"
-                [@.disabled]="true"
+                hideToggle="true"
+            >
+                <mat-expansion-panel-header routerLink="/tutorials" routerLinkActive="link-active">
+                    <mat-panel-title><mat-icon>build</mat-icon> Tutorials</mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
                 expanded="{{ examplesIsActive.isActive }}"
                 #examplesIsActive="routerLinkActive"
+                [@.disabled]="true"
                 [class.mat-elevation-z0]="true"
                 routerLinkActive="link-active"
             >
@@ -114,10 +124,9 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
-                [class.mat-elevation-z0]="true"
-                [@.disabled]="true"
                 expanded="{{ personalIsActive.isActive }}"
                 #personalIsActive="routerLinkActive"
+                [@.disabled]="true"
                 [class.mat-elevation-z0]="true"
                 routerLinkActive="link-active"
             >
@@ -222,7 +231,10 @@
             </a>
         </mat-toolbar>
 
-        <div class="content" [ngClass]="!examplesIsActive.isActive ? 'content-articles' : 'content-examples'">
+        <div
+            class="content"
+            [ngClass]="!(examplesIsActive.isActive || tutorialsIsActive.isActive) ? 'content-articles' : 'content-examples'"
+        >
             <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>

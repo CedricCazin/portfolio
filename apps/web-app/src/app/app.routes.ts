@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { loadRemoteModule } from '@nx/angular/mf';
+import { IFrameComponent } from '@portfolio/angular/common';
 
 export const APP_ROUTES: Route[] = [
     {
@@ -87,8 +88,16 @@ export const APP_ROUTES: Route[] = [
                 ],
             },
             {
+                path: 'tutorials',
+                data: {
+                    breadcrumb: { name: 'Tutorials', icon: 'build', order: 5 },
+                    url: 'https://cedriccazin.github.io/tutorials/',
+                },
+                component: IFrameComponent,
+            },
+            {
                 path: 'examples',
-                data: { breadcrumb: { name: 'Examples', icon: 'email', order: 5 } },
+                data: { breadcrumb: { name: 'Examples', icon: 'email', order: 6 } },
                 children: [
                     {
                         path: 'angular',
@@ -106,7 +115,7 @@ export const APP_ROUTES: Route[] = [
             {
                 path: 'personal',
                 data: {
-                    breadcrumb: { name: 'Personal', icon: 'cottage' },
+                    breadcrumb: { name: 'Personal', icon: 'cottage', order: 7 },
                 },
                 children: [
                     {
