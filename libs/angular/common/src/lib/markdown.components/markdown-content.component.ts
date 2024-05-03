@@ -66,41 +66,11 @@ interface Content {
             margin: 0 auto;
             width: 100%;
             max-width: 1200px;
+        }
 
-            mat-card {
-                mat-card-content {
-                    padding: 30px;
-
-                    .markdown-content {
-                        .code-content {
-                            position: relative;
-
-                            .label {
-                                text-transform: uppercase;
-                                font-size: 0.75rem;
-                                line-height: 1rem;
-                                font-weight: 700;
-                                padding-top: 0.25rem;
-                                padding-bottom: 0.25rem;
-                                padding-left: 0.5rem;
-                                padding-right: 0.5rem;
-                                border-bottom-left-radius: 0.375rem;
-                                top: 0;
-                                right: 0;
-                                position: absolute;
-
-                                .copy-code {
-                                    background-color: transparent;
-                                    border: 0;
-                                }
-                            }
-                        }
-
-                        a {
-                            color: #005cbb;
-                        }
-                    }
-                }
+        .mat-card {
+            .mat-card-content {
+                padding: 30px;
             }
         }
     `,
