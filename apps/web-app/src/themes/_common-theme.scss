@@ -1,0 +1,70 @@
+@use '@angular/material' as mat;
+@use 'sass:meta';
+
+@use '../app/app.component.theme' as app;
+
+@use 'about.component.theme' as about;
+@use 'contact.component.theme' as contact;
+@use 'experiences.component.theme' as experiences;
+@use 'resume.component.theme' as resume;
+@use 'skills.component.theme' as skills;
+
+@use 'floating-skill.component.theme' as floating-skill;
+@use 'markdown-content.component.theme' as markdown-container;
+
+@use './glass.theme' as glass;
+
+body {
+    &:not(.cold-start) {
+        header > h1,
+        .mat-toolbar,
+        .mat-mdc-card,
+        .mat-sidenav {
+            transition:
+                background 500ms ease-in-out,
+                background-color 500ms ease-in-out,
+                color 500ms ease-in-out;
+        }
+    }
+
+    // Apply the dark theme by default
+    @include mat.all-component-themes($dark-theme);
+
+    @include app.theme($dark-theme);
+
+    @include about.theme($dark-theme);
+    @include contact.theme($dark-theme);
+    @include experiences.theme($dark-theme);
+    @include resume.theme($dark-theme);
+    @include skills.theme($dark-theme);
+
+    @include floating-skill.theme($dark-theme);
+    @include markdown-container.theme($dark-theme);
+
+    @include meta.load-css('highlight.js/styles/github-dark');
+
+    &.color-scheme-light {
+        @include mat.all-component-colors($light-theme);
+
+        @include app.theme($light-theme);
+
+        @include about.theme($light-theme);
+        @include contact.theme($light-theme);
+        @include experiences.theme($light-theme);
+        @include resume.theme($light-theme);
+        @include skills.theme($light-theme);
+
+        @include floating-skill.theme($dark-theme);
+        @include markdown-container.theme($dark-theme);
+
+        @include meta.load-css('highlight.js/styles/github');
+    }
+
+    &.glass-scheme {
+        @include glass.theme($dark-theme);
+    }
+
+    &:not(.glass-scheme) {
+        @include glass.untheme($dark-theme);
+    }
+}

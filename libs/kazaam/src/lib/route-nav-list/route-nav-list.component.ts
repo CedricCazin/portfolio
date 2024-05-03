@@ -1,10 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterModule, Routes } from '@angular/router';
 
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+
+// interface Navigation {
+//     name: string;
+//     icon?: string;
+//     order?: number;
+// }
 
 @Component({
     standalone: true,
@@ -52,7 +58,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
         </ng-template>
 
         <ng-template #routeLeaf let-route let-$index="index" let-siblingsHaveIcon="siblingsHaveIcon">
-            <mat-list-item (routerLink)="(route.path)" routerLinkActive="link-active">
+            <mat-list-item [routerLink]="route.path" routerLinkActive="link-active">
                 <mat-icon *ngIf="route.data?.navigation?.icon || siblingsHaveIcon" matListItemIcon>{{
                     route.data?.navigation?.icon
                 }}</mat-icon>
@@ -106,6 +112,11 @@ export class KazaaamRouteNavListComponent {
 
     @Input() filtered = false;
 
+    // @Input() relativeTo?: ActivatedRoute = undefined;
+
+    // @Output() navigate? = new EventEmitter<Route>();
+
+    constructor(private readonly router: Router) {}
     getContext(routes: Routes, route: Route, $index: number) {
         const test = {
             $implicit: route,
@@ -117,7 +128,15 @@ export class KazaaamRouteNavListComponent {
 
     siblingsHaveIcon(routes: Routes): boolean {
         return routes?.some((route: Route) => {
-            return route.data?.['navigation']?.icon || route.data?.['navigation']?.image;
+            return route.data?.['navigation']?.icon;
         });
     }
+
+    // navigateTo(route: Route) {
+    //     if (this.navigate) {
+    //         this.navigate.emit(route);
+    //     } else {
+    //         this.router.navigate([route.path], { relativeTo: this.relativeTo });
+    //     }
+    // }
 }

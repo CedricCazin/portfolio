@@ -17,14 +17,15 @@
                         "libs/angular/experiences/src/lib",
                         "libs/angular/resume/src/lib",
                         "libs/angular/skills/src/lib",
-                        "libs/angular/common/src/lib/floating-skill.component/"
+                        "libs/angular/common/src/lib/floating-skill.component/",
+                        "libs/angular/common/src/lib/markdown.components/"
                     ]
                 },
                 "outputPath": "dist/apps/web-app",
                 "index": "apps/web-app/src/index.html",
                 "main": "apps/web-app/src/main.ts",
                 "polyfills": ["zone.js"],
-                "allowedCommonJsDependencies": ["vanilla-tilt", "showdown"],
+                "allowedCommonJsDependencies": ["vanilla-tilt", "showdown", "markdown-it", "highlight.js"],
                 "tsConfig": "apps/web-app/tsconfig.app.json",
                 "assets": [
                     "apps/web-app/src/favicon.ico",
