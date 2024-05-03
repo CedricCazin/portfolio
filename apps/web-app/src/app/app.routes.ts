@@ -1,6 +1,8 @@
-import { Route } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Inject, inject } from '@angular/core';
+import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { loadRemoteModule } from '@nx/angular/mf';
-import { IFrameComponent } from '@portfolio/angular/common';
+import { IFrameComponent, MarkdownContainerComponent, MarkdownContentComponent } from '@portfolio/angular/common';
 
 export const APP_ROUTES: Route[] = [
     {
@@ -88,12 +90,44 @@ export const APP_ROUTES: Route[] = [
                 ],
             },
             {
-                path: 'tutorials',
+                path: 'tutorials-legacy',
                 data: {
-                    breadcrumb: { name: 'Tutorials', icon: 'build', order: 5 },
+                    breadcrumb: { name: 'Tutorials Legacy', icon: 'build', order: 5 },
                     url: 'https://cedriccazin.github.io/tutorials/',
                 },
                 component: IFrameComponent,
+            },
+            {
+                path: 'tutorials',
+                data: { breadcrumb: { name: 'Tutorials', icon: 'build', order: 5 } },
+                children: [
+                    {
+                        path: 'wsl',
+                        data: {
+                            breadcrumb: {
+                                name: 'WSL',
+                                image: '/assets/icons/wsl.png',
+                                order: 0,
+                            },
+                            markdownContainerUri:
+                                'https://raw.githubusercontent.com/CedricCazin/tutorials/main/001-setup-WSL-dev-environment/tutorials.json',
+                        },
+                        component: MarkdownContainerComponent,
+                    },
+                    {
+                        path: 'tools',
+                        data: {
+                            breadcrumb: {
+                                name: 'WSL',
+                                image: '/assets/icons/wsl.png',
+                                order: 0,
+                            },
+                            markdownContainerUri:
+                                'https://raw.githubusercontent.com/CedricCazin/tutorials/main/001-setup-WSL-dev-environment/tutorials.json',
+                        },
+                        component: MarkdownContainerComponent,
+                    },
+                ],
             },
             {
                 path: 'examples',
@@ -101,12 +135,18 @@ export const APP_ROUTES: Route[] = [
                 children: [
                     {
                         path: 'angular',
-                        data: { breadcrumb: { name: 'Angular', image: '/assets/angular/angular.svg', order: 0 } },
+                        data: { breadcrumb: { name: 'Angular', image: '/assets/icons/angular.svg', order: 0 } },
                         loadChildren: () => import('@portfolio/angular/angular-examples').then((r) => r.ANGULAR_ROUTES),
                     },
                     {
                         path: 'angular-material',
-                        data: { breadcrumb: { name: 'Material', image: '/assets/angular/material.svg', order: 1 } },
+                        data: { breadcrumb: { name: 'Material', image: '/assets/icons/angular-material.svg', order: 1 } },
+                        loadChildren: () =>
+                            import('@portfolio/angular/angular-examples').then((r) => r.ANGULAR_MATERIAL_ROUTES),
+                    },
+                    {
+                        path: 'nestjs',
+                        data: { breadcrumb: { name: 'NestJs', image: '/assets/icons/nestjs.svg', order: 2 } },
                         loadChildren: () =>
                             import('@portfolio/angular/angular-examples').then((r) => r.ANGULAR_MATERIAL_ROUTES),
                     },
@@ -134,6 +174,11 @@ export const APP_ROUTES: Route[] = [
             },
             {
                 path: '',
+                redirectTo: 'work',
+                pathMatch: 'full',
+            },
+            {
+                path: '**',
                 redirectTo: 'work',
                 pathMatch: 'full',
             },

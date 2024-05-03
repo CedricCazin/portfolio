@@ -13,6 +13,12 @@
         "lib": ["es2017", "dom"],
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
+
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+
+        "typeRoots": ["./libs/angular/common/@types"],
+
         "baseUrl": ".",
         "paths": {
             "@kazaam": ["libs/kazaam/src/index.ts"],
@@ -22,7 +28,8 @@
             "@portfolio/angular/contact": ["libs/angular/contact/src/index.ts"],
             "@portfolio/angular/experiences": ["libs/angular/experiences/src/index.ts"],
             "@portfolio/angular/resume": ["libs/angular/resume/src/index.ts"],
-            "@portfolio/angular/skills": ["libs/angular/skills/src/index.ts"]
+            "@portfolio/angular/skills": ["libs/angular/skills/src/index.ts"],
+            "@portfolio/angular/tutorials": ["libs/angular/tutorials/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

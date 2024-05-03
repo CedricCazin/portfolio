@@ -89,13 +89,37 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
+                expanded="{{ tutorialsIsActive.isActive }}"
                 #tutorialsIsActive="routerLinkActive"
+                [@.disabled]="true"
+                [class.mat-elevation-z0]="true"
+                routerLinkActive="link-active"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title><mat-icon>science</mat-icon> Tutorials</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/tutorials/wsl" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/icons/wsl.png" />
+                        <div matListItemTitle>WSL</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/tutorials/tools" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>construction</mat-icon>
+                        <div matListItemTitle>Tools</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                #tutorialsLegacyIsActive="routerLinkActive"
                 routerLinkActive="link-active"
                 [class.mat-elevation-z0]="true"
                 hideToggle="true"
             >
-                <mat-expansion-panel-header routerLink="/tutorials" routerLinkActive="link-active">
-                    <mat-panel-title><mat-icon>build</mat-icon> Tutorials</mat-panel-title>
+                <mat-expansion-panel-header routerLink="/tutorials-legacy" routerLinkActive="link-active">
+                    <mat-panel-title><mat-icon>build</mat-icon> Tutorials Legacy</mat-panel-title>
                 </mat-expansion-panel-header>
             </mat-expansion-panel>
 
@@ -112,13 +136,18 @@
 
                 <mat-nav-list>
                     <mat-list-item routerLink="/examples/angular" routerLinkActive="link-active">
-                        <img matListItemIcon src="/assets/angular/angular.svg" />
+                        <img matListItemIcon src="/assets/icons/angular.svg" />
                         <div matListItemTitle>Angular</div>
                     </mat-list-item>
 
                     <mat-list-item routerLink="/examples/angular-material" routerLinkActive="link-active">
-                        <img matListItemIcon src="/assets/angular/material.svg" />
+                        <img matListItemIcon src="/assets/icons/angular-material.svg" />
                         <div matListItemTitle>Angular Material</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/examples/nestjs" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/icons/nestjs.svg" />
+                        <div matListItemTitle>NestJs</div>
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>
@@ -150,7 +179,12 @@
         </div>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content
+        class="scrollbar"
+        [ngClass]="{
+            scrollable: !(examplesIsActive.isActive || tutorialsIsActive.isActive || tutorialsLegacyIsActive.isActive)
+        }"
+    >
         <mat-toolbar color="primary">
             <button mat-icon-button (click)="navSidenav.toggle()">
                 <mat-icon>menu</mat-icon>
@@ -222,7 +256,7 @@
             </mat-menu>
 
             <a mat-button class="link linkedin" href="https://fr.linkedin.com/in/cedriccazin" target="_blank">
-                <img src="/assets/linkedIn/linkedIn-logo.png" />
+                <img src="/assets/logos/linkedIn-logo.png" />
             </a>
 
             <a mat-button class="link github" href="https://github.com/cedriccazin" target="_blank">
@@ -233,7 +267,14 @@
 
         <div
             class="content"
-            [ngClass]="!(examplesIsActive.isActive || tutorialsIsActive.isActive) ? 'content-articles' : 'content-examples'"
+            [ngClass]="{
+                'content-articles': !(
+                    examplesIsActive.isActive ||
+                    tutorialsIsActive.isActive ||
+                    tutorialsLegacyIsActive.isActive
+                ),
+                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive || tutorialsLegacyIsActive.isActive
+            }"
         >
             <router-outlet></router-outlet>
         </div>

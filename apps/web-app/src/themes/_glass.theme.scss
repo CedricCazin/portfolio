@@ -60,16 +60,24 @@
 
 @mixin transition($theme) {
     &:not(.cold-start) {
+        header > h1,
         .mat-toolbar,
         .mat-mdc-card,
         .mat-sidenav {
-            transition-property: all;
             transition:
-                margin 700ms ease-in-out,
-                width 700ms ease-in-out,
-                border-radius 700ms ease-in-out,
-                background 700ms ease-in-out,
-                top 700ms ease-in-out;
+                margin 500ms ease-in-out,
+                padding 500ms ease-in-out,
+                width 500ms ease-in-out,
+                height 500ms ease-in-out,
+                border-width 500ms ease-in-out,
+                border-radius 500ms ease-in-out,
+                top 500ms ease-in-out,
+                bottom 500ms ease-in-out,
+                left 500ms ease-in-out,
+                right 500ms ease-in-out,
+                background 500ms ease-in-out,
+                background-color 500ms ease-in-out,
+                color 500ms ease-in-out;
         }
     }
 }

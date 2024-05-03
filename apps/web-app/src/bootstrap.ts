@@ -1,11 +1,13 @@
-import { importProvidersFrom } from '@angular/core';
+import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import {
+    PreloadAllModules,
     RouterModule,
     provideRouter,
     withComponentInputBinding,
     withEnabledBlockingInitialNavigation,
     withHashLocation,
+    withPreloading,
 } from '@angular/router';
 import { APP_ROUTES } from './app/app.routes';
 import { AppComponent } from './app/app.component';
@@ -15,6 +17,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { Observable } from 'rxjs';
+import { MarkdownService } from '@portfolio/angular/common';
+// import { HIGHLIGHT_OPTIONS, provideHighlightOptions } from 'ngx-highlightjs';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -25,13 +30,22 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     );
 }
 
+export function initializeApplication(markdownService: MarkdownService) {
+    return async (): Promise<void> => await markdownService.init();
+}
+
 bootstrapApplication(AppComponent, {
     providers: [
-        provideAnimations(),
-
         provideHttpClient(),
 
-        provideCharts(withDefaultRegisterables()),
+        {
+            provide: APP_INITIALIZER,
+            useFactory: initializeApplication,
+            deps: [MarkdownService],
+            multi: true,
+        },
+
+        provideAnimations(),
 
         importProvidersFrom(
             TranslateModule.forRoot({
@@ -43,6 +57,18 @@ bootstrapApplication(AppComponent, {
             }),
         ),
 
-        provideRouter(APP_ROUTES, withComponentInputBinding(), withHashLocation(), withEnabledBlockingInitialNavigation()),
+        provideRouter(
+            APP_ROUTES,
+            withComponentInputBinding(),
+            withHashLocation(),
+            withEnabledBlockingInitialNavigation(),
+            withPreloading(PreloadAllModules),
+        ),
+
+        provideCharts(withDefaultRegisterables()),
+
+        // provideHighlightOptions({
+        //     fullLibraryLoader: () => import('highlight.js'),
+        // }),
     ],
 });

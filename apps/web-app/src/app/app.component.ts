@@ -6,15 +6,17 @@ import {
     HostListener,
     Inject,
     Input,
+    OnInit,
     Renderer2,
     RendererFactory2,
     ViewChild,
     ViewEncapsulation,
     computed,
+    inject,
 } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Language, LanguageService } from '@portfolio/angular/common';
+import { Language, LanguageService, MarkdownContentComponent, MarkdownService } from '@portfolio/angular/common';
 import { Theme, ThemeService } from '@portfolio/angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -25,9 +27,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterModule, Routes } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { KazaamBreadcrumbComponent } from '@kazaam';
+import { APP_ROUTES } from './app.routes';
+import { firstValueFrom } from 'rxjs';
+// import { HighlightLoader } from 'ngx-highlightjs';
 
 @Component({
     standalone: true,
@@ -92,7 +97,11 @@ export class AppComponent implements AfterViewInit {
     }
     public set isDarkMode(isDarkMode: boolean) {
         this.themeService.setIsDarkMode(isDarkMode);
+
+        // this.hljsLoader.setTheme(isDarkMode ? 'assets/styles/github-dark.css' : 'assets/styles/github.css');
     }
+
+    // private hljsLoader: HighlightLoader = inject(HighlightLoader);
 
     #isGlassMode = computed(() => this.themeService.themeSettings().isGlassMode);
     public get isGlassMode(): boolean {
@@ -111,14 +120,20 @@ export class AppComponent implements AfterViewInit {
     }
 
     constructor(
-        private http: HttpClient,
-        private matIconRegistry: MatIconRegistry,
-        private domSanitizer: DomSanitizer,
-        private themeService: ThemeService,
-        private languageService: LanguageService,
+        private readonly httpClient: HttpClient,
+        private readonly matIconRegistry: MatIconRegistry,
+        private readonly domSanitizer: DomSanitizer,
+        private readonly themeService: ThemeService,
+        private readonly languageService: LanguageService,
+        private readonly markdownService: MarkdownService,
+        private readonly router: Router,
+        private readonly route: ActivatedRoute,
         @Inject(DOCUMENT) private document: Document,
-        private rendererFactory: RendererFactory2,
+        private readonly rendererFactory: RendererFactory2,
     ) {
+        console.log(this.router.url);
+        console.log(this.router.config);
+
         this.renderer = rendererFactory.createRenderer(null, null);
 
         this.matIconRegistry.addSvgIcon(
@@ -126,7 +141,7 @@ export class AppComponent implements AfterViewInit {
             this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/github/github-mark.svg'),
         );
 
-        this.http.get('/assets/version.json').subscribe((data: any) => {
+        this.httpClient.get('/assets/version.json').subscribe((data: any) => {
             console.log(data);
             this.version = data.version;
         });
