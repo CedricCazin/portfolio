@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/CedricCazin/portfolio/compare/v1.5.0...v1.6.0) (2024-05-03)
+
+
+### Features
+
+* **web-app:** add angular tutorials page ([02bc9fe](https://github.com/CedricCazin/portfolio/commit/02bc9feeb7d171ccf0d8ad9d1bdcf0b4ee2ea067))
+
 # [1.5.0](https://github.com/CedricCazin/portfolio/compare/v1.4.0...v1.5.0) (2024-04-30)
 
 
