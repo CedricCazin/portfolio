@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/CedricCazin/portfolio/compare/v1.6.0...v1.6.1) (2024-05-03)
+
+
+### Bug Fixes
+
+* **web-app:** style label in tutorials page ([5fbe1de](https://github.com/CedricCazin/portfolio/commit/5fbe1de527189ed2b81614cbd2229635ae720e8d))
+
 # [1.6.0](https://github.com/CedricCazin/portfolio/compare/v1.5.0...v1.6.0) (2024-05-03)
 
 
