@@ -107,9 +107,9 @@ export interface Breadcrumb {
                             [routerLink]="breadcrumbChild.path"
                             [disabled]="breadcrumbChild.name === breadcrumb.name"
                         >
-                            @if (breadcrumb.parent?.childrenHasIcon) {
+                            @if (breadcrumbChild.icon) {
                                 <mat-icon>{{ breadcrumbChild.icon }}</mat-icon>
-                            } @else if (breadcrumb.parent?.childrenHasImage) {
+                            } @else if (breadcrumbChild.image) {
                                 <img [src]="breadcrumbChild.image" class="mat-icon" />
                             }
 
@@ -154,6 +154,7 @@ export interface Breadcrumb {
                         } @else if (breadcrumb.image) {
                             <img [src]="breadcrumb?.image" class="mat-icon" />
                         }
+
                         @if (breadcrumb.useTemplate) {
                             <template
                                 [ngTemplateOutletContext]="{

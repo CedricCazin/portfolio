@@ -110,7 +110,7 @@ export const APP_ROUTES: Route[] = [
                                 order: 0,
                             },
                             markdownContainerUri:
-                                'https://raw.githubusercontent.com/CedricCazin/tutorials/main/001-setup-WSL-dev-environment/tutorials.json',
+                                'https://raw.githubusercontent.com/CedricCazin/tutorials/main/001-setup-WSL-dev-environment/index.json',
                         },
                         component: MarkdownContainerComponent,
                     },
@@ -118,14 +118,19 @@ export const APP_ROUTES: Route[] = [
                         path: 'tools',
                         data: {
                             breadcrumb: {
-                                name: 'WSL',
-                                image: '/assets/icons/wsl.png',
-                                order: 0,
+                                name: 'Tools',
+                                icon: 'construction',
+                                order: 1,
                             },
                             markdownContainerUri:
-                                'https://raw.githubusercontent.com/CedricCazin/tutorials/main/001-setup-WSL-dev-environment/tutorials.json',
+                                'https://raw.githubusercontent.com/CedricCazin/tutorials/main/002-install-tools/index.json',
                         },
                         component: MarkdownContainerComponent,
+                    },
+                    {
+                        path: '',
+                        redirectTo: 'wsl',
+                        pathMatch: 'full',
                     },
                 ],
             },

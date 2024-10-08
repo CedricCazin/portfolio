@@ -27,17 +27,16 @@ export class MarkdownService {
     constructor(
         private readonly router: Router,
         private readonly httpClient: HttpClient,
-    ) {}
+    ) {
+        console.log('MarkdownService.constructor');
+    }
 
-    async init(): Promise<void> {
+    async init(): Promise<any> {
         const routes = this.router.config;
         await this.resolveMarkdownRoutes(this.router.config);
-
-        console.log(this.router.url);
-        console.log(this.router.config);
         this.router.resetConfig(routes);
-        console.log(this.router.url);
-        console.log(this.router.config);
+
+        console.log(`routes: ${JSON.stringify(routes)}`);
 
         this.#markdownRoutesResolved.update(() => true);
     }
@@ -48,31 +47,31 @@ export class MarkdownService {
                 const content = await firstValueFrom(
                     this.httpClient.get<MarkdownContent[]>(route.data['markdownContainerUri']),
                 );
-                route.children = content.map(this.convertContentToRoute);
+                route.children = content.map((child) => this.convertContentToRoute(child), this);
             } else if (route.children) {
                 await this.resolveMarkdownRoutes(route.children);
             }
         }
     }
 
-    convertContentToRoute(content: MarkdownContent): Route {
+    convertContentToRoute(content: MarkdownContent, parentPath?: string): Route {
         const route = {
             path: content.path,
-            component: MarkdownContentComponent,
             data: {
-                contentUri: content.content,
-                navigation: {
-                    name: content.name,
-                    icon: content.icon,
-                    order: content.order,
-                },
+                fullPath: parentPath ? parentPath + '/' + content.path : content.path,
+                name: content.name,
+                icon: content.icon,
+                order: content.order,
             },
         } as Route;
 
-        if (content.children) {
+        if (!content.children) {
+            route.component = MarkdownContentComponent;
+            route.data!['contentUri'] = content.content;
+        } else {
             route.children = content.children
                 .sort((a, b) => (a.order ?? 0) - (b.order ?? 0) && a.name.localeCompare(b.name))
-                .map(this.convertContentToRoute);
+                .map((child) => this.convertContentToRoute(child, content.path), this);
 
             const defaultRoute = route.children.find((child) => child.data?.['navigation']?.default);
             if (defaultRoute) {

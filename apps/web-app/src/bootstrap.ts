@@ -1,7 +1,8 @@
-import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
+import { APP_INITIALIZER, importProvidersFrom, Injector } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import {
     PreloadAllModules,
+    Router,
     RouterModule,
     provideRouter,
     withComponentInputBinding,
@@ -30,8 +31,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     );
 }
 
-export function initializeApplication(markdownService: MarkdownService) {
-    return async (): Promise<void> => await markdownService.init();
+export function initializeApplication(markdownService: MarkdownService): () => Promise<any> {
+    return (): Promise<any> => {
+        console.log('Initializing application');
+        return markdownService.init();
+    };
 }
 
 bootstrapApplication(AppComponent, {
@@ -61,8 +65,7 @@ bootstrapApplication(AppComponent, {
             APP_ROUTES,
             withComponentInputBinding(),
             withHashLocation(),
-            withEnabledBlockingInitialNavigation(),
-            withPreloading(PreloadAllModules),
+            // withPreloading(PreloadAllModules),
         ),
 
         provideCharts(withDefaultRegisterables()),
