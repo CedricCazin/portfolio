@@ -90,10 +90,12 @@ body {
                 right: 0;
                 position: absolute;
 
-                .copy-code {
-                    background-color: transparent;
-                    border: 0;
-                }
+                cursor: pointer;
+            }
+            .copy-code {
+                background-color: transparent;
+                border: 0;
+                cursor: pointer;
             }
         }
 

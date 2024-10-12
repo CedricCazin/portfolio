@@ -112,7 +112,7 @@
                 </mat-nav-list>
             </mat-expansion-panel>
 
-            <mat-expansion-panel
+            <!-- <mat-expansion-panel
                 #tutorialsLegacyIsActive="routerLinkActive"
                 routerLinkActive="link-active"
                 [class.mat-elevation-z0]="true"
@@ -121,7 +121,7 @@
                 <mat-expansion-panel-header routerLink="/tutorials-legacy" routerLinkActive="link-active">
                     <mat-panel-title><mat-icon>build</mat-icon> Tutorials Legacy</mat-panel-title>
                 </mat-expansion-panel-header>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
 
             <mat-expansion-panel
                 expanded="{{ examplesIsActive.isActive }}"
@@ -182,7 +182,7 @@
     <mat-sidenav-content
         class="scrollbar"
         [ngClass]="{
-            scrollable: !(examplesIsActive.isActive || tutorialsIsActive.isActive || tutorialsLegacyIsActive.isActive)
+            scrollable: !(examplesIsActive.isActive || tutorialsIsActive.isActive)
         }"
     >
         <mat-toolbar color="primary">
@@ -268,12 +268,8 @@
         <div
             class="content"
             [ngClass]="{
-                'content-articles': !(
-                    examplesIsActive.isActive ||
-                    tutorialsIsActive.isActive ||
-                    tutorialsLegacyIsActive.isActive
-                ),
-                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive || tutorialsLegacyIsActive.isActive
+                'content-articles': !(examplesIsActive.isActive || tutorialsIsActive.isActive),
+                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive
             }"
         >
             <router-outlet></router-outlet>

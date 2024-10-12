@@ -99,7 +99,9 @@ export class MarkdownContentComponent {
                 if (lang && hljs.getLanguage(lang)) {
                     try {
                         const code = this.hljs.highlight(str, { language: lang, ignoreIllegals: true }).value;
-                        return `<pre class="code-content ${lang}"><span class="label">${lang} <button class="copy-code" data-clipboard-text="${str}" title="Copy">📋</button></span><code class="highlightElement hljs scrollbar">${code}</code></pre>`;
+                        const strEscaped = str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+                        return `<pre class="code-content ${lang}"><button class="label copy-code" data-clipboard-text="${strEscaped}" title="Copy">${lang} 📋</button><code class="highlightElement hljs scrollbar">${code}</code></pre>`;
                     } catch (__) {
                         console.log(__);
                     }

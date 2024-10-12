@@ -13,14 +13,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     selector: 'kazaam-route-nav-list',
     template: `
         <ng-template #routeNode let-route let-$index="index" let-siblingsHaveIcon="siblingsHaveIcon">
-            <mat-expansion-panel
-                #isActive="routerLinkActive"
-                expanded="{{ isActive.isActive || filtered }}"
-                routerLinkActive="link-active"
-                [routerLinkActiveOptions]="{ exact: false }"
-                [@.disabled]="true"
-                [class.mat-elevation-z0]="true"
-            >
+            <mat-expansion-panel [expanded]="isActiveSubsetRoute(route)" [@.disabled]="true" [class.mat-elevation-z0]="true">
                 <mat-expansion-panel-header collapsedHeight="44px" expandedHeight="44px">
                     <mat-panel-title>
                         <mat-list-item>
@@ -30,18 +23,26 @@ import { MatExpansionModule } from '@angular/material/expansion';
                             <div matListItemTitle>{{ route.data?.name }}</div>
                         </mat-list-item>
                     </mat-panel-title>
-                    <!-- <mat-panel-description> This is a summary of the content </mat-panel-description> -->
                 </mat-expansion-panel-header>
 
                 <mat-nav-list>
-                    @for (route of route.children; track $index) {
-                        @if (route.children && route.children.length > 0) {
+                    <!-- https://github.com/angular/angular/issues/31930
+                        routerLinkActive is not usable with template
+                    
+                        This works, since it is not a template:
+                        <li *ngFor="let r of route.children">
+                            <a routerLinkActive="active" routerLink="/{{ r.data?.fullPath }}">{{ r.data?.fullPath }}</a>
+                        </li>
+                    -->
+
+                    @for (r of route.children; track $index) {
+                        @if (r.children && r.children.length > 0) {
                             <ng-container
-                                *ngTemplateOutlet="routeNode; context: getContext(routes, route, $index)"
+                                *ngTemplateOutlet="routeNode; context: getContext(route.children, r, $index)"
                             ></ng-container>
                         } @else {
                             <ng-container
-                                *ngTemplateOutlet="routeLeaf; context: getContext(routes, route, $index)"
+                                *ngTemplateOutlet="routeLeaf; context: getContext(route.children, r, $index)"
                             ></ng-container>
                         }
                     } @empty {
@@ -52,19 +53,23 @@ import { MatExpansionModule } from '@angular/material/expansion';
         </ng-template>
 
         <ng-template #routeLeaf let-route let-$index="index" let-siblingsHaveIcon="siblingsHaveIcon">
-            <mat-list-item [routerLink]="route.data?.fullPath ?? route.path" routerLinkActive="link-active">
+            <mat-list-item
+                [routerLink]="route.data?.fullPath ?? route.path"
+                routerLinkActive="link-active"
+                #rla="routerLinkActive"
+            >
                 <mat-icon *ngIf="route.data?.icon || siblingsHaveIcon" matListItemIcon>{{ route.data?.icon }}</mat-icon>
                 <div matListItemTitle>{{ route.data?.name }}</div>
             </mat-list-item>
         </ng-template>
 
         <mat-accordion role="navigation" displayMode="default">
-            @for (route of routes; track $index) {
-                @if (route.children && route.children.length > 0) {
-                    <ng-container *ngTemplateOutlet="routeNode; context: getContext(routes, route, $index)"></ng-container>
+            @for (r of routes; track $index) {
+                @if (r.children && r.children.length > 0) {
+                    <ng-container *ngTemplateOutlet="routeNode; context: getContext(routes, r, $index)"></ng-container>
                 } @else {
                     <mat-nav-list>
-                        <ng-container *ngTemplateOutlet="routeLeaf; context: getContext(routes, route, $index)"></ng-container>
+                        <ng-container *ngTemplateOutlet="routeLeaf; context: getContext(routes, r, $index)"></ng-container>
                     </mat-nav-list>
                 }
             } @empty {
@@ -107,12 +112,20 @@ export class KazaaamRouteNavListComponent {
     constructor(private readonly router: Router) {}
 
     getContext(siblingsRoutes: Routes, route: Route, $index: number) {
-        const test = {
+        return {
             $implicit: route,
             $index: $index,
             siblingsHaveIcon: this.siblingsHaveIcon(siblingsRoutes),
         };
-        return test;
+    }
+
+    isActiveSubsetRoute(route: Route) {
+        return this.router.isActive(route.data?.['fullPath'], {
+            paths: 'subset',
+            queryParams: 'ignored',
+            fragment: 'ignored',
+            matrixParams: 'ignored',
+        });
     }
 
     siblingsHaveIcon(siblingsRoutes: Routes): boolean {

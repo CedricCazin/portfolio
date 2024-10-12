@@ -41,24 +41,24 @@ export class MarkdownService {
         this.#markdownRoutesResolved.update(() => true);
     }
 
-    async resolveMarkdownRoutes(routes: Routes) {
+    async resolveMarkdownRoutes(routes: Routes, paths: (string | undefined)[] = []): Promise<void> {
         for (const route of routes) {
             if (route.data?.['markdownContainerUri']) {
                 const content = await firstValueFrom(
                     this.httpClient.get<MarkdownContent[]>(route.data['markdownContainerUri']),
                 );
-                route.children = content.map((child) => this.convertContentToRoute(child), this);
+                route.children = content.map((child) => this.convertContentToRoute(child, [...paths, route.path]), this);
             } else if (route.children) {
-                await this.resolveMarkdownRoutes(route.children);
+                await this.resolveMarkdownRoutes(route.children, [...paths, route.path]);
             }
         }
     }
 
-    convertContentToRoute(content: MarkdownContent, parentPath?: string): Route {
+    convertContentToRoute(content: MarkdownContent, paths: (string | undefined)[] = []): Route {
         const route = {
             path: content.path,
             data: {
-                fullPath: parentPath ? parentPath + '/' + content.path : content.path,
+                fullPath: '/' + [...paths, content.path].filter((p) => p).join('/'),
                 name: content.name,
                 icon: content.icon,
                 order: content.order,
@@ -71,9 +71,9 @@ export class MarkdownService {
         } else {
             route.children = content.children
                 .sort((a, b) => (a.order ?? 0) - (b.order ?? 0) && a.name.localeCompare(b.name))
-                .map((child) => this.convertContentToRoute(child, content.path), this);
+                .map((child) => this.convertContentToRoute(child, [...paths, content.path]), this);
 
-            const defaultRoute = route.children.find((child) => child.data?.['navigation']?.default);
+            const defaultRoute = route.children.find((child) => child.data?.['default']);
             if (defaultRoute) {
                 route.children.push({
                     path: '',

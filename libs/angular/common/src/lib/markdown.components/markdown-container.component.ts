@@ -137,10 +137,7 @@ export class MarkdownContainerComponent {
                 route.children = route.children.map(filterRoute).filter((route) => route) as Routes;
             }
 
-            if (
-                (route.children && route.children.length > 0) ||
-                route.data?.['navigation']?.name.toLowerCase().indexOf(search) >= 0
-            ) {
+            if ((route.children && route.children.length > 0) || route.data?.['name']?.toLowerCase().indexOf(search) >= 0) {
                 console.log(route);
                 return route;
             }
