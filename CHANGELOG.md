@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/CedricCazin/portfolio/compare/v1.6.2...v1.6.3) (2024-10-12)
+
+
+### Bug Fixes
+
+* better nav ([e487b03](https://github.com/CedricCazin/portfolio/commit/e487b033088b95509cafc6a00297e15be3568168))
+
 ## [1.6.2](https://github.com/CedricCazin/portfolio/compare/v1.6.1...v1.6.2) (2024-10-08)
 
 
