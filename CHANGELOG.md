@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/CedricCazin/portfolio/compare/v1.6.3...v1.6.4) (2024-10-12)
+
+
+### Bug Fixes
+
+* **web-app,web-app:** update markdown tools json path ([ef7c864](https://github.com/CedricCazin/portfolio/commit/ef7c864be033b27f8d5da9472664c937de7805eb))
+
 ## [1.6.3](https://github.com/CedricCazin/portfolio/compare/v1.6.2...v1.6.3) (2024-10-12)
 
 
