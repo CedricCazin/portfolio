@@ -7,6 +7,8 @@
 <!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
 <!-- https://codepen.io/techyt/pen/qBOBEJL -->
 
+DEV 1
+
 <div #background class="background">
     <svg>
         <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
@@ -182,7 +184,7 @@
     <mat-sidenav-content
         class="scrollbar"
         [ngClass]="{
-            scrollable: !(examplesIsActive.isActive || tutorialsIsActive.isActive)
+            scrollable: !(examplesIsActive.isActive || tutorialsIsActive.isActive),
         }"
     >
         <mat-toolbar color="primary">
@@ -269,7 +271,7 @@
             class="content"
             [ngClass]="{
                 'content-articles': !(examplesIsActive.isActive || tutorialsIsActive.isActive),
-                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive
+                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive,
             }"
         >
             <router-outlet></router-outlet>
