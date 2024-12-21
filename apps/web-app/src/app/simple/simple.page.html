@@ -1,0 +1,197 @@
+<div #background class="background">
+    <svg>
+        <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
+        <defs>
+            <pattern
+                #hexagons
+                id="hexagons"
+                width="25"
+                height="43.4"
+                patternUnits="userSpaceOnUse"
+                patternTransform="scale(2) translate(2) rotate(45)"
+            >
+                <polygon points="19.8,7 32.3,14.2 32.3,28.7 19.8,35.9 7.3,28.7 7.3,14.2" id="hex" />
+                <use xlink:href="#hex" x="25" />
+                <use xlink:href="#hex" x="-25" />
+                <use xlink:href="#hex" x="12.5" y="-21.7" />
+                <use xlink:href="#hex" x="-12.5" y="-21.7" />
+                <use xlink:href="#hex" x="12.5" y="21.7" />
+                <use xlink:href="#hex" x="-12.5" y="21.7" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hexagons)" />
+    </svg>
+
+    <div class="rainbow"></div>
+</div>
+
+<header></header>
+
+<nav>
+    <mat-toolbar color="primary">
+        <a mat-flat-button>About</a>
+
+        <a mat-raised-button routerLink="/work/about" routerLinkActive="link-active">About</a>
+        <a mat-raised-button routerLink="/work/experiences" routerLinkActive="link-active">Experiences</a>
+        <a mat-raised-button routerLink="/work/resume" routerLinkActive="link-active">Resume</a>
+        <a mat-raised-button routerLink="/work/skills" routerLinkActive="link-active">Skills</a>
+        <a mat-raised-button routerLink="/work/contact" routerLinkActive="link-active">Contact</a>
+
+        <span class="spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menuLanguages">
+            <mat-icon>
+                <img [src]="getLanguagePreview(currentLanguage)" />
+            </mat-icon>
+        </button>
+
+        <mat-menu #menuLanguages="matMenu" class="language-configuration">
+            <button
+                mat-menu-item
+                *ngFor="let language of languages"
+                class="language-button"
+                (click)="currentLanguage = language; $event.stopPropagation()"
+            >
+                <mat-icon class="language-selected"
+                    >{{ currentLanguage.id === language.id ? 'radio_button_checked' : 'radio_button_unchecked' }}</mat-icon
+                >
+                <span>{{ language.name }}</span>
+                <mat-icon class="language-preview"><img [src]="getLanguagePreview(language)" /></mat-icon>
+            </button>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="menuThemes">
+            <mat-icon>format_color_fill</mat-icon>
+        </button>
+
+        <mat-menu #menuThemes="matMenu" class="theme-configuration">
+            <div mat-menu-item (click)="$event.stopPropagation()">
+                <mat-slide-toggle [(ngModel)]="isDarkMode"></mat-slide-toggle>
+                <span>Dark Mode</span>
+            </div>
+
+            <div mat-menu-item (click)="$event.stopPropagation()">
+                <mat-slide-toggle [(ngModel)]="isGlassMode"></mat-slide-toggle>
+                <span>Glass</span>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <button
+                mat-menu-item
+                *ngFor="let _theme of themes"
+                class="theme-button"
+                (click)="theme = _theme; $event.stopPropagation()"
+            >
+                <mat-icon class="theme-selected"
+                    >{{ _theme.id === theme.id ? 'radio_button_checked' : 'radio_button_unchecked' }}</mat-icon
+                >
+                <span>{{ _theme.name }}</span>
+                <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
+            </button>
+        </mat-menu>
+
+        <a mat-button class="link linkedin" href="https://fr.linkedin.com/in/cedriccazin" target="_blank">
+            <img src="/assets/logos/linkedIn-logo.png" />
+        </a>
+
+        <a mat-button class="link github" href="https://github.com/cedriccazin" target="_blank">
+            <mat-icon svgIcon="github" inline="true"></mat-icon>
+            <img src="/assets/github/github_logo.png" />
+        </a>
+    </mat-toolbar>
+</nav>
+
+<section>
+    <div class="example-label">Basic</div>
+    <div class="example-button-row">
+        <button mat-button>Basic</button>
+        <button mat-button disabled>Disabled</button>
+        <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+    </div>
+</section>
+
+<main>
+    <article>
+        <h2>Introduction</h2>
+
+        <section>
+            <h3>Introduction</h3>
+            <p>This document provides a guide to help with the important task of choosing the correct Apple.</p>
+
+            <aside></aside>
+        </section>
+
+        <details>
+            <summary></summary>
+            <dl>
+                <dt>Beast of Bodmin</dt>
+                <dd>A large feline inhabiting Bodmin Moor.</dd>
+
+                <dt>Morgawr</dt>
+                <dd>A sea serpent.</dd>
+
+                <dt>Owlman</dt>
+                <dd>A giant owl-like creature.</dd>
+            </dl>
+        </details>
+
+        <figure>
+            <img />
+            <figcaption></figcaption>
+        </figure>
+
+        <footer></footer>
+    </article>
+
+    <router-outlet></router-outlet>
+</main>
+
+<footer></footer>
+
+<!-- <div class="identity">
+            <div class="avatar">
+                <img src="https://avatars.githubusercontent.com/u/26877462?v=4" />
+            </div>
+
+            <h2 class="name">Cédric Cazin</h2>
+
+            <h3 class="designation">Lead Software Engineer</h3>
+        </div>
+
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/work/about" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>portrait</mat-icon>
+                        <div matListItemTitle>About</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/experiences" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>view_timeline</mat-icon>
+                        <div matListItemTitle>Experiences</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/resume" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>description</mat-icon>
+                        <div matListItemTitle>Resume</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/skills" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>bar_chart</mat-icon>
+                        <div matListItemTitle>Skills</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/contact" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>email</mat-icon>
+                        <div matListItemTitle>Contact</div>
+                    </mat-list-item>
+                </mat-nav-list> -->
+
+<!-- <div
+    class="content"
+    [ngClass]="{
+                'content-articles': !(examplesIsActive.isActive || tutorialsIsActive.isActive),
+                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive
+            }"
+> -->
+<!-- ThemeService -->

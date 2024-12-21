@@ -1,0 +1,279 @@
+<!-- https://codepen.io/gayane-gasparyan/pen/jOmaBQK -->
+<!-- https://codepen.io/Huhtamaki/pen/GPzwPY -->
+
+<!-- https://blog.avada.io/css/hexagons -->
+<!-- https://devsnap.me/css-hexagons -->
+
+<!-- https://codepen.io/d3nis031/pen/QWyeNYx -->
+<!-- https://codepen.io/techyt/pen/qBOBEJL -->
+
+<div #background class="background">
+    <svg>
+        <!-- Based on https://codepen.io/dudleystorey/pen/YwdYxq -->
+        <defs>
+            <pattern
+                #hexagons
+                id="hexagons"
+                width="25"
+                height="43.4"
+                patternUnits="userSpaceOnUse"
+                patternTransform="scale(2) translate(2) rotate(45)"
+            >
+                <polygon points="19.8,7 32.3,14.2 32.3,28.7 19.8,35.9 7.3,28.7 7.3,14.2" id="hex" />
+                <use xlink:href="#hex" x="25" />
+                <use xlink:href="#hex" x="-25" />
+                <use xlink:href="#hex" x="12.5" y="-21.7" />
+                <use xlink:href="#hex" x="-12.5" y="-21.7" />
+                <use xlink:href="#hex" x="12.5" y="21.7" />
+                <use xlink:href="#hex" x="-12.5" y="21.7" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hexagons)" />
+    </svg>
+
+    <div class="rainbow"></div>
+</div>
+
+<mat-sidenav-container class="nav-sidenav" autosize>
+    <mat-sidenav #navSidenav mode="side" position="start" [(opened)]="navSidenavOpened">
+        <div class="identity">
+            <div class="avatar">
+                <img src="https://avatars.githubusercontent.com/u/26877462?v=4" />
+            </div>
+
+            <h2 class="name">Cédric Cazin</h2>
+
+            <h3 class="designation">Lead Software Engineer</h3>
+        </div>
+
+        <mat-accordion class="nav-accordion" role="navigation" displayMode="default">
+            <mat-expansion-panel
+                #workPanel
+                #workIsActive="routerLinkActive"
+                expanded="{{ workIsActive.isActive }}"
+                routerLinkActive="link-active"
+                [routerLinkActiveOptions]="{ exact: false }"
+                [@.disabled]="true"
+                [class.mat-elevation-z0]="true"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> <mat-icon>business</mat-icon> Work </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/work/about" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>portrait</mat-icon>
+                        <div matListItemTitle>About</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/experiences" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>view_timeline</mat-icon>
+                        <div matListItemTitle>Experiences</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/resume" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>description</mat-icon>
+                        <div matListItemTitle>Resume</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/skills" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>bar_chart</mat-icon>
+                        <div matListItemTitle>Skills</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/work/contact" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>email</mat-icon>
+                        <div matListItemTitle>Contact</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                expanded="{{ tutorialsIsActive.isActive }}"
+                #tutorialsIsActive="routerLinkActive"
+                [@.disabled]="true"
+                [class.mat-elevation-z0]="true"
+                routerLinkActive="link-active"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title><mat-icon>science</mat-icon> Tutorials</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/tutorials/wsl" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/icons/wsl.png" />
+                        <div matListItemTitle>WSL</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/tutorials/tools" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>construction</mat-icon>
+                        <div matListItemTitle>Tools</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            <!-- <mat-expansion-panel
+                #tutorialsLegacyIsActive="routerLinkActive"
+                routerLinkActive="link-active"
+                [class.mat-elevation-z0]="true"
+                hideToggle="true"
+            >
+                <mat-expansion-panel-header routerLink="/tutorials-legacy" routerLinkActive="link-active">
+                    <mat-panel-title><mat-icon>build</mat-icon> Tutorials Legacy</mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel> -->
+
+            <mat-expansion-panel
+                expanded="{{ examplesIsActive.isActive }}"
+                #examplesIsActive="routerLinkActive"
+                [@.disabled]="true"
+                [class.mat-elevation-z0]="true"
+                routerLinkActive="link-active"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title><mat-icon>science</mat-icon> Examples</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/examples/angular" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/icons/angular.svg" />
+                        <div matListItemTitle>Angular</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/examples/angular-material" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/icons/angular-material.svg" />
+                        <div matListItemTitle>Angular Material</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/examples/nestjs" routerLinkActive="link-active">
+                        <img matListItemIcon src="/assets/icons/nestjs.svg" />
+                        <div matListItemTitle>NestJs</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                expanded="{{ personalIsActive.isActive }}"
+                #personalIsActive="routerLinkActive"
+                [@.disabled]="true"
+                [class.mat-elevation-z0]="true"
+                routerLinkActive="link-active"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title><mat-icon>cottage</mat-icon> Personal</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list>
+                    <mat-list-item routerLink="/personal/games" routerLinkActive="link-active">
+                        <mat-icon matListItemIcon>sports_esports</mat-icon>
+                        <div matListItemTitle>Games</div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <div class="version">
+            <mat-divider></mat-divider>
+            <mat-slide-toggle [(ngModel)]="isDarkMode"></mat-slide-toggle>
+            <mat-divider></mat-divider>
+            <span>Version: {{ version }}</span>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content
+        class="scrollbar"
+        [ngClass]="{
+            scrollable: !(examplesIsActive.isActive || tutorialsIsActive.isActive)
+        }"
+    >
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="navSidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <kazaam-breadcrumb>
+                <ng-template #breadcrumbChildTemplate let-item>
+                    <img [src]="item?.image" style="width: 50px" />
+                    <span>{{ item?.name }}</span>
+                </ng-template>
+                <ng-template #breadcrumbTemplate let-item>
+                    <img [src]="item?.image" style="width: 50px" />
+                    <span>{{ item?.name }}</span>
+                </ng-template>
+            </kazaam-breadcrumb>
+
+            <span class="spacer"></span>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuLanguages">
+                <mat-icon>
+                    <img [src]="getLanguagePreview(currentLanguage)" />
+                </mat-icon>
+            </button>
+
+            <mat-menu #menuLanguages="matMenu" class="language-configuration">
+                <button
+                    mat-menu-item
+                    *ngFor="let language of languages"
+                    class="language-button"
+                    (click)="currentLanguage = language; $event.stopPropagation()"
+                >
+                    <mat-icon class="language-selected">{{
+                        currentLanguage.id === language.id ? 'radio_button_checked' : 'radio_button_unchecked'
+                    }}</mat-icon>
+                    <span>{{ language.name }}</span>
+                    <mat-icon class="language-preview"><img [src]="getLanguagePreview(language)" /></mat-icon>
+                </button>
+            </mat-menu>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuThemes">
+                <mat-icon>format_color_fill</mat-icon>
+            </button>
+
+            <mat-menu #menuThemes="matMenu" class="theme-configuration">
+                <div mat-menu-item (click)="$event.stopPropagation()">
+                    <mat-slide-toggle [(ngModel)]="isDarkMode"></mat-slide-toggle>
+                    <span>Dark Mode</span>
+                </div>
+
+                <div mat-menu-item (click)="$event.stopPropagation()">
+                    <mat-slide-toggle [(ngModel)]="isGlassMode"></mat-slide-toggle>
+                    <span>Glass</span>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <button
+                    mat-menu-item
+                    *ngFor="let _theme of themes"
+                    class="theme-button"
+                    (click)="theme = _theme; $event.stopPropagation()"
+                >
+                    <mat-icon class="theme-selected">{{
+                        _theme.id === theme.id ? 'radio_button_checked' : 'radio_button_unchecked'
+                    }}</mat-icon>
+                    <span>{{ _theme.name }}</span>
+                    <mat-icon class="theme-preview"><img [src]="getThemePreview(_theme)" /></mat-icon>
+                </button>
+            </mat-menu>
+
+            <a mat-button class="link linkedin" href="https://fr.linkedin.com/in/cedriccazin" target="_blank">
+                <img src="/assets/logos/linkedIn-logo.png" />
+            </a>
+
+            <a mat-button class="link github" href="https://github.com/cedriccazin" target="_blank">
+                <mat-icon svgIcon="github" inline="true"></mat-icon>
+                <img src="/assets/github/github_logo.png" />
+            </a>
+        </mat-toolbar>
+
+        <div
+            class="content"
+            [ngClass]="{
+                'content-articles': !(examplesIsActive.isActive || tutorialsIsActive.isActive),
+                'content-content': examplesIsActive.isActive || tutorialsIsActive.isActive
+            }"
+        >
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

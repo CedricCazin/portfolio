@@ -2,28 +2,19 @@
 @use 'sass:map';
 
 @mixin color($theme) {
-    $color-config: mat.get-color-config($theme);
-
-    $primary-palette: map.get($color-config, 'primary');
-    $accent-palette: map.get($color-config, 'accent');
-    $warn-palette: map.get($color-config, 'warn');
-    $is-dark-theme: map.get($color-config, 'is-dark');
-
-    $primary-color: mat.get-color-from-palette($primary-palette, 'default');
-    $accent-color: mat.get-color-from-palette($accent-palette, 'default');
-
     .floating-skill {
         .clip-path {
             .clip-path-border {
-                background-image: linear-gradient(135deg, $primary-color 25%, $accent-color 75%);
+                background-image: linear-gradient(
+                    135deg,
+                    mat.get-theme-color($theme, primary) 25%,
+                    mat.get-theme-color($theme, tertiary) 75%
+                );
             }
         }
     }
 }
 
 @mixin theme($theme) {
-    $color-config: mat.get-color-config($theme);
-    @if $color-config != null {
-        @include color($theme);
-    }
+    @include color($theme);
 }

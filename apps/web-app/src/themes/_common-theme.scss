@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @use 'sass:meta';
 
-@use '../app/app.component.theme' as app;
+@use '../app/saas/saas.page.theme.scss' as app-sass;
 
 @use 'about.component.theme' as about;
 @use 'contact.component.theme' as contact;
@@ -30,7 +30,7 @@ body {
     // Apply the dark theme by default
     @include mat.all-component-themes($dark-theme);
 
-    @include app.theme($dark-theme);
+    @include app-sass.theme($dark-theme);
 
     @include about.theme($dark-theme);
     @include contact.theme($dark-theme);
@@ -46,7 +46,7 @@ body {
     &.color-scheme-light {
         @include mat.all-component-colors($light-theme);
 
-        @include app.theme($light-theme);
+        @include app-sass.theme($light-theme);
 
         @include about.theme($light-theme);
         @include contact.theme($light-theme);

@@ -4,22 +4,16 @@
 @include mat.core();
 
 @mixin color($theme) {
-    $color-config: mat.get-color-config($theme);
-
-    $primary-palette: map.get($color-config, 'primary');
-    $accent-palette: map.get($color-config, 'accent');
-    $warn-palette: map.get($color-config, 'warn');
-    $background-palette: map.get($color-config, 'background');
-    $is-dark-theme: map.get($color-config, 'is-dark');
-
-    $accent-color: mat.get-color-from-palette($accent-palette, 'default');
-    $primary-color: mat.get-color-from-palette($primary-palette, 'default');
-    $background-color: mat.get-color-from-palette($background-palette, 'background');
-    $hover-color: mat.get-color-from-palette($background-palette, 'hover');
+    $primary-color: mat.get-theme-color($theme, primary);
+    $accent-color: mat.get-theme-color($theme, tertiary);
 
     .background {
         // must find a way to get the inverted color for the line of the polygons background
-        background-color: if($is-dark-theme, #efefef80, #30303080);
+        @if mat.get-theme-type($theme) == dark {
+            background-color: #efefef80;
+        } @else {
+            background-color: #30303080;
+        }
 
         svg {
             polygon {
@@ -73,7 +67,7 @@
 }
 
 @mixin theme($theme) {
-    $color-config: mat.get-color-config($theme);
+    $color-config: mat.m2-get-color-config($theme);
     @if $color-config != null {
         @include color($theme);
     }

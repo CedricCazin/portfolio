@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Game } from '../shared/game.interface';
 import { FloatingGameComponent } from '../shared/floating-game/floating-game.component';
@@ -7,7 +7,7 @@ import { KazaamModule } from '@kazaam';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, HttpClientModule, FloatingGameComponent, KazaamModule],
+    imports: [CommonModule, FloatingGameComponent, KazaamModule],
     templateUrl: './games.component.html',
     styleUrls: ['./games.component.scss'],
 })
